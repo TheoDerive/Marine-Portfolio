@@ -1,0 +1,234 @@
+@import "./libs/vars.scss";
+@import "./libs/font.scss";
+@import "./libs/animations.scss";
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  color: unset;
+  text-decoration: none;
+}
+
+html {
+  font-family: "Poppins";
+  font-size: 18px;
+}
+
+body {
+  background: $background;
+  height: 200vh;
+  padding: 0 5vw;
+}
+
+// Navbar {
+.navbar,
+.navbar-active {
+  z-index: 999;
+  transition: all 0.5s;
+  position: absolute;
+  animation: nav-openning 0.7s ease-out forwards;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  padding: 10px 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  .logo-container {
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: scale 0.3s;
+
+    img {
+      width: 100%;
+    }
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  .navbar-onglet-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    margin-left: 10%;
+
+    .onglet {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0%;
+        height: 2px;
+        transition: width 0.3s;
+        border-radius: 15px;
+      }
+
+      &:hover::after {
+        width: 80%;
+      }
+
+      &-rose::after {
+        background: $rose;
+      }
+
+      &-orange::after {
+        background: $orange;
+      }
+    }
+
+    .contact {
+      padding: 10px 15px;
+      border-radius: 15px;
+      border: 1px solid rgba($color: #dad8d8, $alpha: 0.7);
+      transition: background 0.3s;
+
+      a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: gap 0.3s;
+
+        svg {
+          width: 0px;
+          opacity: 0;
+          transition: 0.3s;
+          transition-property: opacity, width;
+        }
+      }
+
+      &:hover {
+        background: $violet;
+        color: $background;
+
+        a {
+          gap: 20px;
+        }
+
+        svg {
+          opacity: 1;
+          width: 15px;
+        }
+
+        &::after {
+          width: 0;
+        }
+      }
+    }
+  }
+}
+
+.navbar-active {
+  transition: all 0.5s;
+  position: fixed;
+  background: rgba($color: $background, $alpha: 0.6);
+  width: 100vw;
+  backdrop-filter: blur(5px);
+  top: 0;
+  left: 0;
+  transform: inherit;
+  border-radius: 0 0 15px 15px;
+}
+// }
+
+// Homepage {
+.header-homepage {
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 30px;
+    scale: 0;
+    animation: bounce 0.3s ease forwards;
+    animation-delay: 0.8s;
+
+    .header-homepage-title {
+      font-size: 3.5rem;
+    }
+
+    .header-homepage-button {
+      padding: 10px 15px;
+      border-radius: 15px;
+      background: $rose;
+      color: $background;
+      border: 0;
+      scale: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      transition: 0.3s;
+      transition-property: background, scale;
+
+      .header-homepage-button-icon {
+        width: 0px;
+        transition: width 0.3s;
+      }
+
+      &:hover {
+        background: $orange;
+        scale: 1.05;
+
+        .header-homepage-button-icon {
+          width: 30px;
+        }
+      }
+    }
+  }
+
+  .right {
+    position: absolute;
+    top: 50%;
+    right: 5%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    scale: 0;
+    animation: bounce 0.3s ease forwards;
+    animation-delay: 1.2s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 250%;
+      height: 250%;
+      transform: translate(-55%, -45%);
+      background: url("/images/header-background.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .right-informations {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba($color: $background, $alpha: 0.4);
+      backdrop-filter: blur(5px);
+      padding: 20px 20px 0 20px;
+      border-radius: 35px;
+    }
+  }
+}
+// }

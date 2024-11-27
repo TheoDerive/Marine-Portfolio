@@ -1,0 +1,23 @@
+@keyframes nav-openning {
+  0% {
+    top: -100%;
+  }
+
+  100% {
+    top: 20px;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    scale: 0;
+  }
+
+  60% {
+    scale: 1.2;
+  }
+
+  100% {
+    scale: 1;
+  }
+}

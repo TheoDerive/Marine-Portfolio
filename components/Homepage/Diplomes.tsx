@@ -88,8 +88,8 @@ function Diplome({
     <article
       className="diplome"
       style={
-        isActive
-          ? { height: `${contentRef.current?.scrollHeight + 50}px` }
+        isActive && contentRef.current
+          ? { height: `${contentRef.current.scrollHeight + 50}px` }
           : { height: "50px" }
       }
     >

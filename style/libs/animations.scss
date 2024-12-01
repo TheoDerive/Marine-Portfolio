@@ -21,3 +21,21 @@
     scale: 1;
   }
 }
+
+@keyframes loopPortfolioLeft {
+  0% {
+    transform: translateX(-5.5%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes loopPortfolioRight {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(-5.5%);
+  }
+}

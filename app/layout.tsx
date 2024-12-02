@@ -2,6 +2,7 @@ import { Metadata } from "next";
 
 import "../style/style.scss";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Marine Sicaud | Portfolio",
@@ -20,6 +21,8 @@ export default function RootLayout({
         </header>
 
         <main>{children}</main>
+
+        <Footer />
       </body>
     </html>
   );

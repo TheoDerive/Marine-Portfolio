@@ -156,7 +156,8 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 50px;
+  gap: 80px;
+  margin-bottom: 80px;
 }
 
 .header-homepage {
@@ -479,7 +480,7 @@ main {
     content: "";
     position: absolute;
     bottom: -20px;
-    left: -10vw;
+    left: -35vw;
     width: 80%;
     height: 80%;
     background: url("/images/eclipse-rose.png");
@@ -744,6 +745,90 @@ main {
         .desactive-diplome {
           rotate: 180deg;
         }
+      }
+    }
+  }
+}
+// }
+
+// Footer {
+footer {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  gap: 20px;
+  padding: 50px;
+  border-radius: 20px;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 40%;
+    right: 6%;
+    width: 80%;
+    height: 80%;
+    transform: translateY(-50%);
+    background: url("/images/eclipse-rose.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -4;
+  }
+
+  .footer-informations {
+    display: flex;
+    align-items: center;
+    gap: 70px;
+    height: 100%;
+
+    .footer-left {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 25px;
+
+      .footer-telephone,
+      .footer-mail {
+        background: rgba($color: white, $alpha: 0.4);
+        width: 100%;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        gap: 20px;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        border-radius: 15px;
+        padding: 20px;
+      }
+    }
+
+    .footer-right {
+      width: 100%;
+      height: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      border-radius: 15px;
+      padding: 20px;
+      position: relative;
+      background: rgba($color: white, $alpha: 0.4);
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 250px;
+        height: 250px;
+        background: url("/images/OnDiscute-Marine.png");
+        background-position: bottom left;
+        background-repeat: no-repeat;
+        background-size: contain;
       }
     }
   }

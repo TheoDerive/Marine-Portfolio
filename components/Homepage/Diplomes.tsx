@@ -28,11 +28,10 @@ export default function Diplomes() {
   ) {
     const newDiplome = diplomes.map((diplome) =>
       diplome.id === diplomeId
-        ? { ...diplome, isActive: true }
+        ? { ...diplome, isActive: !diplome.isActive }
         : { ...diplome, isActive: false },
     );
     setDiplomes(newDiplome);
-    setIsActive(true);
   }
   return (
     <section className="diplomes-homepage-container">

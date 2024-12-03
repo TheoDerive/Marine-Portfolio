@@ -12,7 +12,15 @@ export default function Footer() {
 
           <section className="footer-mail">
             <h4 className="information-title">Mail</h4>
-            <h3 className="information">sicaud.marine.pro@gmail.com</h3>
+            <h3 className="information">
+              sicaud.marine.pro
+              <a
+                href="mailto:sicaud.marine.pro@gmail.com"
+                className="email-container"
+              >
+                <span>@gmail.com</span>
+              </a>
+            </h3>
           </section>
         </section>
         <section className="footer-right">

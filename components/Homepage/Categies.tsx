@@ -4,17 +4,17 @@ export default function HomeCategories() {
   return (
     <section className="categories-homepage-container">
       <div className="slider-container right">
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
       </div>
 
       <ul className="categories-homepage">
@@ -30,17 +30,17 @@ export default function HomeCategories() {
       </ul>
 
       <div className="slider-container left">
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
-        <span>PORTFOLIO</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
+        <span>PROJETS</span>
       </div>
     </section>
   );

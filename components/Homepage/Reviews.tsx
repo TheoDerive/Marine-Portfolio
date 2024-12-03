@@ -20,7 +20,7 @@ export default function Reviews() {
     personne: "Méghane Roche",
     poste: "Responsable Marketing et Communication",
     message: "Marine Sicaud la goat",
-    imageName: "HMD-logo.png",
+    imageName: "HMD-logo.webp",
     entrepriseName: "Humadentaire",
     stars: 5,
   };

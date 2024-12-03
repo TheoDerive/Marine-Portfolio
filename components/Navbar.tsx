@@ -35,7 +35,7 @@ export default function Navbar() {
         </li>
 
         <li className="onglet contact">
-          <Link href={"/contact"}>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}>
             Contact <FontAwesomeIcon icon={faArrowRight} />
           </Link>
         </li>

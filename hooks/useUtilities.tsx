@@ -12,6 +12,10 @@ export default function useUtilities() {
   // And I can use the zustand value everywhere
   const { setScrollPosition } = useAppStore();
 
+  const [windowProperties, setWindowProperties] = React.useState<
+    Window & typeof globalThis
+  >();
+
   // Get scroll position
   React.useEffect(() => {
     const handleScrollPosition = () => {
@@ -24,7 +28,13 @@ export default function useUtilities() {
     return () => {
       window.removeEventListener("scroll", handleScrollPosition);
     };
-  });
+  }, []);
 
-  return { window };
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setWindowProperties(window);
+    }
+  }, []);
+
+  return { windowProperties };
 }

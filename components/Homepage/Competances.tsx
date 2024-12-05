@@ -1,7 +1,16 @@
+"use client";
+
+import useUtilities from "@/hooks/useUtilities";
+
 export default function HomeCompetences() {
+  const { windowProperties } = useUtilities();
   return (
     <>
-      {window.innerWidth > 480 ? <DesktopCompetances /> : <MobileCompetances />}
+      {windowProperties && windowProperties.innerWidth > 480 ? (
+        <DesktopCompetances />
+      ) : (
+        <MobileCompetances />
+      )}
     </>
   );
 }

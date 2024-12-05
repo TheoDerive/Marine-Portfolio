@@ -1,5 +1,6 @@
 "use client";
 
+import useUtilities from "@/hooks/useUtilities";
 import { useAppStore } from "@/store";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -7,7 +8,16 @@ import Link from "next/link";
 import React from "react";
 
 export default function Navbar() {
-  return <>{window.innerWidth > 480 ? <DesktopNav /> : <MobileNav />}</>;
+  const { windowProperties } = useUtilities();
+  return (
+    <>
+      {windowProperties && windowProperties.innerWidth > 480 ? (
+        <DesktopNav />
+      ) : (
+        <MobileNav />
+      )}
+    </>
+  );
 }
 
 function DesktopNav() {

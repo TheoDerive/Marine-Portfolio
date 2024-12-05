@@ -10,10 +10,11 @@ export default function HomeHeader() {
 
       <div className="left">
         <h1 className="header-homepage-title">
-          MARKETING DIGITAL & <br /> COMMUNICATION
+          Marketing <span className="header-special-word">Digital</span> <br />{" "}
+          & Communication <span className="header-point">.</span>
         </h1>
         <button className="header-homepage-button">
-          Prendre contact{" "}
+          A propos
           <img
             className="header-homepage-button-icon"
             src="/images/coucou-icon.png"

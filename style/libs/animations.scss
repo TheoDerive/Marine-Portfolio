@@ -27,15 +27,51 @@
     transform: translateX(-5%);
   }
   100% {
-    transform: translateX(-75.5%);
+    transform: translateX(-90%);
   }
 }
 
 @keyframes loopPortfolioRight {
   0% {
-    transform: translateX(-75.5%);
+    transform: translateX(-90%);
   }
   100% {
     transform: translateX(-5%);
+  }
+}
+
+@keyframes loopPortfolioLeftMobile {
+  0% {
+    transform: translateX(-20%);
+  }
+  100% {
+    transform: translateX(-127%);
+  }
+}
+
+@keyframes loopPortfolioRightMobile {
+  0% {
+    transform: translateX(-127%);
+  }
+  100% {
+    transform: translateX(-20%);
+  }
+}
+
+@keyframes competencesMobileAutoScroll {
+  0% {
+    transform: translateX(-0%);
+  }
+  100% {
+    transform: translateX(-123.8%);
+  }
+}
+
+@keyframes reverseCompetencesMobileAutoScroll {
+  0% {
+    transform: translateX(-126.6%);
+  }
+  100% {
+    transform: translateX(-0%);
   }
 }

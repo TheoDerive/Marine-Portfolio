@@ -47,10 +47,7 @@ export default function Diplomes() {
     diplome4,
   ]);
 
-  function activeDiplome(
-    diplomeId: number,
-    setIsActive: (isActive: boolean) => void,
-  ) {
+  function activeDiplome(diplomeId: number) {
     const newDiplome = diplomes.map((diplome) =>
       diplome.id === diplomeId
         ? { ...diplome, isActive: !diplome.isActive }
@@ -113,8 +110,8 @@ function Diplome({
       className="diplome"
       style={
         isActive && contentRef.current
-          ? { height: `${contentRef.current.scrollHeight + 50}px` }
-          : { height: "40px" }
+          ? { height: `${contentRef.current.scrollHeight + 70}px` }
+          : { height: "70px" }
       }
     >
       <section

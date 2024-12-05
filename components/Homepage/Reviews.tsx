@@ -17,9 +17,10 @@ export default function Reviews() {
 
   const review2: ReviewType = {
     id: 1,
-    personne: "Méghane Roche",
-    poste: "Responsable Marketing et Communication",
-    message: "Marine Sicaud la goat",
+    personne: "Arthur Priollaud",
+    poste: "Coordinateur du pole partenaires",
+    message:
+      "Marine Sicaud a été un atout essentiel pour l’association Humadentaire. Professionnelle, créative et impliquée, elle a supervisé la création de notre site internet et la définition d’une identité visuelle complète, incluant logo et supports de communication. Son travail méthodique et son souci du détail ont permis de structurer notre présence en ligne et de renforcer notre visibilité. Je la recommande chaleureusement pour ses compétences et son sérieux.",
     imageName: "HMD-logo.webp",
     entrepriseName: "Humadentaire",
     stars: 5,
@@ -31,9 +32,11 @@ export default function Reviews() {
     <section className="reviews-homepage-container">
       <h3 className="review-title">Ils me recommandent</h3>
 
-      <section className="reviews-homepage">
-        <Review review={review1} />
-        <Review review={review2} />
+      <section className="review-mobile-scroll">
+        <section className="reviews-homepage">
+          <Review review={review1} />
+          <Review review={review2} />
+        </section>
       </section>
     </section>
   );

@@ -1,7 +1,6 @@
 "use client";
 
-import HomeAbout from "@/components/Homepage/About";
-import HomeCategories from "@/components/Homepage/Categies";
+import HomeCategories from "@/components/Homepage/Categories";
 import HomeCompetences from "@/components/Homepage/Competances";
 import Diplomes from "@/components/Homepage/Diplomes";
 import HomeHeader from "@/components/Homepage/Header";
@@ -14,7 +13,6 @@ export default function Home() {
   return (
     <>
       <HomeHeader />
-      <HomeAbout />
       <HomeProjets />
       <HomeCategories />
       <HomeCompetences />

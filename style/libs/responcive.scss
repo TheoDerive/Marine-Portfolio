@@ -1,1 +1,438 @@
+.mobile-navbar {
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px;
+  backdrop-filter: blur(5px);
 
+  &::before {
+    content: "";
+    background: rgba($color: $background, $alpha: 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+  }
+
+  .logo-container {
+    font-weight: bold;
+  }
+
+  .burger-container {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 5px;
+
+    .burger {
+      width: 80%;
+      height: 2px;
+      background: black;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: black;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: black;
+      }
+    }
+  }
+
+  .menu-navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100svh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 60px;
+    z-index: 999;
+    background: #efefef;
+    transform: translateX(150%);
+    transition: transform 0.3s;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 50px;
+      height: 50px;
+      background: url("/images/logo.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .eclipses {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -70%;
+        width: 400px;
+        height: 400px;
+        background: rgb(255, 133, 43);
+        background: radial-gradient(
+          circle,
+          rgba(255, 133, 43, 0.6) 0%,
+          rgba(2, 0, 36, 0) 70%
+        );
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: -17%;
+        right: -50%;
+        width: 400px;
+        height: 400px;
+        background: rgb(248, 116, 216);
+        background: radial-gradient(
+          circle,
+          rgba($color: $violet, $alpha: 0.7) 0%,
+          rgba(2, 0, 36, 0) 70%
+        );
+        border-radius: 50%;
+        z-index: -1;
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 30px;
+      height: 30px;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform: rotate(45deg);
+        background: black;
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform: rotate(135deg);
+        background: black;
+      }
+    }
+
+    .navbar-onglet-container {
+      padding-top: 20svh;
+      width: 100%;
+      padding-left: 20px;
+      padding-right: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      .onglet {
+        font-size: 50px;
+        position: relative;
+        width: 100%;
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 2px;
+          background: black;
+          right: 10px;
+          top: 40%;
+          transform: rotate(45deg);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 2px;
+          background: black;
+          right: 10px;
+          bottom: 40%;
+          transform: rotate(135deg);
+        }
+      }
+    }
+
+    .nav-button {
+      padding: 15px 20px;
+      border-radius: 50px;
+      background: $rose;
+      color: $background;
+      border: 0;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      font-size: 1.05rem;
+    }
+
+    .social {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translate(-50%);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+}
+
+.mobile-navbar-active {
+  .menu-navbar {
+    transform: translateX(0);
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .section-title {
+    font-size: 35px !important;
+    gap: 10px !important;
+  }
+
+  .header-homepage {
+    height: 80svh !important;
+
+    &::after {
+      top: -20% !important;
+      right: -40% !important;
+      width: 400px !important;
+      height: 400px !important;
+    }
+
+    &::before {
+      bottom: -5% !important;
+      left: -60% !important;
+      width: 400px !important;
+      height: 400px !important;
+    }
+
+    .right {
+      display: none;
+    }
+
+    .left {
+      width: 100% !important;
+      align-items: center !important;
+      justify-content: center !important;
+
+      .header-homepage-title {
+        font-size: 30px !important;
+        width: 90% !important;
+
+        .header-special-word {
+          font-size: 40px !important;
+        }
+      }
+    }
+  }
+
+  .mobile-scroll-container {
+    overflow-x: auto !important;
+    width: 90vw;
+
+    .projets-homepage {
+      width: 200vw !important;
+    }
+
+    .projet-component {
+      min-height: calc(200vw / 3);
+    }
+  }
+
+  .categories-homepage-container {
+    gap: 30px !important;
+
+    &::after {
+      top: -120px !important;
+      right: -50% !important;
+      width: 400px !important;
+      height: 400px !important;
+    }
+
+    &::before {
+      bottom: -25% !important;
+      left: -50% !important;
+      width: 400px !important;
+      height: 400px !important;
+    }
+
+    .slider-container span {
+      font-size: 80px !important;
+    }
+
+    .right {
+      animation: loopPortfolioRightMobile 5s infinite linear !important;
+    }
+
+    .left {
+      animation: loopPortfolioLeftMobile 5s infinite linear !important;
+    }
+
+    .categorie-homepage {
+      font-size: 60px !important;
+    }
+  }
+
+  .design-scroll-container,
+  .marketing-scroll-container {
+    width: 90vw;
+
+    .competences-homepage {
+      width: 200%;
+      display: flex !important;
+      align-items: center !important;
+      animation: competencesMobileAutoScroll 8s infinite linear;
+
+      li {
+        height: unset !important;
+        overflow: visible !important;
+        max-width: 80px;
+
+        &:hover {
+          height: unset !important;
+          scale: 1 !important;
+        }
+
+        img {
+          max-width: 80px;
+          max-height: 60px;
+          opacity: 1 !important;
+          transition: opacity 0.3s;
+        }
+      }
+    }
+  }
+
+  .marketing-scroll-container .competences-homepage {
+    animation: reverseCompetencesMobileAutoScroll 8s infinite linear;
+  }
+
+  .diplome-title {
+    div {
+      width: 60%;
+    }
+  }
+
+  .review-title {
+    font-size: 40px !important;
+    text-align: center;
+  }
+
+  .review-mobile-scroll {
+    width: 90vw;
+    overflow-x: auto;
+    padding: 20px;
+
+    .reviews-homepage {
+      width: 130% !important;
+      align-items: flex-start !important;
+      justify-content: flex-start !important;
+
+      .review {
+        width: 100% !important;
+      }
+    }
+  }
+
+  footer {
+    padding: 50px 25px !important;
+  }
+
+  .footer-title {
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .footer-informations {
+    flex-direction: column;
+  }
+
+  .footer-telephone,
+  .footer-mail {
+    .information-title {
+      font-size: 24px;
+    }
+  }
+
+  .footer-telephone .information {
+    font-size: 20px;
+  }
+
+  .footer-mail .information {
+    font-size: 14px;
+
+    .email-container {
+      height: 50px;
+      top: -3px !important;
+    }
+
+    .email-container::after {
+      font-size: 18px !important;
+    }
+
+    .email-container:hover {
+      transform: translateY(-65px);
+    }
+
+    span {
+      font-size: 18px !important;
+    }
+  }
+
+  .footer-right::after {
+    width: 200px !important;
+    height: 200px !important;
+    right: 10px !important;
+  }
+}

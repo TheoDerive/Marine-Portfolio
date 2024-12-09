@@ -104,7 +104,8 @@ function MobileCompetances() {
             <img src="/images/Figma.png" />
             Figma
           </li>
-
+        </ul>
+        <ul className="competences-homepage">
           <li>
             <img src="/images/Photoshop.png" />
             Photoshop
@@ -157,6 +158,8 @@ function MobileCompetances() {
             <img src="/images/Mailchimp.png" />
             Mailchimp
           </li>
+        </ul>
+        <ul className="competences-homepage">
           <li>
             <img src="/images/Semrush.png" />
             Semrush

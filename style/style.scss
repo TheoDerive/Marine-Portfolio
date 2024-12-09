@@ -38,7 +38,8 @@ body {
 
   span {
     color: white;
-    font-family: Margin DEMO;
+    font-family: Bugaki;
+    font-size: 60px;
     padding: 13px 20px;
     border-radius: 30px;
   }
@@ -115,7 +116,7 @@ body {
     .contact {
       padding: 10px 15px;
       border-radius: 15px;
-      border: 1px solid rgba($color: #dad8d8, $alpha: 1);
+      border: 1px solid rgba($color: black, $alpha: 0.3);
       transition: background 0.3s;
 
       a {
@@ -195,7 +196,7 @@ main {
     background: rgb(248, 116, 216);
     background: radial-gradient(
       circle,
-      rgba(248, 116, 216, 0.7) 0%,
+      rgba(248, 116, 216, 0.5) 0%,
       rgba(2, 0, 36, 0) 70%
     );
     border-radius: 50%;
@@ -212,7 +213,7 @@ main {
     background: rgb(255, 133, 43);
     background: radial-gradient(
       circle,
-      rgba(255, 133, 43, 0.6) 0%,
+      rgba(255, 133, 43, 0.5) 0%,
       rgba(2, 0, 36, 0) 70%
     );
     border-radius: 50%;
@@ -234,8 +235,8 @@ main {
 
       .header-special-word {
         color: $rose;
-        font-size: 80px;
-        font-family: Margin DEMO;
+        font-size: 65px;
+        font-family: Bugaki;
       }
 
       .header-point {
@@ -244,12 +245,14 @@ main {
     }
 
     .header-homepage-button {
+      position: relative;
       padding: 10px 15px;
       border-radius: 15px;
       background: $rose;
       color: $background;
       border: 0;
-      scale: 1;
+      scale: 1.2;
+      left: 10px;
       display: flex;
       align-items: center;
       gap: 10px;
@@ -264,7 +267,7 @@ main {
 
       &:hover {
         background: $orange;
-        scale: 1.05;
+        scale: 1.25;
 
         .header-homepage-button-icon {
           width: 30px;
@@ -275,9 +278,7 @@ main {
 
   .right {
     position: absolute;
-    top: 50%;
-    right: 0%;
-    transform: translate(-50%, -50%);
+    right: 0;
     z-index: -1;
     scale: 0;
     animation: bounce 0.3s ease forwards;
@@ -298,7 +299,7 @@ main {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgba($color: $background, $alpha: 0.4);
+      background: rgba($color: white, $alpha: 0.3);
       backdrop-filter: blur(5px);
       padding: 20px 20px 0 20px;
       border-radius: 35px;
@@ -454,10 +455,6 @@ main {
   overflow: hidden;
   cursor: pointer;
 
-  &:nth-child(2) {
-    height: 600px;
-  }
-
   img {
     position: absolute;
     top: 50%;
@@ -517,7 +514,7 @@ main {
     background: rgb(255, 133, 43);
     background: radial-gradient(
       circle,
-      rgba(255, 133, 43, 0.6) 0%,
+      rgba(255, 133, 43, 0.5) 0%,
       rgba(2, 0, 36, 0) 70%
     );
     border-radius: 50%;
@@ -534,7 +531,7 @@ main {
     background: rgb(248, 116, 216);
     background: radial-gradient(
       circle,
-      rgba(248, 116, 216, 0.7) 0%,
+      rgba(248, 116, 216, 0.5) 0%,
       rgba(2, 0, 36, 0) 70%
     );
     border-radius: 50%;
@@ -542,29 +539,34 @@ main {
   }
 
   .slider-container {
+    position: relative;
     display: flex;
     gap: 20px;
-    position: relative;
     width: 100%;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
 
-    span {
-      text-transform: uppercase;
-      font-weight: bold;
-      color: transparent;
-      -webkit-text-stroke: 1px black;
-      font-size: 100px;
+    .slider {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+
+      span {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: transparent;
+        -webkit-text-stroke: 1px black;
+        font-size: 100px;
+      }
     }
   }
 
   .left {
-    animation: loopPortfolioLeft 5s infinite linear;
-    rotate: 2deg;
+    animation: infiniteScrollLeft 10s infinite linear;
   }
 
   .right {
-    animation: loopPortfolioRight 5s infinite linear;
-    rotate: -2deg;
+    animation: infiniteScrollRight 10s infinite linear;
   }
 
   .categories-homepage {
@@ -588,7 +590,7 @@ main {
       cursor: pointer;
       text-transform: uppercase;
       position: relative;
-      font-family: "Margin DEMO";
+      font-family: "Bugaki";
       position: relative;
       filter: blur(0px);
       -webkit-filter: blur(0px);
@@ -781,7 +783,7 @@ main {
       width: 100%;
       display: flex;
       flex-direction: column;
-      border-bottom: 1px solid grey;
+      border-bottom: 1px solid rgba($color: grey, $alpha: 0.3);
       padding: 15px 5px;
       overflow: hidden;
       transition: height 0.3s;
@@ -835,6 +837,10 @@ main {
           rotate: 180deg;
         }
       }
+
+      .diplome-description {
+        width: 95%;
+      }
     }
   }
 }
@@ -862,7 +868,7 @@ footer {
     background: rgb(248, 116, 216);
     background: radial-gradient(
       circle,
-      rgba(248, 116, 216, 1) 0%,
+      rgba(248, 116, 216, 0.6) 0%,
       rgba(2, 0, 36, 0) 70%
     );
     border-radius: 50%;

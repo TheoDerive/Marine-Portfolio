@@ -6,18 +6,33 @@ import React from "react";
 export default function HomeCategories() {
   return (
     <section className="categories-homepage-container">
-      <div className="slider-container right">
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
+      <div className="slider-container" style={{ rotate: "-2deg" }}>
+        <div className="slider right">
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+        </div>
+        <div className="slider right">
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+        </div>
       </div>
 
       <ul className="categories-homepage">
@@ -32,18 +47,33 @@ export default function HomeCategories() {
         </li>
       </ul>
 
-      <div className="slider-container left">
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
-        <span>PROJETS</span>
+      <div className="slider-container" style={{ rotate: "2deg" }}>
+        <div className="slider left">
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+        </div>
+        <div className="slider left">
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+          <span>PROJETS</span>
+        </div>
       </div>
     </section>
   );

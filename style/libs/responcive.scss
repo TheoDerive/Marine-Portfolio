@@ -39,13 +39,12 @@
     .burger {
       width: 80%;
       height: 2px;
-      background: black;
       position: relative;
 
       &::after {
         content: "";
         position: absolute;
-        top: -5px;
+        top: -3px;
         left: 0;
         width: 100%;
         height: 2px;
@@ -55,9 +54,9 @@
       &::before {
         content: "";
         position: absolute;
-        top: 5px;
+        top: 3px;
         left: 0;
-        width: 100%;
+        width: 80%;
         height: 2px;
         background: black;
       }
@@ -238,6 +237,10 @@
   .section-title {
     font-size: 35px !important;
     gap: 10px !important;
+
+    span {
+      font-size: 30px !important;
+    }
   }
 
   .header-homepage {
@@ -248,6 +251,11 @@
       right: -40% !important;
       width: 400px !important;
       height: 400px !important;
+      background: radial-gradient(
+        circle,
+        rgba(248, 116, 216, 0.3) 0%,
+        rgba(2, 0, 36, 0) 70%
+      ) !important;
     }
 
     &::before {
@@ -255,6 +263,11 @@
       left: -60% !important;
       width: 400px !important;
       height: 400px !important;
+      background: radial-gradient(
+        circle,
+        rgba(255, 133, 43, 0.3) 0%,
+        rgba(2, 0, 36, 0) 70%
+      ) !important;
     }
 
     .right {
@@ -271,7 +284,7 @@
         width: 90% !important;
 
         .header-special-word {
-          font-size: 40px !important;
+          font-size: 30px !important;
         }
       }
     }
@@ -298,6 +311,11 @@
       right: -50% !important;
       width: 400px !important;
       height: 400px !important;
+      background: radial-gradient(
+        circle,
+        rgba(255, 133, 43, 0.3) 0%,
+        rgba(2, 0, 36, 0) 70%
+      ) !important;
     }
 
     &::before {
@@ -305,34 +323,47 @@
       left: -50% !important;
       width: 400px !important;
       height: 400px !important;
+      background: radial-gradient(
+        circle,
+        rgba(248, 116, 216, 0.3) 0%,
+        rgba(2, 0, 36, 0) 70%
+      ) !important;
     }
 
     .slider-container span {
-      font-size: 80px !important;
+      font-size: 65px !important;
     }
 
     .right {
-      animation: loopPortfolioRightMobile 5s infinite linear !important;
+      animation: infiniteScrollRight 15s infinite linear !important;
     }
 
     .left {
-      animation: loopPortfolioLeftMobile 5s infinite linear !important;
+      animation: infiniteScrollLeft 15s infinite linear !important;
     }
 
     .categorie-homepage {
-      font-size: 60px !important;
+      font-size: 40px !important;
+
+      &:first-child {
+        font-family: "Margin DEMO" !important;
+        font-size: 60px !important;
+      }
     }
   }
 
   .design-scroll-container,
   .marketing-scroll-container {
-    width: 90vw;
+    width: 100%;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 100px;
 
     .competences-homepage {
-      width: 200%;
       display: flex !important;
       align-items: center !important;
-      animation: competencesMobileAutoScroll 8s infinite linear;
+      animation: competencesInfiniteScrollRight 6s infinite linear;
 
       li {
         height: unset !important;
@@ -355,7 +386,7 @@
   }
 
   .marketing-scroll-container .competences-homepage {
-    animation: reverseCompetencesMobileAutoScroll 8s infinite linear;
+    animation: competencesInfiniteScrollLeft 6s infinite linear;
   }
 
   .diplome-title {
@@ -391,6 +422,14 @@
 
   footer {
     padding: 50px 25px !important;
+
+    &::before {
+      background: radial-gradient(
+        circle,
+        rgba(248, 116, 216, 0.3) 0%,
+        rgba(2, 0, 36, 0) 70%
+      ) !important;
+    }
   }
 
   .footer-title {

@@ -22,56 +22,34 @@
   }
 }
 
-@keyframes loopPortfolioLeft {
-  0% {
-    transform: translateX(-5%);
+@keyframes infiniteScrollLeft {
+  from {
+    transform: translateX(calc(-100% - 20px));
   }
-  100% {
-    transform: translateX(-90%);
+
+  to {
+    transform: translateX(0%);
   }
 }
 
-@keyframes loopPortfolioRight {
-  0% {
-    transform: translateX(-90%);
-  }
-  100% {
-    transform: translateX(-5%);
+@keyframes infiniteScrollRight {
+  to {
+    transform: translateX(calc(-100% - 20px));
   }
 }
 
-@keyframes loopPortfolioLeftMobile {
-  0% {
-    transform: translateX(-20%);
+@keyframes competencesInfiniteScrollLeft {
+  from {
+    transform: translateX(calc(-100% - 100px));
   }
-  100% {
-    transform: translateX(-127%);
+
+  to {
+    transform: translateX(0%);
   }
 }
 
-@keyframes loopPortfolioRightMobile {
-  0% {
-    transform: translateX(-127%);
-  }
-  100% {
-    transform: translateX(-20%);
-  }
-}
-
-@keyframes competencesMobileAutoScroll {
-  0% {
-    transform: translateX(-0%);
-  }
-  100% {
-    transform: translateX(-123.8%);
-  }
-}
-
-@keyframes reverseCompetencesMobileAutoScroll {
-  0% {
-    transform: translateX(-126.6%);
-  }
-  100% {
-    transform: translateX(-0%);
+@keyframes competencesInfiniteScrollRight {
+  to {
+    transform: translateX(calc(-100% - 100px));
   }
 }

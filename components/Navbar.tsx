@@ -41,7 +41,7 @@ function DesktopNav() {
 
       <ul className="navbar-onglet-container">
         <li className="onglet onglet-rose">
-          <Link href={"/about"}>A propos</Link>
+          <Link href={"/profil"}>Profil</Link>
         </li>
 
         <li className="onglet onglet-orange">
@@ -98,7 +98,7 @@ function MobileNav() {
             <Link href={"/"}>Accueil</Link>
           </li>
           <li className="onglet ">
-            <Link href={"/about"}>A propos</Link>
+            <Link href={"/about"}>Profil</Link>
           </li>
 
           <li className="onglet ">

@@ -335,11 +335,13 @@
     }
 
     .right {
-      animation: infiniteScrollRight 15s infinite linear !important;
+      @include infiniteScrollRight(20px, "projet-right-scroll");
+      animation: projet-right-scroll 15s infinite linear !important;
     }
 
     .left {
-      animation: infiniteScrollLeft 15s infinite linear !important;
+      @include infiniteScrollRight(20px, "projet-left-scroll");
+      animation: projet-left-scroll 15s infinite linear !important;
     }
 
     .categorie-homepage {
@@ -363,7 +365,6 @@
     .competences-homepage {
       display: flex !important;
       align-items: center !important;
-      animation: competencesInfiniteScrollRight 6s infinite linear;
 
       li {
         height: unset !important;
@@ -385,8 +386,14 @@
     }
   }
 
+  .design-scroll-container .competences-homepage {
+    @include infiniteScrollRight(100px, "design-competances-scroll");
+    animation: design-competances-scroll 6s infinite linear;
+  }
+
   .marketing-scroll-container .competences-homepage {
-    animation: competencesInfiniteScrollLeft 6s infinite linear;
+    @include infiniteScrollLeft(100px, "marketing-competances-scroll");
+    animation: marketing-competances-scroll 6s infinite linear;
   }
 
   .diplome-title {

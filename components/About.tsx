@@ -1,12 +1,10 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function HomeAbout() {
+export default function About() {
   return (
-    <section className="about-homepage-container">
-      <h2 className="section-title">A propos de moi</h2>
-
-      <section className="about-homepage">
+    <section className="about-container">
+      <section className="about">
         <section className="left">
           <div className="left-informations">
             <div className="image-container">

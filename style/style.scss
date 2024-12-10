@@ -1005,7 +1005,6 @@ footer {
   gap: 200px;
 
   .scroll-title-container {
-    width: 400%;
     position: relative;
     display: flex;
     align-items: center;
@@ -1020,7 +1019,7 @@ footer {
       justify-content: flex-start;
       gap: 40px;
       @include infiniteScrollLeft(40px, "vision-scroll");
-      animation: vision-scroll 10s infinite linear;
+      animation: vision-scroll 12s infinite linear;
 
       p {
         font-size: 100px;
@@ -1028,7 +1027,9 @@ footer {
         color: transparent;
         width: max-width;
         -webkit-text-stroke: 1px black;
-      }
+        clear: both;
+        display: inline-block;
+        white-space: nowrap;      }
     }
   }
 

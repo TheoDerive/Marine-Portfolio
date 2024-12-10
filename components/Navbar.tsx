@@ -112,7 +112,6 @@ function MobileNav() {
 
         <span className="social">
           <Link href="">Linkedin</Link>
-          <Link href="">Dribble</Link>
         </span>
       </section>
     </nav>

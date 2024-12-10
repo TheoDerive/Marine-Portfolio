@@ -40,7 +40,7 @@ body {
     color: white;
     font-family: Bugaki;
     font-size: 60px;
-    padding: 13px 20px;
+    padding: 5px 20px;
     border-radius: 30px;
   }
 }
@@ -116,7 +116,7 @@ body {
     .contact {
       padding: 10px 15px;
       border-radius: 15px;
-      border: 1px solid rgba($color: black, $alpha: 0.3);
+      border: 1px solid rgba($color: grey, $alpha: 0.3);
       transition: background 0.3s;
 
       a {
@@ -299,10 +299,14 @@ main {
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      background: rgba($color: white, $alpha: 0.3);
+      background: rgba($color: white, $alpha: 0.6);
       backdrop-filter: blur(5px);
       padding: 20px 20px 0 20px;
       border-radius: 35px;
+
+      p {
+        font-size: 0.9rem;
+      }
     }
   }
 }
@@ -445,12 +449,12 @@ main {
 
   .left {
     @include infiniteScrollLeft(20px, "projet-left-scroll");
-    animation: projet-left-scroll 10s infinite linear;
+    animation: projet-left-scroll 15s infinite linear;
   }
 
   .right {
     @include infiniteScrollRight(20px, "projet-right-scroll");
-    animation: projet-right-scroll 10s infinite linear;
+    animation: projet-right-scroll 15s infinite linear;
   }
 
   .categories-homepage {
@@ -474,7 +478,7 @@ main {
       cursor: pointer;
       text-transform: uppercase;
       position: relative;
-      font-family: "Bugaki";
+      font-family: "Margin DEMO";
       position: relative;
       filter: blur(0px);
       -webkit-filter: blur(0px);
@@ -1010,7 +1014,7 @@ footer {
       justify-content: flex-start;
       gap: 40px;
       @include infiniteScrollLeft(40px, "vision-scroll");
-      animation: vision-scroll 8s infinite linear;
+      animation: vision-scroll 10s infinite linear;
 
       p {
         font-size: 100px;

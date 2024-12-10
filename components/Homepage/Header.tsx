@@ -3,7 +3,7 @@ export default function HomeHeader() {
     <section className="header-homepage">
       <div className="right">
         <div className="right-informations">
-          <p>Bonjour, je suis Marine</p>
+          <p>Bienvenu sur mon portfolio</p>
           <img className="right-image" src="/images/hi-marine.png" />
         </div>
       </div>

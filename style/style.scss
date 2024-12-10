@@ -999,14 +999,20 @@ footer {
 }
 
 .vision-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+
   .scroll-title-container {
-    width: 200%;
+    width: 400%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 40px;
     rotate: 2deg;
+    margin-bottom: -200px;
 
     .scroll-title {
       display: flex;
@@ -1022,6 +1028,202 @@ footer {
         color: transparent;
         width: max-width;
         -webkit-text-stroke: 1px black;
+      }
+    }
+  }
+
+  .vision-item-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    width: 100%;
+
+    .design {
+      &::after {
+        background: radial-gradient(
+                        circle,
+                        rgba($color: $rose, $alpha: 0.5) 0%,
+                        rgba(2, 0, 36, 0) 70%
+        ) !important;
+      }
+    }
+
+    .communication {
+      &::after {
+        right: -19vw;
+        left: unset !important;
+        background: radial-gradient(
+                        circle,
+                        rgba($color: $orange, $alpha: 0.5) 0%,
+                        rgba(2, 0, 36, 0) 70%
+        ) !important;
+      }
+
+
+      .right-informations {
+        align-items: flex-end !important;
+        padding-right: 35px;
+        padding-left: 0 !important;
+      }
+
+      .right-image {
+        transform: scaleX(-1);
+      }
+
+    }
+
+    .vision-top {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 100px;
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: -30%;
+        left: -19vw;
+        width: 800px;
+        height: 800px;
+        background: rgb(255, 133, 43);
+        background: radial-gradient(
+                        circle,
+                        rgba($color: $violet, $alpha: 0.5) 0%,
+                        rgba(2, 0, 36, 0) 70%
+        );
+        border-radius: 50%;
+        z-index: -1;
+      }
+
+      .right {
+        .right-informations {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-end;
+          background: rgba($color: white, $alpha: 0.6);
+          backdrop-filter: blur(5px);
+          border-radius: 35px;
+          padding-left: 35px;
+          width: 400px;
+          height: 400px;
+
+          img {
+            width: 65%;
+          }
+        }
+      }
+
+      .left {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+
+        h1 {
+          font-size: 3.5rem;
+          font-weight: bold;
+          font-family: "Poppins";
+        }
+
+        p {
+          width: 97%;
+        }
+      }
+    }
+
+    .communication-middle .vision-middle-container {
+      &:first-child {
+
+        h2{
+          color: $rose !important;
+        }
+      }
+
+      &:last-child {
+        h2 {
+          color: $violet !important;
+        }
+      }
+
+    }
+
+    .vision-middle {
+      display: grid;
+      grid: auto / 1fr 1fr 1fr;
+      align-items: center;
+      gap: 30px;
+
+      .vision-middle-container {
+
+        &:first-child {
+
+          h2{
+            color: $violet;
+          }
+        }
+
+        &:last-child {
+          h2 {
+            color: $rose;
+          }
+        }
+      }
+
+      .informations {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        h2 {
+          font-size: 5rem;
+          color: $orange;
+
+        }
+
+        hr {
+          border-bottom: 0;
+          border-left: 0;
+          border-right: 0;
+          border-top: 3px dashed rgba($color: grey, $alpha: 0.3);
+          background: transparent;
+          width: 100%;
+        }
+
+      }
+
+      .information-text {
+        padding-top: 15px;
+        width: 90%;
+        color:rgba($color: grey, $alpha: 0.7);
+      }
+
+    }
+
+    .vision-text {
+      width: 80%;
+      padding-top: 50px;
+      font-size: 40px;
+    }
+
+    .vision-bottom-container {
+      width: 80%;
+      display: grid;
+      grid: auto / 1fr 1fr 1fr;
+
+      .vision-competances {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        li {
+          color:rgba($color: grey, $alpha: 0.7);
+          font-size: 1.1rem;
+
+          &:first-child {
+            color: black;
+          }
+        }
       }
     }
   }

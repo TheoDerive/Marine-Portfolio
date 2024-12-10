@@ -1,3 +1,8 @@
+import VisionMarketing from "@/components/Vision/VisionMarketing";
+import VisionCommunication from "@/components/Vision/VisionCommunication";
+import VisionDesign from "@/components/Vision/VisionDesign";
+import Diplomes from "@/components/Homepage/Diplomes";
+
 export default function Vision() {
   return (
     <section className="vision-container">
@@ -19,6 +24,10 @@ export default function Vision() {
           <p>Ma Vision</p>
         </div>
       </section>
+      <VisionMarketing />
+      <VisionCommunication />
+      <VisionDesign />
+      <Diplomes />
     </section>
   );
 }

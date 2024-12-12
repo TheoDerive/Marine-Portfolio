@@ -87,6 +87,7 @@ body {
     margin-left: 10%;
 
     .onglet {
+      transition: color .3s;
       position: relative;
 
       &::after {
@@ -110,6 +111,10 @@ body {
 
       &-orange::after {
         background: $orange;
+      }
+
+      &-active {
+        color: rgba($color: black, $alpha: 0.5);
       }
     }
 

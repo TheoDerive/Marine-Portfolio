@@ -4,8 +4,6 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     const client = await connectDB();
-    const db = client.db();
-    console.log(db);
 
     return NextResponse.json({ message: "Connexion réussie" });
   } catch (error) {

@@ -9,7 +9,7 @@ if (!MONGODB_URI) {
 }
 
 export async function connectDB() {
-  const client = new MongoClient(MONGODB_URI, {});
+  const client = new MongoClient(MONGODB_URI);
   await client.connect();
   return client;
 }

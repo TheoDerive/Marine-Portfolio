@@ -1,7 +1,6 @@
 import VisionMarketing from "@/components/Vision/VisionMarketing";
 import VisionCommunication from "@/components/Vision/VisionCommunication";
 import VisionDesign from "@/components/Vision/VisionDesign";
-import Diplomes from "@/components/Homepage/Diplomes";
 
 export default function Vision() {
   return (
@@ -27,7 +26,6 @@ export default function Vision() {
       <VisionMarketing />
       <VisionCommunication />
       <VisionDesign />
-      <Diplomes />
     </section>
   );
 }

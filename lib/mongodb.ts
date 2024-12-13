@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import mongoose from "mongoose";
 
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
@@ -9,7 +9,8 @@ if (!MONGODB_URI) {
 }
 
 export async function connectDB() {
-  const client = new MongoClient(MONGODB_URI);
-  await client.connect();
+  const client = await mongoose.connect(MONGODB_URI, {
+    dbName: "Portfolio",
+  });
   return client;
 }

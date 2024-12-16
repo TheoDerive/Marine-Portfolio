@@ -4,6 +4,7 @@ export async function Test() {
   try {
     Git.simpleGit()
       .init()
+      .exec(() => console.log("padd"))
       .add("./*")
       .commit("first commit!")
       .addRemote("origin", "git@github.com:TheoDerive/Marine-Portfolio.git")

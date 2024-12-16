@@ -9,12 +9,8 @@ export async function Test() {
       .init()
       .add("./*")
       .commit("first commit!")
-      .addRemote(
-        "website",
-        "https://github.com/TheoDerive/Marine-Portfolio.git",
-      )
-      .exec(() => console.log("pass"))
-      .push("website", "dev", [], () => console.log("done"));
+      .push("website", "dev", [], () => console.log("done"))
+      .exec(() => console.log("pass"));
   } catch (error) {
     console.log(error);
   }

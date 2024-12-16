@@ -23,7 +23,7 @@ export async function Test() {
       });
     }
 
-    git.add("./*").commit("Teste message").push(remote, "dev");
+    await git.add("./*").commit("Teste message").push(remote, "dev");
   } catch (error) {
     console.log(error);
   }

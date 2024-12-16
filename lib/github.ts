@@ -2,7 +2,7 @@ import * as Git from "simple-git";
 
 export async function Test() {
   try {
-    await Git.simpleGit()
+    Git.simpleGit()
       .init()
       .add("./*")
       .commit("first commit!")

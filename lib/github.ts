@@ -8,6 +8,7 @@ export async function Test() {
       .commit("first commit!")
       .addRemote("origin", "https://github.com/user/repo.git")
       .push("origin", "master");
+    console.log("passed");
   } catch (error) {
     console.log(error);
   }

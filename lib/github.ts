@@ -6,7 +6,7 @@ export async function Test() {
       .init()
       .add("./*")
       .commit("first commit!")
-      .addRemote("origin", "git@github.com:TheoDerive/Marine-Portfolio.git")
+      .addRemote("origin", "https://github.com/TheoDerive/Marine-Portfolio.git")
       .push("origin", "master");
     console.log("passed");
   } catch (error) {

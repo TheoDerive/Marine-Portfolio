@@ -1,4 +1,3 @@
-import { forwardRef } from "react";
 import * as Git from "simple-git";
 
 export async function Test() {
@@ -17,16 +16,13 @@ export async function Test() {
         if (r.name === "website") {
           remote = r.refs.push.replace(
             "://",
-            "://TheoDerive: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@",
+            `"//${process.env.GITHUB_CONNECTION || "votre_tocken_secret"}"`,
           ) as string;
         }
       });
     }
 
-    await git
-      .add("./*")
-      .commit("Teste message")
-      .push(remote, "dev", ["--amend"]);
+    await git.add("./*").commit("Teste message").push(remote, "dev");
   } catch (error) {
     console.log(error);
   }

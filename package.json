@@ -23,6 +23,7 @@
     "react-markdown": "^9.0.1",
     "redis": "^4.7.0",
     "sass": "^1.81.0",
+    "simple-git": "^3.27.0",
     "zustand": "^5.0.1"
   },
   "devDependencies": {

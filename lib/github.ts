@@ -13,15 +13,21 @@ export async function Test() {
 
     if (remotes) {
       remotes.forEach((r) => {
+        console.log(r);
         if (r.name === "website") {
-          remote = r.refs.push.replace(
-            "://",
-            `"//${process.env.GITHUB_CONNECTION || "votre_tocken_secret"}"`,
-          ) as string;
+          remote = r.refs.push;
         }
       });
     }
 
+    if (remote.length < 1) {
+      remote = await git.addRemote(
+        "website",
+        `https://${process.env.GITHUB_CONNECTION}@github.com/Marine-Portfolio`,
+      );
+    }
+
+    console.log(remote);
     await git.add("./*").commit("Teste message").push(remote, "dev");
   } catch (error) {
     console.log(error);

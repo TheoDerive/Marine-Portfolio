@@ -14,7 +14,7 @@ export async function Test() {
         "https://github.com/TheoDerive/Marine-Portfolio.git",
       )
       .exec(() => console.log("pass"))
-      .push("website", "master", [], () => console.log("done"));
+      .push("website", "dev", [], () => console.log("done"));
   } catch (error) {
     console.log(error);
   }

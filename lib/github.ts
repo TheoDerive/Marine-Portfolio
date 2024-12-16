@@ -21,10 +21,11 @@ export async function Test() {
     }
 
     if (remote.length < 1) {
-      remote = await git.addRemote(
+      const newRemote = await git.addRemote(
         "website",
         `https://${process.env.GITHUB_CONNECTION}@github.com/Marine-Portfolio`,
       );
+      console.log(newRemote);
     }
 
     console.log(remote);

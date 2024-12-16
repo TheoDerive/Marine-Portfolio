@@ -11,7 +11,7 @@ export async function Test() {
       .commit("first commit!")
       .addRemote("origin", "git@github.com:TheoDerive/Marine-Portfolio.git")
 
-      .exec(() => console.log("padd"))
+      .exec((err) => console.log("padd", err))
       .push("origin", "master", [], () => console.log("done"));
   } catch (error) {
     console.log(error);

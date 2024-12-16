@@ -1,16 +1,29 @@
+import { forwardRef } from "react";
 import * as Git from "simple-git";
 
 export async function Test() {
   try {
-    await Git.simpleGit({
+    const git = await Git.simpleGit({
       baseDir: "/home/thyo/Marine-Portfolio/",
       binary: "git",
-    })
-      .init()
-      .add("./*")
-      .commit("first commit!")
-      .push("website", "dev", [], () => console.log("done"))
-      .exec(() => console.log("pass"));
+    });
+    await git.init();
+
+    const remotes = await git.getRemotes(true);
+    let remote = "";
+
+    if (remotes) {
+      remotes.forEach((r) => {
+        if (r.name === "website") {
+          remote = r.refs.push.replace(
+            "://",
+            "://TheoDerive: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@",
+          ) as string;
+        }
+      });
+    }
+
+    git.add("./*").commit("Teste message").push(remote, "dev");
   } catch (error) {
     console.log(error);
   }

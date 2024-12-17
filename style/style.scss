@@ -15,7 +15,7 @@
 html {
   font-family: "Poppins";
   font-size: 16px;
-  overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -587,43 +587,38 @@ main {
   }
 }
 
-.reviews-homepage-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.reviews-homepage {
   width: 100%;
-  gap: 100px;
-  margin-bottom: 100px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  position: relative;
+  height: calc(70vh * 3 + 700px * 2 + 500px);
+  gap: 700px;
+  overflow: visible;
 
-  .review-title {
-    color: transparent;
-    font-size: 100px;
-    -webkit-text-stroke: 1px black;
-    text-transform: uppercase;
-  }
-
-  .reviews-homepage {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
+  .review-container {
+    position: sticky;
+    top: 120px;
   }
 
   .review {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 40%;
+    height: 80vh;
+    width: 100%;
     border: 1px solid #dad8d8;
+    background: white;
     padding: 25px;
     border-radius: 20px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
     .review-information {
       display: flex;
       align-items: center;
+      padding: 20px;
       gap: 10px;
 
       img {
@@ -641,10 +636,43 @@ main {
       }
     }
 
+    .review-message-container {
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 80%;
+      height: 100%;
+      font-size: 1.5rem;
+      text-align: center;
+      gap: 10px;
+
+      .review-message {
+        position: relative;
+
+        &::after {
+          content: '"';
+          position: absolute;
+          top: -100px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-size: 100px;
+          font-family: "Margin DEMO";
+        }
+      }
+    }
+
     .review-personne-information {
       color: rgba($color: #000000, $alpha: 0.7);
       font-size: 14px;
+      text-align: center;
       font-weight: bold;
+
+      .personne {
+        font-size: 30px;
+        text-transform: uppercase;
+      }
     }
   }
 }
@@ -739,143 +767,6 @@ main {
 // }
 
 // Footer {
-// footer {
-//   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-//   display: flex;
-//   min-height: 300px;
-//   flex-direction: column;
-//   gap: 20px;
-//   padding: 50px;
-//   border-radius: 20px;
-//   position: relative;
-//   overflow: hidden;
-//
-//   &::before {
-//     content: "";
-//     position: absolute;
-//     top: 45%;
-//     right: 24%;
-//     width: 400px;
-//     height: 400px;
-//     transform: translateY(-50%);
-//     background: rgb(248, 116, 216);
-//     background: radial-gradient(
-//       circle,
-//       rgba(248, 116, 216, 0.6) 0%,
-//       rgba(2, 0, 36, 0) 70%
-//     );
-//     border-radius: 50%;
-//     z-index: -4;
-//   }
-//
-//   &::after {
-//     content: "";
-//     position: absolute;
-//     top: 75%;
-//     left: 5%;
-//     width: 400px;
-//     height: 400px;
-//     transform: translateY(-50%);
-//     background: rgb(248, 116, 216);
-//     background: radial-gradient(
-//       circle,
-//       rgba($color: $violet, $alpha: 0.6) 0%,
-//       rgba(2, 0, 36, 0) 70%
-//     );
-//     border-radius: 50%;
-//     z-index: -4;
-//   }
-//
-//   .footer-informations {
-//     display: flex;
-//     align-items: center;
-//     gap: 70px;
-//     height: 100%;
-//
-//     .footer-left {
-//       width: 100%;
-//       display: flex;
-//       align-items: center;
-//       justify-content: center;
-//       flex-direction: column;
-//       gap: 25px;
-//
-//       .footer-telephone,
-//       .footer-mail {
-//         background: rgba($color: white, $alpha: 0.4);
-//         width: 100%;
-//         display: flex;
-//         align-items: flex-start;
-//         justify-content: flex-start;
-//         flex-direction: column;
-//         gap: 20px;
-//         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-//         border-radius: 15px;
-//         padding: 20px;
-//       }
-//
-//       .footer-mail .information {
-//         display: flex;
-//         align-items: flex-start;
-//         height: 40px;
-//         overflow: hidden;
-//       }
-//
-//       .email-container {
-//         position: relative;
-//         top: -10px;
-//         transition: transform 0.3s;
-//         height: 90px;
-//
-//         &:hover {
-//           transform: translateY(-40px);
-//         }
-//
-//         span {
-//           font-size: 1.8rem;
-//           position: relative;
-//           color: black;
-//         }
-//
-//         &::after {
-//           content: "@gmail.com";
-//           font-size: 1.8rem;
-//           position: absolute;
-//           bottom: 0;
-//           left: 0;
-//           color: black;
-//         }
-//       }
-//     }
-//
-//     .footer-right {
-//       width: 100%;
-//       height: 230px;
-//       display: flex;
-//       flex-direction: column;
-//       gap: 25px;
-//       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-//       border-radius: 15px;
-//       padding: 20px;
-//       position: relative;
-//       background: rgba($color: white, $alpha: 0.4);
-//
-//       &::after {
-//         content: "";
-//         position: absolute;
-//         bottom: 0;
-//         right: 0;
-//         width: 250px;
-//         height: 250px;
-//         background: url("/images/OnDiscute-Marine.png");
-//         background-position: bottom left;
-//         background-repeat: no-repeat;
-//         background-size: contain;
-//       }
-//     }
-//   }
-// }
-
 footer {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   position: relative;
@@ -907,7 +798,7 @@ footer {
       display: flex;
       gap: 10px;
       @include infiniteScrollRight(10px, "footer-scroll");
-      animation: footer-scroll 25s infinite linear;
+      animation: footer-scroll 35s infinite linear;
 
       li {
         white-space: nowrap;

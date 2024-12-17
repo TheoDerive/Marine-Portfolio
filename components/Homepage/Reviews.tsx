@@ -1,9 +1,23 @@
+import useScrollPositionFromTo from "@/hooks/useScrollPositionFromTo";
 import { ReviewType } from "@/types/reviewType";
 import { faStar as faRegularStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as faSolidStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/all";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Reviews() {
+  const { pourcentage } = useScrollPositionFromTo(
+    ".reviews-homepage",
+    ".reviews-homepage",
+  );
+
+  React.useEffect(() => console.log(pourcentage), [pourcentage]);
+
   const review1: ReviewType = {
     id: 0,
     personne: "Méghane Roche",
@@ -29,40 +43,54 @@ export default function Reviews() {
   const array = [review1, review2];
 
   return (
-    <section className="reviews-homepage-container">
-      <h3 className="review-title">Ils me recommandent</h3>
-
-      <section className="review-mobile-scroll">
-        <section className="reviews-homepage">
-          <Review review={review1} />
-          <Review review={review2} />
-        </section>
-      </section>
+    <section className="reviews-homepage">
+      <Review review={review1} index={1} pourcentage={pourcentage} />
+      <Review review={review2} index={2} pourcentage={pourcentage} />
+      <Review review={review1} index={3} pourcentage={pourcentage} />
     </section>
   );
 }
 
-function Review({ review }: { review: ReviewType }) {
+function Review({
+  review,
+  index,
+  pourcentage,
+}: {
+  review: ReviewType;
+  index: number;
+  pourcentage: number;
+}) {
+  const offset = 30 * index;
   return (
-    <article className="review">
-      <section className="review-information">
-        <img src={`/images/${review.imageName}`} />
-        <span className="review-personne">{review.entrepriseName}</span>
-        <div className="stars-container">
-          {Array.from(Array(5).keys()).map((el, i) =>
-            el <= review.stars - 1 ? (
-              <FontAwesomeIcon icon={faSolidStar} key={i} />
-            ) : (
-              <FontAwesomeIcon icon={faRegularStar} key={i} />
-            ),
-          )}
-        </div>
-      </section>
-      <span className="review-personne-information">
-        {review.personne}, {review.poste}.
-      </span>
+    <article
+      className="review-container"
+      style={{
+        transform: `scale(${pourcentage > offset && index !== 3 ? (100 - pourcentage + offset) / 100 : 1})`,
+      }}
+    >
+      <article className="review">
+        <section className="review-information">
+          <img src={`/images/${review.imageName}`} />
+          <span className="review-personne">{review.entrepriseName}</span>
+          <div className="stars-container">
+            {Array.from(Array(5).keys()).map((el, i) =>
+              el <= review.stars - 1 ? (
+                <FontAwesomeIcon icon={faSolidStar} key={i} />
+              ) : (
+                <FontAwesomeIcon icon={faRegularStar} key={i} />
+              ),
+            )}
+          </div>
+        </section>
 
-      {`"${review.message}"`}
+        <section className="review-message-container">
+          <span className="review-message">{review.message}</span>
+          <span className="review-personne-information">
+            <span className="personne">{review.personne}</span> <br />{" "}
+            <span className="poste">{review.poste}</span>
+          </span>
+        </section>
+      </article>
     </article>
   );
 }

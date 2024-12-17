@@ -2,7 +2,7 @@ import { Metadata } from "next";
 
 import "../style/style.scss";
 import Navbar from "@/components/Navbar";
-import { FooterTest } from "@/components/Footer";
+import { Footer } from "@/components/Footer";
 import Head from "next/head";
 
 export const metadata: Metadata = {
@@ -29,7 +29,7 @@ export default function RootLayout({
 
         <main>{children}</main>
 
-        <FooterTest />
+        <Footer />
       </body>
     </html>
   );

@@ -6,7 +6,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import React from "react";
-import {usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { windowProperties } = useUtilities();
@@ -25,10 +25,10 @@ function DesktopNav() {
   const [activeNavbar, setActiveNavbar] = React.useState<boolean>(false);
   const [activeOnglet, setActiveOnglet] = React.useState({
     profil: false,
-    projets: false
+    projets: false,
   });
 
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   const { scrollPosition } = useAppStore();
 
@@ -40,31 +40,30 @@ function DesktopNav() {
     }
   }, [scrollPosition]);
 
-
   React.useEffect(() => {
     switch (pathname) {
       case "/projets":
         setActiveOnglet({
           profil: false,
           projets: true,
-        })
-            break
+        });
+        break;
 
       case "/profil":
         setActiveOnglet({
           projets: false,
           profil: true,
-        })
-        break
+        });
+        break;
 
       default:
         setActiveOnglet({
           profil: false,
-          projets: false
-        })
-        break
+          projets: false,
+        });
+        break;
     }
-  }, [pathname])
+  }, [pathname]);
 
   return (
     <nav className={`desktop-navbar${activeNavbar ? "-active" : ""}`}>
@@ -73,11 +72,15 @@ function DesktopNav() {
       </Link>
 
       <ul className="navbar-onglet-container">
-        <li className={`onglet onglet-rose ${activeOnglet.profil ? "onglet-active" : ""}`}>
+        <li
+          className={`onglet onglet-rose ${activeOnglet.profil ? "onglet-active" : ""}`}
+        >
           <Link href={"/profil"}>Profil</Link>
         </li>
 
-        <li className={`onglet onglet-orange ${activeOnglet.projets ? "onglet-active" : ""}`}>
+        <li
+          className={`onglet onglet-orange ${activeOnglet.projets ? "onglet-active" : ""}`}
+        >
           <Link href={"/projets"}>Projets</Link>
         </li>
 

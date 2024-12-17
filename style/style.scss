@@ -23,7 +23,6 @@ body {
   min-height: 100vh;
   background: $background;
   padding: 0 5vw;
-  padding-bottom: 30px;
   position: relative;
   overflow-x: hidden;
 }
@@ -87,7 +86,7 @@ body {
     margin-left: 10%;
 
     .onglet {
-      transition: color .3s;
+      transition: color 0.3s;
       position: relative;
 
       &::after {
@@ -740,138 +739,262 @@ main {
 // }
 
 // Footer {
+// footer {
+//   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+//   display: flex;
+//   min-height: 300px;
+//   flex-direction: column;
+//   gap: 20px;
+//   padding: 50px;
+//   border-radius: 20px;
+//   position: relative;
+//   overflow: hidden;
+//
+//   &::before {
+//     content: "";
+//     position: absolute;
+//     top: 45%;
+//     right: 24%;
+//     width: 400px;
+//     height: 400px;
+//     transform: translateY(-50%);
+//     background: rgb(248, 116, 216);
+//     background: radial-gradient(
+//       circle,
+//       rgba(248, 116, 216, 0.6) 0%,
+//       rgba(2, 0, 36, 0) 70%
+//     );
+//     border-radius: 50%;
+//     z-index: -4;
+//   }
+//
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     top: 75%;
+//     left: 5%;
+//     width: 400px;
+//     height: 400px;
+//     transform: translateY(-50%);
+//     background: rgb(248, 116, 216);
+//     background: radial-gradient(
+//       circle,
+//       rgba($color: $violet, $alpha: 0.6) 0%,
+//       rgba(2, 0, 36, 0) 70%
+//     );
+//     border-radius: 50%;
+//     z-index: -4;
+//   }
+//
+//   .footer-informations {
+//     display: flex;
+//     align-items: center;
+//     gap: 70px;
+//     height: 100%;
+//
+//     .footer-left {
+//       width: 100%;
+//       display: flex;
+//       align-items: center;
+//       justify-content: center;
+//       flex-direction: column;
+//       gap: 25px;
+//
+//       .footer-telephone,
+//       .footer-mail {
+//         background: rgba($color: white, $alpha: 0.4);
+//         width: 100%;
+//         display: flex;
+//         align-items: flex-start;
+//         justify-content: flex-start;
+//         flex-direction: column;
+//         gap: 20px;
+//         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+//         border-radius: 15px;
+//         padding: 20px;
+//       }
+//
+//       .footer-mail .information {
+//         display: flex;
+//         align-items: flex-start;
+//         height: 40px;
+//         overflow: hidden;
+//       }
+//
+//       .email-container {
+//         position: relative;
+//         top: -10px;
+//         transition: transform 0.3s;
+//         height: 90px;
+//
+//         &:hover {
+//           transform: translateY(-40px);
+//         }
+//
+//         span {
+//           font-size: 1.8rem;
+//           position: relative;
+//           color: black;
+//         }
+//
+//         &::after {
+//           content: "@gmail.com";
+//           font-size: 1.8rem;
+//           position: absolute;
+//           bottom: 0;
+//           left: 0;
+//           color: black;
+//         }
+//       }
+//     }
+//
+//     .footer-right {
+//       width: 100%;
+//       height: 230px;
+//       display: flex;
+//       flex-direction: column;
+//       gap: 25px;
+//       box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+//       border-radius: 15px;
+//       padding: 20px;
+//       position: relative;
+//       background: rgba($color: white, $alpha: 0.4);
+//
+//       &::after {
+//         content: "";
+//         position: absolute;
+//         bottom: 0;
+//         right: 0;
+//         width: 250px;
+//         height: 250px;
+//         background: url("/images/OnDiscute-Marine.png");
+//         background-position: bottom left;
+//         background-repeat: no-repeat;
+//         background-size: contain;
+//       }
+//     }
+//   }
+// }
+
 footer {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  display: flex;
-  min-height: 300px;
-  flex-direction: column;
-  gap: 20px;
-  padding: 50px;
-  border-radius: 20px;
   position: relative;
-  overflow: hidden;
+  left: -5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100vw;
+  padding-top: 50px;
+  gap: 40px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 45%;
-    right: 24%;
-    width: 400px;
-    height: 400px;
-    transform: translateY(-50%);
-    background: rgb(248, 116, 216);
-    background: radial-gradient(
-      circle,
-      rgba(248, 116, 216, 0.6) 0%,
-      rgba(2, 0, 36, 0) 70%
-    );
-    border-radius: 50%;
-    z-index: -4;
+  p {
+    font-size: 25px;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 75%;
-    left: 5%;
-    width: 400px;
-    height: 400px;
-    transform: translateY(-50%);
-    background: rgb(248, 116, 216);
-    background: radial-gradient(
-      circle,
-      rgba($color: $violet, $alpha: 0.6) 0%,
-      rgba(2, 0, 36, 0) 70%
-    );
-    border-radius: 50%;
-    z-index: -4;
+  .special-word {
+    color: $rose;
   }
 
-  .footer-informations {
+  .footer-slider-container {
     display: flex;
     align-items: center;
-    gap: 70px;
-    height: 100%;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
 
-    .footer-left {
-      width: 100%;
+    .footer-slider {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 25px;
+      gap: 10px;
+      @include infiniteScrollRight(10px, "footer-scroll");
+      animation: "footer-scroll" 25s infinite linear;
 
-      .footer-telephone,
-      .footer-mail {
-        background: rgba($color: white, $alpha: 0.4);
-        width: 100%;
+      li {
+        white-space: nowrap;
+        font-size: 50px;
         display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        flex-direction: column;
+        align-items: center;
         gap: 20px;
-        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-        border-radius: 15px;
-        padding: 20px;
-      }
+        transition: color 0.3s;
 
-      .footer-mail .information {
-        display: flex;
-        align-items: flex-start;
-        height: 40px;
-        overflow: hidden;
-      }
-
-      .email-container {
-        position: relative;
-        top: -10px;
-        transition: transform 0.3s;
-        height: 90px;
-
-        &:hover {
-          transform: translateY(-40px);
+        &:hover .footer-element-arrow {
+          transform: rotate(0deg);
         }
 
-        span {
-          font-size: 1.8rem;
-          position: relative;
-          color: black;
+        .footer-element-arrow {
+          border-box: inherit;
+          padding: 10px 25px;
+          border-radius: 50%;
+          background: black;
+          color: white;
+          font-size: 2.5rem;
+          transform: rotate(-20deg);
+          transition: 0.3s;
+          transition-property: transform, background;
         }
+      }
 
-        &::after {
-          content: "@gmail.com";
-          font-size: 1.8rem;
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          color: black;
+      .future-orange:hover {
+        color: $orange;
+
+        .footer-element-arrow {
+          background: $orange;
+        }
+      }
+
+      .future-rose:hover {
+        color: $rose;
+
+        .footer-element-arrow {
+          background: $rose;
+        }
+      }
+
+      .future-violet:hover {
+        color: $violet;
+
+        .footer-element-arrow {
+          background: $violet;
         }
       }
     }
+  }
 
-    .footer-right {
-      width: 100%;
-      height: 230px;
-      display: flex;
-      flex-direction: column;
-      gap: 25px;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-      border-radius: 15px;
-      padding: 20px;
-      position: relative;
-      background: rgba($color: white, $alpha: 0.4);
+  .footer-title {
+    margin: -70px 0;
+    font-size: 12.6vw;
+    white-space: nowrap;
+    -webkit-text-stroke: 1px black;
+    color: transparent;
+  }
 
-      &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 250px;
-        height: 250px;
-        background: url("/images/OnDiscute-Marine.png");
-        background-position: bottom left;
-        background-repeat: no-repeat;
-        background-size: contain;
+  .footer-social-media {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 10px 30px;
+    border-top: 1px solid black;
+
+    .social-media {
+      overflow: hidden;
+      height: 30px;
+
+      &:hover .social-media-container {
+        transform: translateY(-50%);
+      }
+
+      .social-media-container {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        transition: transform 0.3s;
+
+        span {
+          font-size: 20px;
+        }
       }
     }
   }

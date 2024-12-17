@@ -14,7 +14,7 @@ export default function HomeHeader() {
           & Communication <span className="header-point">.</span>
         </h1>
         <p style={{ marginTop: "-20px", fontSize: "18px", width: "80%" }}>
-          Je <strong>cree</strong> une connexion <strong>fortes</strong> avec
+          Je <strong>cree</strong> des connexions <strong>fortes</strong> avec
           une <strong>strategie</strong> de contenu{" "}
           <strong>percurante !</strong>
         </p>

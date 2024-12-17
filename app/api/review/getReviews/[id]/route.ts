@@ -1,8 +1,10 @@
 import ReviewModel from "@/models/ReviewModel";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }) {
-  const { id } = await params;
+export async function GET(req: NextRequest) {
+  const requestURL = req.url.split("/");
+  const id = requestURL[requestURL.length - 1];
+  console.log(id);
 
   const review = await ReviewModel.findOne({ _id: id });
 

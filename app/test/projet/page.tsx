@@ -88,6 +88,7 @@ export default function Projet() {
 
       <input
         type="text"
+        placeholder="Entreprise"
         required
         onChange={(e) =>
           setProjetValues({
@@ -99,6 +100,7 @@ export default function Projet() {
 
       <input
         type="text"
+        placeholder="Date"
         required
         onChange={(e) =>
           setProjetValues({

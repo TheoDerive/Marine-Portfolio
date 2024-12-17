@@ -1,9 +1,9 @@
 import CompetancesModel from "@/models/CompetancesModel";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }) {
-  const { id } = await params;
-  console.log(id);
+export async function GET(req: NextRequest) {
+  const requestURL = req.url.split("/");
+  const id = requestURL[requestURL.length - 1];
 
   const competance = await CompetancesModel.findOne({ _id: id });
 

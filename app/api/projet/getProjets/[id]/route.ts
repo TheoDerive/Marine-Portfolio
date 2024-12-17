@@ -1,8 +1,9 @@
 import ProjetModel from "@/models/ProjetModel";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest, { params }) {
-  const { id } = await params;
+export async function GET(req: NextRequest) {
+  const requestURL = req.url.split("/");
+  const id = requestURL[requestURL.length - 1];
 
   const projet = await ProjetModel.findOne({ _id: id });
 

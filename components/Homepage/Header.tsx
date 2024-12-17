@@ -13,6 +13,11 @@ export default function HomeHeader() {
           Marketing <span className="header-special-word">Digital</span> <br />{" "}
           & Communication <span className="header-point">.</span>
         </h1>
+        <p style={{ marginTop: "-30px", fontSize: "20px", width: "80%" }}>
+          Je <strong>cree</strong> une connexion <strong>fortes</strong> avec
+          une <strong>strategie</strong> de contenu{" "}
+          <strong>percurante !</strong>
+        </p>
         <button className="header-homepage-button">
           A propos
           <img

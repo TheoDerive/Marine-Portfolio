@@ -4,50 +4,64 @@ import ProjetsModel from "@/models/ProjetModel";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
+  console.log("pass");
   try {
     await connectDB();
 
     const body = await req.formData();
 
     const name = body.get("name");
-    const image = body.get("image") as string;
-    const imageName = body.get("image-name") as string;
-    const description = body.get("description");
-    const competances = body.get("competances");
-    const entreprise = body.get("entreprise");
 
-    if (
-      name &&
-      image &&
-      imageName &&
-      description &&
-      competances &&
-      entreprise
-    ) {
-      await pushFile("projet", image, imageName);
+    const projetExist = await ProjetsModel.find({ name: name });
 
-      const projet = new ProjetsModel({
-        name,
-        image: `/images/projet/${imageName}`,
-        description,
-        competances,
-        entreprise,
-      });
+    if (projetExist.length === 0) {
+      const image = body.get("image") as string;
+      const imageName = body.get("image-name") as string;
+      const description = body.get("description");
+      const competances = body.get("competances");
+      const entreprise = body.get("entreprise");
 
-      await projet.save();
+      if (
+        name &&
+        image &&
+        imageName &&
+        description &&
+        competances &&
+        entreprise
+      ) {
+        await pushFile("projet", image, imageName);
 
-      return NextResponse.json({
-        message: "Votre projet a ete ajouter",
-        status: 200,
-      });
+        const projet = new ProjetsModel({
+          name,
+          image: `/images/projet/${imageName}`,
+          description,
+          competances,
+          entreprise,
+        });
+
+        await projet.save();
+
+        return NextResponse.json({
+          message: "Votre projet a ete ajouter",
+          status: 200,
+        });
+      }
+
+      return NextResponse.json(
+        {
+          message: "Il manque des donnees",
+          status: 404,
+        },
+        { status: 404 },
+      );
     }
 
     return NextResponse.json(
       {
-        message: "Il manque des donnees",
-        status: 404,
+        message: "Votre projet existe deja",
+        status: 401,
       },
-      { status: 404 },
+      { status: 401 },
     );
   } catch (error) {
     console.error("Erreur de connexion :", error);

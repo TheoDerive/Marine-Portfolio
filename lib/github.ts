@@ -7,7 +7,7 @@ export async function pushFile(
     const repoOwner = "TheoDerive";
     const repoName = "Marine-Portfolio";
     const branch = "dev";
-    const githubToken = "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";
+    const githubToken = process.env.GITHUB_CONNECTION;
 
     const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/public/images/${category}/${filename}`;
 

@@ -1,13 +1,10 @@
 import { connectDB } from "@/lib/mongodb";
 import ProjetModel from "@/models/ProjetModel";
 import { NextResponse } from "next/server";
-import { Test } from "@/lib/github.ts";
 
 export async function GET() {
   try {
     await connectDB();
-
-    await Test();
 
     const projets = await ProjetModel.find({});
 

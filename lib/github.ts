@@ -1,34 +1,30 @@
-import * as Git from "simple-git";
-
-export async function Test() {
+export async function pushFile(
+  category: string,
+  data: string,
+  filename: string,
+) {
   try {
-    const git = await Git.simpleGit({
-      baseDir: "/home/thyo/Marine-Portfolio/",
-      binary: "git",
+    const repoOwner = "TheoDerive";
+    const repoName = "Marine-Portfolio";
+    const branch = "dev";
+    const githubToken = "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";
+
+    const url = `https://api.github.com/repos/${repoOwner}/${repoName}/contents/public/images/${category}/${filename}`;
+
+    const response = await fetch(url, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${githubToken}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        message: `Ajout du fichier ${filename} dans ${category}`,
+        content: data,
+        branch,
+      }),
     });
-    await git.init();
 
-    const remotes = await git.getRemotes(true);
-    let remote = "";
-
-    if (remotes) {
-      remotes.forEach((r) => {
-        console.log(r);
-        if (r.name === "website") {
-          remote = r.refs.push;
-        }
-      });
-    }
-
-    if (remote.length < 1) {
-      remote = await git.addRemote(
-        "website",
-        `https://${process.env.GITHUB_CONNECTION}github.com/TheoDerive/Marine-Portfolio`,
-      );
-    }
-
-    console.log(remote);
-    await git.add("./*").commit("Teste message").push(remote, "dev");
+    return await response.json();
   } catch (error) {
     console.log(error);
   }

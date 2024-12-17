@@ -53,79 +53,79 @@ export function FooterTest() {
           onMouseLeave={() => setIsPause(false)}
         >
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-orange">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-orange">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-orange">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-orange">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
@@ -138,79 +138,79 @@ export function FooterTest() {
           onMouseLeave={() => setIsPause(false)}
         >
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-orange">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-orange">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-orange">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-orange">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-rose">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
           </li>
           <li className="future-violet">
-            CONTACTEZ MOI
+            CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>

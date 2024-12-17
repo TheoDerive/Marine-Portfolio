@@ -3,3 +3,8 @@ export type CompetanceType = {
   name: string;
   url: string;
 };
+
+export type CompetanceForBack = {
+  name: string;
+  image: File | null;
+};

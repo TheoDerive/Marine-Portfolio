@@ -6,8 +6,11 @@ export async function DELETE(req: NextRequest) {
   try {
     await connectDB();
 
+    const body = await req.formData();
+    const id = body.get("id");
+
     await CompetancesModel.findOneAndDelete({
-      _id: "675c138acc37f992f8758a72",
+      _id: id,
     });
 
     return NextResponse.json({

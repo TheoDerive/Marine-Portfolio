@@ -8,25 +8,46 @@ export async function POST(req: NextRequest) {
     await connectDB();
 
     const body = await req.formData();
-    const image = body.get("image") as string;
-    const imageName = body.get("image-name") as string;
     const name = body.get("name") as string;
 
-    if (image && imageName && name) {
-      await pushFile("competance", image, imageName);
+    const competanceExist = await CompetancesModel.findOne({ name: name });
 
-      const competance = new CompetancesModel({
-        name: name,
-        image: `/images/competance/${imageName}`,
-      });
+    if (!competanceExist) {
+      const image = body.get("image") as string;
+      const imageName = body.get("image-name") as string;
 
-      await competance.save();
+      if (image && imageName && name) {
+        await pushFile("competance", image, imageName);
 
-      return NextResponse.json({
-        message: "Votre competance a ete ajouter",
-        status: 200,
-      });
+        const competance = new CompetancesModel({
+          name: name,
+          image: `/images/competance/${imageName}`,
+        });
+
+        await competance.save();
+
+        return NextResponse.json({
+          message: "Votre competance a ete ajouter",
+          status: 200,
+        });
+      }
+
+      return NextResponse.json(
+        {
+          message: "Il manque des donnees",
+          status: 404,
+        },
+        { status: 404 },
+      );
     }
+
+    return NextResponse.json(
+      {
+        message: "Votre competance existe deja",
+        status: 401,
+      },
+      { status: 401 },
+    );
   } catch (error) {
     console.error("Erreur de connexion :", error);
     return NextResponse.json({

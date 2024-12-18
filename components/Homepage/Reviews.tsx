@@ -60,7 +60,7 @@ function Review({
     <article
       className="review-container"
       style={{
-        transform: `scale(${pourcentage > offset && index !== 3 ? (100 - pourcentage + offset) / 100 : 1})`,
+        transform: `scale(${pourcentage > offset && index !== 3 ? (80 - pourcentage + offset) / 100 : 0.8})`,
       }}
     >
       <article className="review">

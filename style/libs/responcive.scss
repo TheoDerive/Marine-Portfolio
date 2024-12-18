@@ -313,18 +313,26 @@ body {
 
       .header-homepage-title {
         font-size: 30px !important;
-        width: 90% !important;
+        width: fit-content !important;
 
         .header-special-word {
           font-size: 30px !important;
         }
       }
+
+      .header-homepage-button {
+        left: 0 !important;
+      }
     }
+  }
+
+  .projets-homepage-container {
+    padding: 0 5vw;
   }
 
   .mobile-scroll-container {
     overflow-x: auto !important;
-    width: 90vw;
+    width: 100%;
 
     .projets-homepage {
       width: 200vw !important;
@@ -397,12 +405,11 @@ body {
 
     .categorie-homepage {
       font-size: 40px !important;
-
-      &:first-child {
-        font-family: "Margin DEMO" !important;
-        font-size: 60px !important;
-      }
     }
+  }
+
+  .competences-homepage-container .section-title {
+    padding-left: 5vw;
   }
 
   .design-scroll-container,
@@ -448,6 +455,10 @@ body {
     animation: marketing-competances-scroll 6s infinite linear;
   }
 
+  .diplomes-homepage-container {
+    padding: 0 5vw;
+  }
+
   .diplome-title {
     div {
       width: 60%;
@@ -458,7 +469,36 @@ body {
     display: none !important;
   }
 
-  .footer-slider {
-    overflow-x: hidden;
+  footer {
+    left: 0 !important;
+    gap: 20px !important;
+    padding-top: 20px !important;
+
+    p {
+      font-size: 16px !important;
+    }
+
+    .footer-slider-container {
+      overflow-x: hidden;
+      padding-top: 10px;
+
+      .footer-slider {
+        animation-duration: 55s !important;
+      }
+
+      .footer-slider li {
+        font-size: 20px !important;
+        gap: 10px !important;
+
+        .footer-element-arrow {
+          font-size: 1.5rem !important;
+          padding: 10px 20px !important;
+        }
+      }
+    }
+
+    .footer-title {
+      margin: 0px 0 !important;
+    }
   }
 }

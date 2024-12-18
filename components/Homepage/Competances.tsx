@@ -1,18 +1,19 @@
 "use client";
 
 import useUtilities from "@/hooks/useUtilities";
+import React from "react";
 
 export default function HomeCompetences() {
   const { windowProperties } = useUtilities();
-  return (
-    <>
-      {windowProperties && windowProperties.innerWidth > 480 ? (
-        <DesktopCompetances />
-      ) : (
-        <MobileCompetances />
-      )}
-    </>
-  );
+  const [isPhone, setIsPhone] = React.useState(false);
+
+  React.useEffect(() => {
+    if (windowProperties && windowProperties.innerWidth <= 480) {
+      setIsPhone(true);
+    }
+  }, [windowProperties]);
+
+  return <>{isPhone ? <MobileCompetances /> : <DesktopCompetances />}</>;
 }
 
 function DesktopCompetances() {

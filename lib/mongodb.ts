@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 
+let cache: null | mongoose.Connection = null;
+
 const MONGODB_URI = process.env.MONGODB_URI as string;
 
 if (!MONGODB_URI) {
@@ -9,8 +11,13 @@ if (!MONGODB_URI) {
 }
 
 export async function connectDB() {
-  const client = await mongoose.connect(MONGODB_URI, {
-    dbName: "Portfolio",
-  });
-  return client;
+  if (!cache) {
+    const connect = await mongoose.connect(MONGODB_URI, {
+      dbName: "Portfolio",
+    });
+
+    cache = connect.connection;
+  }
+
+  return cache;
 }

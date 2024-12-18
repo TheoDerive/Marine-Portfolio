@@ -24,7 +24,13 @@ export async function pushFile(
       }),
     });
 
-    return await response.json();
+    const isOk = response.ok;
+
+    if (isOk) {
+      return await response.json();
+    } else {
+      return null;
+    }
   } catch (error) {
     console.log(error);
   }

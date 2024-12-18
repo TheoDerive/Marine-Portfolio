@@ -1,7 +1,7 @@
 export type CompetanceType = {
   id: number;
   name: string;
-  url: string;
+  image: string;
 };
 
 export type CompetanceForBack = {

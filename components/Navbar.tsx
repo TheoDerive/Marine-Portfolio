@@ -1,12 +1,13 @@
 "use client";
 
-import useUtilities from "@/hooks/useUtilities";
-import { useAppStore } from "@/store";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import React from "react";
-import { usePathname } from "next/navigation";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import useUtilities from "@/hooks/useUtilities";
+import { useAppStore } from "@/store";
 
 export default function Navbar() {
   const { windowProperties } = useUtilities();

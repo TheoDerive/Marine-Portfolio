@@ -254,6 +254,7 @@ body {
     padding-top: 80px !important;
 
     &::after {
+      display: none !important;
       top: -20% !important;
       right: -40% !important;
       width: 400px !important;

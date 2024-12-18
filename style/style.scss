@@ -29,8 +29,6 @@ body {
 .section-title {
   font-size: 64px;
   text-transform: capitalize;
-  display: flex;
-  align-items: center;
   gap: 20px;
   color: black;
 
@@ -179,6 +177,7 @@ main {
   align-items: flex-start;
   gap: 80px;
   margin-bottom: 80px;
+  padding-top: 3vw;
 }
 
 .header-homepage {
@@ -191,7 +190,6 @@ main {
   position: relative;
 
   &::after {
-    display: none !important;
     content: "";
     position: absolute;
     top: -30%;
@@ -212,7 +210,7 @@ main {
     content: "";
     position: absolute;
     bottom: -15%;
-    left: -30%;
+    left: -20%;
     width: 800px;
     height: 800px;
     background: rgb(255, 133, 43);
@@ -253,8 +251,8 @@ main {
       position: relative;
       padding: 10px 15px;
       border-radius: 15px;
-      background: $rose;
-      color: $background;
+      background: $background;
+      color: $rose;
       border: 0;
       scale: 1.2;
       left: 10px;
@@ -271,11 +269,36 @@ main {
       }
 
       &:hover {
-        background: $orange;
+        background: $rose;
         scale: 1.25;
+        color: $background;
+        box-shadow: $rose 0px 7px 29px 0px;
 
         .header-homepage-button-icon {
           width: 30px;
+        }
+      }
+    }
+
+    .left-usefull-information {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 50px;
+
+      li {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        .number-information {
+          font-size: 60px;
+          font-weight: bold;
+        }
+
+        .text-information {
+          width: 65%;
         }
       }
     }
@@ -542,7 +565,7 @@ main {
 }
 
 .competences-homepage-container {
-  padding: 0 5vw;
+  padding: 5vw;
   display: flex;
   flex-direction: column;
   gap: 90px;
@@ -550,9 +573,13 @@ main {
   margin-bottom: 50px;
 
   .section-title {
-    color: $rose;
-  }
+    font-size: 50px;
 
+    span {
+      font-size: 50px;
+      background: $violet;
+    }
+  }
   .competences-homepage {
     align-self: center;
     display: grid;
@@ -695,7 +722,13 @@ main {
   .section-title {
     font-family: "Poppins";
     text-transform: inherit;
-    font-size: 60px;
+    font-size: 50px;
+
+    span {
+      font-family: Poppins;
+      background: $orange;
+      padding: 3px 10px !important;
+    }
   }
 
   .diplomes-homepage {

@@ -251,6 +251,7 @@ body {
 
   .header-homepage {
     height: 80svh !important;
+    padding-top: 80px !important;
 
     &::after {
       top: -20% !important;
@@ -322,6 +323,25 @@ body {
 
       .header-homepage-button {
         left: 0 !important;
+        border: 1px solid $rose !important;
+      }
+
+      .left-usefull-information {
+        flex-direction: column;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      .left-usefull-information li {
+        font-size: 16px;
+        width: 100%;
+        text-align: center;
+        align-items: center !important;
+        justify-content: center !important;
+
+        .number-information {
+          font-size: 30px !important;
+        }
       }
     }
   }

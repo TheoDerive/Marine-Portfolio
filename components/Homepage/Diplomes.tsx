@@ -58,7 +58,9 @@ export default function Diplomes() {
   }
   return (
     <section className="diplomes-homepage-container">
-      <h3 className="section-title">Diplômes & Certifications</h3>
+      <h3 className="section-title">
+        Diplômes <span>&</span> Certifications
+      </h3>
 
       <section className="diplomes-homepage">
         {diplomes.map((diplome, i) => (

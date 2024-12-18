@@ -16,7 +16,6 @@ export default function useUtilities() {
     Window & typeof globalThis
   >();
 
-
   // Get scroll position
   React.useEffect(() => {
     const handleScrollPosition = () => {
@@ -35,6 +34,7 @@ export default function useUtilities() {
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       setWindowProperties(window);
+      setScrollPosition(window.scrollY);
     }
   }, []);
 

@@ -11,8 +11,6 @@ export default function Reviews() {
     ".reviews-homepage",
   );
 
-  React.useEffect(() => console.log(pourcentage), [pourcentage]);
-
   const review1: ReviewType = {
     id: 0,
     personne: "Méghane Roche",
@@ -60,7 +58,7 @@ function Review({
     <article
       className="review-container"
       style={{
-        transform: `scale(${pourcentage > offset && index !== 3 ? (80 - pourcentage + offset) / 100 : 0.8})`,
+        transform: `scale(${pourcentage > offset && index !== 3 ? (90 - pourcentage + offset) / 100 : 0.9})`,
       }}
     >
       <article className="review">

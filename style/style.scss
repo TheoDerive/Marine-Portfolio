@@ -283,22 +283,26 @@ main {
     .left-usefull-information {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
-      gap: 50px;
+      gap: 30px;
 
       li {
+        width: 50%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
 
+        &:nth-child(2) .text-information {
+          width: 50%;
+        }
+
         .number-information {
-          font-size: 60px;
+          font-size: 40px;
           font-weight: bold;
         }
 
         .text-information {
-          width: 65%;
+          width: 75%;
         }
       }
     }
@@ -479,12 +483,12 @@ main {
 
   .left {
     @include infiniteScrollLeft(20px, "projet-left-scroll");
-    animation: projet-left-scroll 15s infinite linear;
+    animation: projet-left-scroll 25s infinite linear;
   }
 
   .right {
     @include infiniteScrollRight(20px, "projet-right-scroll");
-    animation: projet-right-scroll 15s infinite linear;
+    animation: projet-right-scroll 25s infinite linear;
   }
 
   .categories-homepage {
@@ -836,9 +840,8 @@ footer {
       display: flex;
       gap: 10px;
       @include infiniteScrollRight(10px, "footer-scroll");
-      animation: footer-scroll 35s infinite linear;
       animation-name: footer-scroll;
-      animation-duration: 35s;
+      animation-duration: 65s;
       animation-iteration-count: infinite;
       animation-timing-function: linear;
 

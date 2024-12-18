@@ -4,11 +4,6 @@ import { faStar as faRegularStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as faSolidStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
-import { ScrollTrigger } from "gsap/all";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Reviews() {
   const { pourcentage } = useScrollPositionFromTo(

@@ -7,9 +7,11 @@ import HomeHeader from "@/components/Homepage/Header";
 import HomeProjets from "@/components/Homepage/Projets";
 import Reviews from "@/components/Homepage/Reviews";
 import useUtilities from "@/hooks/useUtilities";
+import React from "react";
 
 export default function Home() {
   useUtilities();
+
   return (
     <>
       <HomeHeader />

@@ -6,6 +6,7 @@ import React from "react";
 export default function HomeCategories() {
   return (
     <section className="categories-homepage-container">
+      <div className="orange-eclipse" />
       <div className="slider-container" style={{ rotate: "-2deg" }}>
         <div className="slider right">
           <span>PROJETS</span>

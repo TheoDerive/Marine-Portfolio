@@ -191,6 +191,7 @@ main {
   position: relative;
 
   &::after {
+    display: none !important;
     content: "";
     position: absolute;
     top: -30%;

@@ -1,6 +1,7 @@
 export default function HomeHeader() {
   return (
     <section className="header-homepage">
+      <div className="eclipse-rose" />
       <div className="right">
         <div className="right-informations">
           <p>Bienvenu sur mon portfolio</p>

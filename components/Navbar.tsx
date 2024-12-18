@@ -10,15 +10,15 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
   const { windowProperties } = useUtilities();
-  return (
-    <>
-      {windowProperties && windowProperties.innerWidth > 480 ? (
-        <DesktopNav />
-      ) : (
-        <MobileNav />
-      )}
-    </>
-  );
+  const [isPhone, setIsPhone] = React.useState(false);
+
+  React.useEffect(() => {
+    if (windowProperties && windowProperties.innerWidth <= 480) {
+      setIsPhone(true);
+    }
+  }, [windowProperties]);
+
+  return <>{isPhone ? <MobileNav /> : <DesktopNav />}</>;
 }
 
 function DesktopNav() {

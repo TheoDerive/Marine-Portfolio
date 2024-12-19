@@ -4,7 +4,7 @@ export default function HomeHeader() {
       <div className="eclipse-rose" />
       <div className="right">
         <div className="right-informations">
-          <p>Bienvenu sur mon portfolio</p>
+          <p>Bienvenue sur mon portfolio</p>
           <img className="right-image" src="/images/hi-marine.png" />
         </div>
       </div>

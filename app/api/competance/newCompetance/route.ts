@@ -14,7 +14,8 @@ export async function POST(req: NextRequest) {
 
     if (!competanceExist) {
       const image = body.get("image") as string;
-      const imageName = body.get("image-name") as string;
+      let imageName = body.get("image-name") as string;
+      imageName = imageName.split(" ").join("_")
       const type = body.get("type") as string;
 
       if (image && imageName && name) {

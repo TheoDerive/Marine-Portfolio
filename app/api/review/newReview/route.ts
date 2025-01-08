@@ -16,7 +16,8 @@ export async function POST(req: NextRequest) {
 
     if (!reviewExist) {
       const image = body.get("image") as string;
-      const imageName = body.get("image-name") as string;
+      let imageName = body.get("image-name") as string;
+      imageName = imageName.split(" ").join("_")
       const stars = body.get("stars");
       const personne = body.get("personne");
       const poste = body.get("poste");
@@ -32,7 +33,6 @@ export async function POST(req: NextRequest) {
         message
       ) {
         const response = await pushFile("review", image, imageName);
-        console.log(response);
 
         const review = new ReviewModel({
           image: `/images/review/${imageName}`,

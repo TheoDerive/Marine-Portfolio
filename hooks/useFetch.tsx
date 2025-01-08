@@ -5,11 +5,20 @@ import { ReviewForBack } from "@/types/reviewType";
 
 type categorieType = "competance" | "projet" | "review";
 
+const imgKeys: (keyof ProjetForBack)[] = [
+    "presImg",
+    "ctxImg",
+    "resultImg",
+    "solutionImg",
+    "challengeImg",
+  ];
+
 const useFetch = {
   // Recuperer tous les element dans la categorie
   GETMultiples: async (categorie: categorieType) => {
     const updatedCategorie =
       categorie.charAt(0).toUpperCase() + categorie.slice(1);
+
     const response = await fetch(`/api/${categorie}/get${updatedCategorie}s`);
     const data = await response.json();
 
@@ -20,6 +29,7 @@ const useFetch = {
   GET: async (categorie: categorieType, id: string) => {
     const updatedCategorie =
       categorie.charAt(0).toUpperCase() + categorie.slice(1);
+
     const response = await fetch(
       `/api/${categorie}/get${updatedCategorie}s/${id}`,
     );
@@ -32,8 +42,10 @@ const useFetch = {
   DELETE: async (categorie: categorieType, id: string) => {
     const updatedCategorie =
       categorie.charAt(0).toUpperCase() + categorie.slice(1);
+
     const formData = new FormData();
     formData.set("id", id);
+
     const response = await fetch(
       `/api/${categorie}/delete${updatedCategorie}`,
       {
@@ -47,28 +59,51 @@ const useFetch = {
   },
 
   // Update un projet
-  UPDATEProjet: async (categorie: categorieType, element: ProjetForBack) => {
-    const updatedCategorie =
-      categorie.charAt(0).toUpperCase() + categorie.slice(1);
-
-    if (
-      element.name !== "" &&
-      element.image &&
-      element.description !== "" &&
-      element.entreprise !== "" &&
-      element.date !== ""
-    ) {
-      const base64File = (await toBase64(element.image)) as string;
+  UPDATEProjet: async ( element: ProjetForBack) => {
       const formData = new FormData();
+
+      // Boucler dans les index des image de element
+      for (const el of imgKeys) {
+        const projetElement = element[el] as File | File[];
+
+        // Si c'est un array
+        if (Array.isArray(projetElement)) {
+          // Alors on recupere save sa longueur dans {el}-index
+          formData.append(`${el}-index`, `${projetElement.length}`);
+
+          // Et ensuite on ajoute l'image, en base64, et le nom de l'image dans le FormData
+          for (let index = 0; index < projetElement.length; index++) {
+            const file = projetElement[index];
+
+            const base64File = (await toBase64(file)) as string;
+
+            formData.append(`${el}-${index}`, base64File);
+            console.log(`${el}-${index}`);
+            formData.append(`${el}-${index}-name`, file.name);
+          }
+        } else {
+          // Sinon on dit qu'il n'a pas de longueur ( 0 ), et on ajoute l'image et son nom
+          formData.append(`${el}-index`, "0");
+
+          const base64File = (await toBase64(projetElement)) as string;
+
+          formData.append(`${el}`, base64File);
+          formData.append(`${el}-name`, projetElement.name);
+        }
+      }
+
       formData.append("name", element.name);
-      formData.append("image", base64File);
-      formData.append("image-name", element.image.name);
       formData.append("description", element.description);
       formData.append("competances", JSON.stringify(element.competances));
-      formData.append("entreprise", element.entreprise);
-      formData.append("date", element.date);
+      formData.append("client", element.client);
+      formData.append("service", element.service);
+      formData.append("duree", element.duree);
+
+      if (element.lien && element.lien !== "") {
+        formData.append("lien", element.lien);
+      }
       const response = await fetch(
-        `/api/${categorie}/patch${updatedCategorie}`,
+        `/api/projet/patchProjet`,
         {
           method: "PATCH",
           body: formData,
@@ -77,16 +112,12 @@ const useFetch = {
       const data = await response.json();
 
       return data;
-    }
   },
 
   // Update une competances
   UPDATECompetance: async (
-    categorie: categorieType,
     element: CompetanceForBack,
   ) => {
-    const updatedCategorie =
-      categorie.charAt(0).toUpperCase() + categorie.slice(1);
     if (element.name !== "" && element.image) {
       const base64File = (await toBase64(element.image)) as string;
       const formData = new FormData();
@@ -96,7 +127,7 @@ const useFetch = {
       formData.append("type", element.type);
 
       const response = await fetch(
-        `/api/${categorie}/patch${updatedCategorie}`,
+        `/api/competance/patchCompetance`,
         {
           method: "PATCH",
           body: formData,
@@ -109,9 +140,7 @@ const useFetch = {
   },
 
   // Update une review
-  UPDATEReview: async (categorie: categorieType, element: ReviewForBack) => {
-    const updatedCategorie =
-      categorie.charAt(0).toUpperCase() + categorie.slice(1);
+  UPDATEReview: async ( element: ReviewForBack) => {
     if (
       element.imageName &&
       element.entrepriseName !== "" &&
@@ -130,7 +159,7 @@ const useFetch = {
       formData.append("message", element.message);
 
       const response = await fetch(
-        `/api/${categorie}/patch${updatedCategorie}`,
+        `/api/review/patchReview`,
         {
           method: "PATCH",
           body: formData,
@@ -143,45 +172,66 @@ const useFetch = {
   },
 
   // Ajouter un projet
-  NewProjet: async (categorie: categorieType, element: ProjetForBack) => {
-    const updatedCategorie =
-      categorie.charAt(0).toUpperCase() + categorie.slice(1);
-
-    if (
-      element.name !== "" &&
-      element.image &&
-      element.description !== "" &&
-      element.entreprise !== "" &&
-      element.date !== ""
-    ) {
-      const base64File = (await toBase64(element.image)) as string;
+  NewProjet: async ( element: ProjetForBack) => {
       const formData = new FormData();
+
+      // Boucler dans les index des image de element
+      for (const el of imgKeys) {
+        const projetElement = element[el] as File | File[];
+
+        // Si c'est un array
+        if (Array.isArray(projetElement)) {
+          // Alors on recupere save sa longueur dans {el}-index
+          formData.append(`${el}-index`, `${projetElement.length}`);
+
+          // Et ensuite on ajoute l'image, en base64, et le nom de l'image dans le FormData
+          for (let index = 0; index < projetElement.length; index++) {
+            const file = projetElement[index];
+
+            const base64File = (await toBase64(file)) as string;
+
+            formData.append(`${el}-${index}`, base64File);
+            console.log(`${el}-${index}`);
+            formData.append(`${el}-${index}-name`, file.name);
+          }
+        } else {
+          // Sinon on dit qu'il n'a pas de longueur ( 0 ), et on ajoute l'image et son nom
+          formData.append(`${el}-index`, "0");
+
+          const base64File = (await toBase64(projetElement)) as string;
+
+          formData.append(`${el}`, base64File);
+          formData.append(`${el}-name`, projetElement.name);
+        }
+      }
+
       formData.append("name", element.name);
-      formData.append("image", base64File);
-      formData.append("image-name", element.image.name);
       formData.append("description", element.description);
       formData.append("competances", JSON.stringify(element.competances));
-      formData.append("entreprise", element.entreprise);
-      formData.append("date", element.date);
+      formData.append("client", element.client);
+      formData.append("service", element.service);
+      formData.append("duree", element.duree);
 
-      const response = await fetch(`/api/${categorie}/new${updatedCategorie}`, {
-        method: "POST",
-        body: formData,
-      });
+      if (element.lien && element.lien !== "") {
+        formData.append("lien", element.lien);
+      }
+      const response = await fetch(
+        `/api/projet/newProjet`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
       const data = await response.json();
 
       return data;
-    }
+
   },
 
   // Ajouter une competance
   NewCompetance: async (
-    categorie: categorieType,
     element: CompetanceForBack,
   ) => {
-    const updatedCategorie =
-      categorie.charAt(0).toUpperCase() + categorie.slice(1);
-
     if (element.name !== "" && element.image) {
       const base64File = (await toBase64(element.image)) as string;
       const formData = new FormData();
@@ -190,7 +240,7 @@ const useFetch = {
       formData.append("image-name", element.image.name);
       formData.append("type", element.type);
 
-      const response = await fetch(`/api/${categorie}/new${updatedCategorie}`, {
+      const response = await fetch(`/api/competance/newCompetance`, {
         method: "POST",
         body: formData,
       });
@@ -201,10 +251,7 @@ const useFetch = {
   },
 
   // Ajouter une review
-  NewReview: async (categorie: categorieType, element: ReviewForBack) => {
-    const updatedCategorie =
-      categorie.charAt(0).toUpperCase() + categorie.slice(1);
-
+  NewReview: async ( element: ReviewForBack) => {
     if (
       element.imageName &&
       element.entrepriseName !== "" &&
@@ -222,7 +269,7 @@ const useFetch = {
       formData.append("poste", element.poste);
       formData.append("message", element.message);
 
-      const response = await fetch(`/api/${categorie}/new${updatedCategorie}`, {
+      const response = await fetch(`/api/review/newReview`, {
         method: "POST",
         body: formData,
       });

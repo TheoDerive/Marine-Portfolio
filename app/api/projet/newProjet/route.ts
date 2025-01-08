@@ -1,13 +1,11 @@
 import { pushFile } from "@/lib/github";
 import { connectDB } from "@/lib/mongodb";
 import ProjetModel from "@/models/ProjetModel";
-import { ProjetForBack } from "@/types/projetType";
-import { preloadStyle } from "next/dist/server/app-render/entry-base";
 import { NextRequest, NextResponse } from "next/server";
 
 type imgsContent = {
-  img: string | [];
-  name: string | [];
+  img: string | string[];
+  name: string | string[];
 };
 
 type imgsIndex = {
@@ -26,17 +24,6 @@ const imgKeys: (keyof imgsIndex)[] = [
   "challengeImg",
 ];
 
-export async function POST(req: NextRequest) {
-  try {
-    await connectDB();
-
-    const body = await req.formData();
-
-    const name = body.get("name");
-
-    const projetExist = await ProjetModel.find({ name: name });
-
-    if (projetExist.length === 0) {
       const imgs: imgsIndex = {
         presImg: {
           img: "",
@@ -59,6 +46,18 @@ export async function POST(req: NextRequest) {
           name: [],
         },
       };
+
+export async function POST(req: NextRequest) {
+  try {
+    await connectDB();
+
+    const body = await req.formData();
+
+    const name = body.get("name");
+
+    const projetExist = await ProjetModel.find({ name: name });
+
+    if (projetExist.length === 0) {
       for (let index = 0; index < imgKeys.length; index++) {
         const el = imgKeys[index];
 
@@ -66,7 +65,10 @@ export async function POST(req: NextRequest) {
 
         if (indexElement === 0) {
           const image = body.get(`${el}`);
-          const imageName = body.get(`${el}-name`);
+          const name = body.get(`${el}-name`) as string;
+          const imageName = name.split(" ").join("_")
+
+
 
           if (image && imageName) {
             imgs.presImg.img = image as string;
@@ -74,17 +76,18 @@ export async function POST(req: NextRequest) {
           }
         } else if (
           indexElement > 0 &&
-          imgs[el].name.length >= 0 &&
-          imgs[el].img.length >= 0
+          Array.isArray(imgs[el].img) &&
+          Array.isArray(imgs[el].name)
         ) {
           for (let j = 0; j < indexElement; j++) {
-            console.log(`${el}-${j}`);
             const image = body.get(`${el}-${j}`);
-            const imageName = body.get(`${el}-${j}-name`);
+            const name = body.get(`${el}-${j}-name`) as string;
+            const imageName = name.split(" ").join("_")
+            
 
             if (image && imageName) {
-              imgs[el].img.push(image);
-              imgs[el].name.push(imageName);
+              imgs[el].img.push(image as string);
+              imgs[el].name.push(imageName as string);
             }
           }
         }
@@ -101,11 +104,11 @@ export async function POST(req: NextRequest) {
         for (let index = 0; index < imgKeys.length; index++) {
           const el = imgKeys[index];
 
-          if (el === "presImg") {
+          if (el === "presImg" ) {
             await pushFile(
               "projet",
-              imgs[el].img as string,
-              imgs[el].name as string,
+              imgs.presImg.img as string,
+              imgs.presImg.name as string,
             );
           } else if (imgs[el].img.length > 0 && imgs[el].name.length > 0) {
             for (let j = 0; j < imgs[el].img.length; j++) {

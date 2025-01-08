@@ -1,5 +1,6 @@
 "use client";
 
+import useFetch from "@/hooks/useFetch";
 import toBase64 from "@/lib/base64";
 import { CompetanceForBack } from "@/types/competanceType";
 import React from "react";
@@ -9,6 +10,7 @@ export default function Projet() {
     React.useState<CompetanceForBack>({
       name: "",
       image: null,
+      type: "design"
     });
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
@@ -20,11 +22,9 @@ export default function Projet() {
       formData.append("name", competanceValues.name);
       formData.append("image", base64File);
       formData.append("image-name", competanceValues.image.name);
+      formData.append("type", competanceValues.type);
 
-      const response = await fetch("/api/competance/newCompetance", {
-        method: "POST",
-        body: formData,
-      });
+const response = await useFetch.UPDATECompetance(competanceValues)
 
       console.log(response);
     }

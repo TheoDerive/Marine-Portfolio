@@ -1,5 +1,6 @@
 "use client";
 
+import useFetch from "@/hooks/useFetch";
 import addFiles from "@/lib/addFiles";
 import toBase64 from "@/lib/base64";
 import { ProjetForBack } from "@/types/projetType";
@@ -57,7 +58,6 @@ export default function Projet() {
             const base64File = (await toBase64(file)) as string;
 
             formData.append(`${element}-${index}`, base64File);
-            console.log(`${element}-${index}`);
             formData.append(`${element}-${index}-name`, file.name);
           }
         } else {
@@ -81,18 +81,12 @@ export default function Projet() {
         formData.append("lien", projetValues.lien);
       }
 
-      const response = await fetch("/api/projet/newProjet", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await useFetch.UPDATEProjet(projetValues)
+      console.log(response)
 
-      console.log(response);
     }
   }
 
-  React.useEffect(() => {
-    console.log(projetValues);
-  }, [projetValues]);
 
   return (
     <form

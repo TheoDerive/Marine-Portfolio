@@ -1,4 +1,4 @@
-import { pushFile } from "@/lib/github";
+import { deleteFile, pushFile } from "@/lib/github";
 import { connectDB } from "@/lib/mongodb";
 import CompetancesModel from "@/models/CompetancesModel";
 import { NextRequest, NextResponse } from "next/server";
@@ -13,21 +13,25 @@ export async function PATCH(req: NextRequest) {
     const competanceExist = await CompetancesModel.findOne({ name: name });
 
     if (competanceExist) {
+      await deleteFile("competance", competanceExist.image)
+
       const image = body.get("image") as string;
-      const imageName = body.get("image-name") as string;
+      let imageName = body.get("image-name") as string;
+      imageName = imageName.split(" ").join("_")
       const type = body.get("type") as string;
+      console.log(imageName)
 
       if (image && imageName && name) {
         await pushFile("competance", image, imageName);
 
-        const competance = new CompetancesModel({
+        const competance = {
           name: name,
           image: `/images/competance/${imageName}`,
           type: type,
-        });
+        };
 
         await CompetancesModel.findOneAndUpdate(
-          { _id: "675c138acc37f992f8758a72" },
+          { _id: competanceExist._id },
           {
             name: competance.name,
             image: competance.image,

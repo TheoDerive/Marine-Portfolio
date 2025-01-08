@@ -1,3 +1,4 @@
+import { deleteFile } from "@/lib/github";
 import { connectDB } from "@/lib/mongodb";
 import CompetancesModel from "@/models/CompetancesModel";
 import { NextRequest, NextResponse } from "next/server";
@@ -11,7 +12,9 @@ export async function DELETE(req: NextRequest) {
 
     const competanceExist = await CompetancesModel.findOne({ _id: id });
 
+
     if (competanceExist) {
+      await deleteFile("competance", competanceExist.image)
       await CompetancesModel.findOneAndDelete({
         _id: id,
       });

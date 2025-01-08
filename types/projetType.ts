@@ -1,20 +1,32 @@
 import { ComponentType } from "react";
 
 export type ProjetType = {
-  id: number;
+  _id: number;
   name: string;
-  image: string;
   description: string;
   competances: ComponentType[];
-  entreprise: string;
-  date: string;
+  client: string;
+  duree: string;
+  lien?: string;
+  service: string;
+  presImg: string;
+  ctxImg: string[];
+  challengeImg: string[];
+  solutionImg: string[];
+  resultImg: string[];
 };
 
 export type ProjetForBack = {
   name: string;
-  image: File | null;
   description: string;
   competances: ComponentType[];
-  entreprise: string;
-  date: string;
+  client: string;
+  duree: string;
+  lien?: string;
+  service: string;
+  presImg: File | null;
+  ctxImg: File[];
+  challengeImg: File[];
+  solutionImg: File[];
+  resultImg: File[];
 };

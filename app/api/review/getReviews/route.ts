@@ -8,7 +8,14 @@ export async function GET() {
 
     const reviews = await ReviewModel.find({});
 
-    return NextResponse.json({ reviews: reviews });
+    if (reviews.length > 0) {
+      return NextResponse.json({ reviews: reviews, status: 200 });
+    }
+
+    return NextResponse.json({
+      message: "Nous n'avons pas trouver de review",
+      status: 404,
+    });
   } catch (error) {
     console.error("Erreur de connexion :", error);
     return NextResponse.json({

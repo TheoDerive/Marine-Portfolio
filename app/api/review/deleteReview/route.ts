@@ -6,13 +6,25 @@ export async function DELETE(req: NextRequest) {
   try {
     await connectDB();
 
-    await ReviewModel.findOneAndDelete({
-      _id: "675c2ea9d12a134f92436385",
-    });
+    const body = await req.formData();
+    const id = body.get("id");
+
+    const reviewExist = await ReviewModel.findOne({ _id: id });
+
+    if (reviewExist) {
+      await ReviewModel.findOneAndDelete({
+        _id: "675c2ea9d12a134f92436385",
+      });
+
+      return NextResponse.json({
+        message: "Votre projet a ete supprimer",
+        status: 200,
+      });
+    }
 
     return NextResponse.json({
-      message: "Votre projet a ete supprimer",
-      status: 200,
+      message: "Nous n'avons pas trouver votre projet",
+      status: 404,
     });
   } catch (error) {
     console.error("Erreur de connexion :", error);

@@ -14,8 +14,6 @@ export async function POST(req: NextRequest) {
       entrepriseName: entrepriseName,
     });
 
-    console.log(reviewExist);
-
     if (!reviewExist) {
       const image = body.get("image") as string;
       const imageName = body.get("image-name") as string;

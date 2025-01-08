@@ -9,13 +9,22 @@ export async function DELETE(req: NextRequest) {
     const body = await req.formData();
     const id = body.get("id");
 
-    await CompetancesModel.findOneAndDelete({
-      _id: id,
-    });
+    const competanceExist = await CompetancesModel.findOne({ _id: id });
+
+    if (competanceExist) {
+      await CompetancesModel.findOneAndDelete({
+        _id: id,
+      });
+
+      return NextResponse.json({
+        message: "Votre competance a ete supprimer",
+        status: 200,
+      });
+    }
 
     return NextResponse.json({
-      message: "Votre competance a ete supprimer",
-      status: 200,
+      message: "Votre competance n'a pas ete trouve",
+      status: 404,
     });
   } catch (error) {
     console.error("Erreur de connexion :", error);

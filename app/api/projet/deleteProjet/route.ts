@@ -6,13 +6,25 @@ export async function DELETE(req: NextRequest) {
   try {
     await connectDB();
 
-    await ProjetModel.findOneAndDelete({
-      _id: "675c2b1553cab1fa7dfdddb1",
-    });
+    const body = await req.formData();
+    const id = body.get("id");
+
+    const projetExist = await ProjetModel.findOne({ _id: id });
+
+    if (projetExist) {
+      await ProjetModel.findOneAndDelete({
+        _id: id,
+      });
+
+      return NextResponse.json({
+        message: "Votre projet a ete supprimer",
+        status: 200,
+      });
+    }
 
     return NextResponse.json({
-      message: "Votre projet a ete supprimer",
-      status: 200,
+      message: "Votre projet n'a pas ete trouver",
+      status: 404,
     });
   } catch (error) {
     console.error("Erreur de connexion :", error);

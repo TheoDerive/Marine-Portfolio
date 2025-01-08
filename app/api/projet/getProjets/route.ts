@@ -8,7 +8,14 @@ export async function GET() {
 
     const projets = await ProjetModel.find({});
 
-    return NextResponse.json({ projets: projets });
+    if (projets) {
+      return NextResponse.json({ projets: projets });
+    }
+
+    return NextResponse.json({
+      message: "Nous n'avons pas de trouver de projet",
+      status: 404,
+    });
   } catch (error) {
     console.error("Erreur de connexion :", error);
     return NextResponse.json({

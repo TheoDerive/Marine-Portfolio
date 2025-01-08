@@ -34,7 +34,6 @@ function DesktopNav() {
   const { scrollPosition } = useAppStore();
 
   React.useEffect(() => {
-    console.log(scrollPosition);
     if (scrollPosition >= 100) {
       setActiveNavbar(true);
     } else {

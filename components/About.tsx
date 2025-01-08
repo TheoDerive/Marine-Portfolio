@@ -1,5 +1,6 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ContainerCompetances from "./ContainerCompetances";
 
 export default function About() {
   return (
@@ -22,6 +23,7 @@ export default function About() {
           </div>
         </section>
       </section>
+      <ContainerCompetances />
     </section>
   );
 }

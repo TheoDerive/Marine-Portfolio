@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
     if (!competanceExist) {
       const image = body.get("image") as string;
       const imageName = body.get("image-name") as string;
+      const type = body.get("type") as string;
 
       if (image && imageName && name) {
         await pushFile("competance", image, imageName);
@@ -22,6 +23,7 @@ export async function POST(req: NextRequest) {
         const competance = new CompetancesModel({
           name: name,
           image: `/images/competance/${imageName}`,
+          type: type,
         });
 
         await competance.save();

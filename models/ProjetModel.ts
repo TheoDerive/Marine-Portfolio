@@ -5,8 +5,24 @@ const ProjetSchema = new Schema({
     type: String,
     require: true,
   },
-  image: {
+  presImg: {
     type: String,
+    require: true,
+  },
+  ctxImg: {
+    type: Array,
+    require: true,
+  },
+  challengeImg: {
+    type: Array,
+    require: true,
+  },
+  solutionImg: {
+    type: Array,
+    require: true,
+  },
+  resultImg: {
+    type: Array,
     require: true,
   },
   description: {
@@ -17,11 +33,19 @@ const ProjetSchema = new Schema({
     type: Array,
     require: true,
   },
-  entreprise: {
+  client: {
     type: String,
     require: true,
   },
-  date: {
+  duree: {
+    type: String,
+    require: true,
+  },
+  lien: {
+    type: String,
+    require: false,
+  },
+  service: {
     type: String,
     require: true,
   },

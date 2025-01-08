@@ -8,11 +8,18 @@ export async function GET() {
 
     const competances = await CompetancesModel.find({});
 
-    return NextResponse.json({ competances: competances });
+    if (competances) {
+      return NextResponse.json({ competances: competances, status: 200 });
+    }
+    return NextResponse.json({
+      message: "Nous n'avons pas trouver de competances",
+      status: 404,
+    });
   } catch (error) {
     console.error("Erreur de connexion :", error);
     return NextResponse.json({
       error: "Impossible de se connecter à la base de données",
+      status: 400,
     });
   }
 }

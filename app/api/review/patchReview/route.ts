@@ -1,4 +1,4 @@
-import { pushFile } from "@/lib/github";
+import { deleteFile, pushFile } from "@/lib/github";
 import { connectDB } from "@/lib/mongodb";
 import ReviewModel from "@/models/ReviewModel";
 import { NextRequest, NextResponse } from "next/server";
@@ -15,6 +15,8 @@ export async function PATCH(req: NextRequest) {
     });
 
     if (reviewExist) {
+      await deleteFile("review", reviewExist.image);
+
       const image = body.get("image") as string;
       const imageName = body.get("image-name") as string;
       const stars = body.get("stars");
@@ -32,7 +34,6 @@ export async function PATCH(req: NextRequest) {
         message
       ) {
         const response = await pushFile("review", image, imageName);
-        console.log(response);
 
         const review = new ReviewModel({
           image: `/images/review/${imageName}`,

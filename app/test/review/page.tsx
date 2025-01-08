@@ -1,5 +1,6 @@
 "use client";
 
+import useFetch from "@/hooks/useFetch";
 import toBase64 from "@/lib/base64";
 import { ReviewForBack } from "@/types/reviewType";
 import React from "react";
@@ -34,10 +35,7 @@ export default function Review() {
       formData.append("poste", reviewValues.poste);
       formData.append("message", reviewValues.message);
 
-      const response = await fetch("/api/review/newReview", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await useFetch.UPDATEReview(reviewValues);
 
       console.log(response);
     }

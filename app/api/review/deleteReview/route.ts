@@ -13,7 +13,8 @@ export async function DELETE(req: NextRequest) {
     const reviewExist = await ReviewModel.findOne({ _id: id });
 
     if (reviewExist) {
-      await deleteFile("review", reviewExist.image)
+      await deleteFile("review", reviewExist.image);
+
       await ReviewModel.findOneAndDelete({
         _id: "675c2ea9d12a134f92436385",
       });

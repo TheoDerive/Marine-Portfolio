@@ -13,6 +13,10 @@ export default function Projet() {
     description: "",
     duree: "",
     lien: "",
+    solutionDesc: "",
+    ctxDesc: "",
+    resultDesc: "",
+    challengeDesc: "",
     ctxImg: [],
     resultImg: [],
     presImg: null,
@@ -38,55 +42,20 @@ export default function Projet() {
       projetValues.description !== "" &&
       projetValues.service !== "" &&
       projetValues.duree !== "" &&
+      projetValues.challengeDesc !== "" &&
+      projetValues.solutionDesc !== "" &&
+      projetValues.resultDesc !== "" &&
+      projetValues.ctxDesc !== "" &&
       projetValues.challengeImg.length !== 0 &&
       projetValues.solutionImg.length !== 0 &&
       projetValues.resultImg.length !== 0 &&
       projetValues.ctxImg.length !== 0 &&
       projetValues.presImg
     ) {
-      const formData = new FormData();
-
-      for (const element of imgKeys) {
-        const projetElement = projetValues[element] as File | File[];
-
-        if (Array.isArray(projetElement)) {
-          formData.append(`${element}-index`, `${projetElement.length}`);
-
-          for (let index = 0; index < projetElement.length; index++) {
-            const file = projetElement[index];
-
-            const base64File = (await toBase64(file)) as string;
-
-            formData.append(`${element}-${index}`, base64File);
-            formData.append(`${element}-${index}-name`, file.name);
-          }
-        } else {
-          formData.append(`${element}-index`, "0");
-
-          const base64File = (await toBase64(projetElement)) as string;
-
-          formData.append(`${element}`, base64File);
-          formData.append(`${element}-name`, projetElement.name);
-        }
-      }
-
-      formData.append("name", projetValues.name);
-      formData.append("description", projetValues.description);
-      formData.append("competances", JSON.stringify(projetValues.competances));
-      formData.append("client", projetValues.client);
-      formData.append("service", projetValues.service);
-      formData.append("duree", projetValues.duree);
-
-      if (projetValues.lien && projetValues.lien !== "") {
-        formData.append("lien", projetValues.lien);
-      }
-
-      const response = await useFetch.UPDATEProjet(projetValues)
-      console.log(response)
-
+      const response = await useFetch.NewProjet(projetValues);
+      console.log(response);
     }
   }
-
 
   return (
     <form
@@ -237,6 +206,54 @@ export default function Projet() {
                 "resultImg",
               )
             : null
+        }
+      />
+
+      <input
+        type="text"
+        placeholder="ctx"
+        required
+        onChange={(e) =>
+          setProjetValues({
+            ...projetValues,
+            ctxDesc: e.target.value,
+          })
+        }
+      />
+
+      <input
+        type="text"
+        placeholder="challenge"
+        required
+        onChange={(e) =>
+          setProjetValues({
+            ...projetValues,
+            challengeDesc: e.target.value,
+          })
+        }
+      />
+
+      <input
+        type="text"
+        placeholder="solution"
+        required
+        onChange={(e) =>
+          setProjetValues({
+            ...projetValues,
+            solutionDesc: e.target.value,
+          })
+        }
+      />
+
+      <input
+        type="text"
+        placeholder="result"
+        required
+        onChange={(e) =>
+          setProjetValues({
+            ...projetValues,
+            resultDesc: e.target.value,
+          })
         }
       />
 

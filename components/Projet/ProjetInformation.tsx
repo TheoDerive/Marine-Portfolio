@@ -1,5 +1,6 @@
 "use client";
 
+import { Parallax } from "@/lib/parallax";
 import React from "react";
 
 type InformationType = "context" | "challenge" | "solution" | "resultat";
@@ -17,43 +18,8 @@ export default function ProjetInformation({
   image,
   parallax = 0.2,
 }: Props) {
-  function addImages() {
-    const returnHTML = document.createElement("section");
-    let localIndex = 0;
-    let localCount = image.length;
-
-    while (localCount > 0) {
-      const imageContainer = document.createElement("ul");
-      imageContainer.classList.add("projet-information-images");
-
-      if (localCount >= 2) {
-        imageContainer.style.grid = "auto / 1fr 1fr";
-        imageContainer.innerHTML = `
-        <li className="projet-image" style="height: 60vh">
-          <img data-parallax="${parallax}" class="split-element" id="${localIndex}" src=${image[localIndex]} alt="image d'illustration du projet" />
-        </li>
-        <li className="projet-image" style='height: 60vh'>
-          <img data-parallax="${parallax}" class="split-element" src=${image[localIndex + 1]} alt="image d'illustration du projet" />
-        </li>
-      `;
-        localIndex += 2; // Incrémentation des variables locales
-        localCount -= 2; // Décrémentation des variables locales
-      } else {
-        imageContainer.style.grid = "auto / 1fr ";
-        imageContainer.innerHTML = `
-        <li className="projet-image" style='height: 80vh'>
-          <img data-parallax="${parallax}" src=${image[localIndex]} alt="image d'illustration du projet" />
-        </li>
-      `;
-        localIndex += 1;
-        localCount -= 1;
-      }
-
-      returnHTML.appendChild(imageContainer);
-    }
-
-    return returnHTML.innerHTML;
-  }
+  let localCount = image.length;
+  let next: number | null = null;
 
   return (
     <article className={`projet-information-{type} projet-informations`}>
@@ -62,10 +28,61 @@ export default function ProjetInformation({
         <p>{description}</p>
       </section>
 
-      <div
-        className="image-container"
-        dangerouslySetInnerHTML={{ __html: addImages() }}
-      />
+      <section className="image-container">
+        {image.map((img, i) => {
+          if (next === i) {
+            return;
+          }
+          if (localCount >= 2) {
+            next = i + 1;
+            localCount = -2;
+            return (
+              <ul
+                style={{ grid: "auto /1fr 1fr" }}
+                key={i}
+                className="projet-information-images"
+              >
+                <li className="projet-image">
+                  <img
+                    data-parallax={`${parallax}`}
+                    className="split-element"
+                    id={`${i}`}
+                    src={`/images/projet/${img}`}
+                    alt="image d'illustration du projet"
+                  />
+                </li>
+                <li className="projet-image">
+                  <img
+                    data-parallax={`${parallax}`}
+                    id={`${i + 1}`}
+                    src={`/images/projet/${image[i + 1]}`}
+                    alt="image d'illustration du projet"
+                  />
+                </li>
+              </ul>
+            );
+          } else {
+            localCount = -1;
+            return (
+              <ul
+                style={{ grid: "1fr" }}
+                key={i}
+                className="projet-information-images"
+              >
+                <li className="projet-image">
+                  <img
+                    data-parallax={`${parallax}`}
+                    className="split-element"
+                    id={`${i}`}
+                    src={`/images/projet/${img}`}
+                    alt="image d'illustration du projet"
+                  />
+                </li>
+              </ul>
+            );
+          }
+        })}
+      </section>
     </article>
   );
 }

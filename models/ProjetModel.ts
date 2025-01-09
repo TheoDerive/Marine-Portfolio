@@ -13,16 +13,32 @@ const ProjetSchema = new Schema({
     type: Array,
     require: true,
   },
+  ctxDesc: {
+    type: String,
+    require: true,
+  },
   challengeImg: {
     type: Array,
+    require: true,
+  },
+  challengeDesc: {
+    type: String,
     require: true,
   },
   solutionImg: {
     type: Array,
     require: true,
   },
+  solutionDesc: {
+    type: String,
+    require: true,
+  },
   resultImg: {
     type: Array,
+    require: true,
+  },
+  resultDesc: {
+    type: String,
     require: true,
   },
   description: {

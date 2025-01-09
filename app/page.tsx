@@ -14,12 +14,12 @@ export default function Home() {
   useUtilities();
 
   React.useEffect(() => {
-    async function test(){
-      useFetch.DELETE("competance", "677e9c0eaa8a7ec9eba42418")
+    async function test() {
+      useFetch.DELETE("projet", "677eeba8cbc55a37c1733836");
     }
 
-    test()
-  }, [])
+    test();
+  }, []);
 
   return (
     <>

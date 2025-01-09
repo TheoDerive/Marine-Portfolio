@@ -15,16 +15,12 @@ export class Parallax {
   }
 
   onScroll() {
-    console.log(this.element);
     window.requestAnimationFrame(() => {
       const scrollY = window.scrollY + window.innerHeight / 2;
       const diffY = scrollY - this.elementY;
       const resultBigOne = diffY * -1 * this.ratio - window.innerHeight / 2;
       const resultLittles = diffY * this.ratio - window.innerHeight / 2;
-      this.element.style.setProperty(
-        "transform",
-        `translate(-50%, ${this.element.classList.contains("projet-page-image-presentation") ? resultBigOne - 200 : this.element.classList.contains("split-element") ? resultLittles + 250 : resultLittles + 200}px)`,
-      );
+      this.element.style.transform = `translate(-50%, ${resultLittles}px)`;
     });
   }
 

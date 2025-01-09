@@ -5,7 +5,7 @@ export default function ProjetArticle({ projet }: { projet: ProjetType }) {
   return (
     <Link href={`/projets/${projet._id}`} className="projet-article">
       <div className="projet-image-container">
-        <img src={projet.image} />
+        <img src={`/images/projet/${projet.presImg}`} />
       </div>
 
       <h2>{projet.name}</h2>

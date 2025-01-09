@@ -24,28 +24,28 @@ const imgKeys: (keyof imgsIndex)[] = [
   "challengeImg",
 ];
 
-      const imgs: imgsIndex = {
-        presImg: {
-          img: "",
-          name: "",
-        },
-        ctxImg: {
-          img: [],
-          name: [],
-        },
-        challengeImg: {
-          img: [],
-          name: [],
-        },
-        solutionImg: {
-          img: [],
-          name: [],
-        },
-        resultImg: {
-          img: [],
-          name: [],
-        },
-      };
+const imgs: imgsIndex = {
+  presImg: {
+    img: "",
+    name: "",
+  },
+  ctxImg: {
+    img: [],
+    name: [],
+  },
+  challengeImg: {
+    img: [],
+    name: [],
+  },
+  solutionImg: {
+    img: [],
+    name: [],
+  },
+  resultImg: {
+    img: [],
+    name: [],
+  },
+};
 
 export async function POST(req: NextRequest) {
   try {
@@ -66,9 +66,7 @@ export async function POST(req: NextRequest) {
         if (indexElement === 0) {
           const image = body.get(`${el}`);
           const name = body.get(`${el}-name`) as string;
-          const imageName = name.split(" ").join("_")
-
-
+          const imageName = name.split(" ").join("_");
 
           if (image && imageName) {
             imgs.presImg.img = image as string;
@@ -82,8 +80,7 @@ export async function POST(req: NextRequest) {
           for (let j = 0; j < indexElement; j++) {
             const image = body.get(`${el}-${j}`);
             const name = body.get(`${el}-${j}-name`) as string;
-            const imageName = name.split(" ").join("_")
-            
+            const imageName = name.split(" ").join("_");
 
             if (image && imageName) {
               imgs[el].img.push(image as string);
@@ -99,12 +96,16 @@ export async function POST(req: NextRequest) {
       const service = body.get("service");
       const duree = body.get("duree");
       const lien = body.get("lien");
+      const ctxDesc = body.get("ctxDesc");
+      const challengeDesc = body.get("challengeDesc");
+      const solutionDesc = body.get("solutionDesc");
+      const resultDesc = body.get("resultDesc");
 
       if (name && description && competances && client && service && duree) {
         for (let index = 0; index < imgKeys.length; index++) {
           const el = imgKeys[index];
 
-          if (el === "presImg" ) {
+          if (el === "presImg") {
             await pushFile(
               "projet",
               imgs.presImg.img as string,
@@ -137,6 +138,10 @@ export async function POST(req: NextRequest) {
           duree: duree,
           lien: lien ? lien : null,
           service: service,
+          ctxDesc: ctxDesc,
+          challengeDesc: challengeDesc,
+          solutionDesc: solutionDesc,
+          resultDesc: resultDesc,
         });
 
         await projet.save();

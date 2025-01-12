@@ -67,7 +67,9 @@ function DesktopCompetances({
 function MobileCompetances() {
   return (
     <section className="competences-homepage-container">
-      <h3 className="section-title">Competences</h3>
+      <h3 className="section-title">
+        Mes <span>Competences</span>
+      </h3>
 
       <section className="design-scroll-container">
         <ul className="competences-homepage">

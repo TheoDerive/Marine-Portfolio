@@ -114,6 +114,10 @@ function MobileNav() {
     html.style.overflowY = "unset";
   }
 
+  React.useEffect(() => {
+    close();
+  }, []);
+
   return (
     <nav
       className={`mobile-navbar mobile-navbar${openNavbar ? "-active" : ""}`}
@@ -135,7 +139,7 @@ function MobileNav() {
             <Link href={"/"}>Accueil</Link>
           </li>
           <li className="onglet ">
-            <Link href={"/about"}>Profil</Link>
+            <Link href={"/profil"}>Profil</Link>
           </li>
 
           <li className="onglet ">

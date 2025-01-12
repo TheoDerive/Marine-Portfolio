@@ -20,7 +20,9 @@ export class Parallax {
       const diffY = scrollY - this.elementY;
       const resultLittles =
         diffY * this.ratio - window.innerHeight / 2 + window.innerHeight / 10;
-      this.element.style.transform = `translate(-50%, ${resultLittles}px)`;
+      const mobileResult =
+        diffY * this.ratio - window.innerHeight / 2 + window.innerHeight / 6;
+      this.element.style.transform = `translate(-50%, ${window.innerWidth < 1000 ? mobileResult : resultLittles}px)`;
     });
   }
 

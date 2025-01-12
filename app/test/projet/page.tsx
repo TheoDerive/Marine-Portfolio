@@ -3,6 +3,7 @@
 import useFetch from "@/hooks/useFetch";
 import addFiles from "@/lib/addFiles";
 import toBase64 from "@/lib/base64";
+import { useAppStore } from "@/store";
 import { ProjetForBack } from "@/types/projetType";
 import React from "react";
 
@@ -57,10 +58,16 @@ export default function Projet() {
     }
   }
 
+  const { setIsLoading } = useAppStore();
+
+  React.useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <form
       style={{
-        margin: "500px 0",
+        padding: "500px 0",
         display: "flex",
         flexDirection: "column",
       }}

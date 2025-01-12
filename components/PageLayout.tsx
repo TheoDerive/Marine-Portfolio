@@ -21,7 +21,7 @@ export default function PageLayout({ children }: Props) {
     } else {
       body.style.overflowY = "auto";
     }
-  });
+  }, [isLoading]);
 
   React.useEffect(() => {}, [isLoading]);
   return (

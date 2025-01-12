@@ -368,8 +368,8 @@ main {
 
 // Projet
 .projet-component {
-  width: 100%;
   height: calc(90vw / 3);
+  max-width: 400px;
   position: relative;
   border-radius: 35px;
   overflow: hidden;
@@ -1431,7 +1431,8 @@ footer {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 120%;
+      width: unset;
+      height: 150%;
       transform: translate(-50%, -50%);
     }
   }
@@ -1602,7 +1603,7 @@ footer {
   width: 100vw;
   height: 100vh;
   background: white;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: flex;

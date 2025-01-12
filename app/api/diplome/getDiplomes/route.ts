@@ -1,16 +1,16 @@
 import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
-import ReviewModel from "@/models/ReviewModel";
+import DiplomesModel from "@/models/DiplomesModel";
 import { StatusCode } from "@/types/enumStatusCode";
 
 export async function GET() {
   try {
     await connectDB();
 
-    const reviews = await ReviewModel.find({});
+    const diplomes = await DiplomesModel.find({});
 
-    if (reviews.length > 0) {
-      return httpResponse(StatusCode.Success, reviews);
+    if (diplomes) {
+      return httpResponse(StatusCode.Success, diplomes);
     }
 
     return httpResponse(StatusCode.NotFound);

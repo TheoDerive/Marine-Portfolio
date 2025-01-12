@@ -1,7 +1,6 @@
-import { pushFile } from "@/lib/github";
 import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
-import CompetancesModel from "@/models/CompetancesModel";
+import DiplomesModel from "@/models/DiplomesModel";
 import { StatusCode } from "@/types/enumStatusCode";
 import { NextRequest } from "next/server";
 
@@ -12,21 +11,18 @@ export async function POST(req: NextRequest) {
     const body = await req.formData();
     const name = body.get("name") as string;
 
-    const competanceExist = await CompetancesModel.findOne({ name: name });
+    const diplomeExist = await DiplomesModel.findOne({ name: name });
 
-    if (!competanceExist) {
-      const image = body.get("image") as string;
-      let imageName = body.get("image-name") as string;
-      imageName = imageName.split(" ").join("_");
-      const type = body.get("type") as string;
+    if (!diplomeExist) {
+      const name = body.get("name") as string;
+      const school = body.get("school") as string;
+      const description = body.get("description") as string;
 
-      if (image && imageName && name) {
-        await pushFile("competance", image, imageName);
-
-        const competance = new CompetancesModel({
-          name: name,
-          image: `/images/competance/${imageName}`,
-          type: type,
+      if (school && description && name) {
+        const competance = new DiplomesModel({
+          name,
+          school,
+          description,
         });
 
         await competance.save();

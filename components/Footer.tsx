@@ -195,6 +195,18 @@ export function Footer() {
             <span>Linkedin</span>
           </section>
         </Link>
+        <Link href={"#"} className="social-media">
+          <section className="social-media-container">
+            <span>Gmail</span>
+            <span>Gmail</span>
+          </section>
+        </Link>
+        <Link href={"#"} className="social-media">
+          <section className="social-media-container">
+            <span>Behance</span>
+            <span>Behance</span>
+          </section>
+        </Link>
       </section>
     </footer>
   );

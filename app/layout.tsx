@@ -4,6 +4,8 @@ import "../style/style.scss";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import Head from "next/head";
+import Loading from "@/components/Loading";
+import PageLayout from "@/components/PageLayout";
 
 export const metadata: Metadata = {
   title: "Marine Sicaud | Portfolio",
@@ -23,13 +25,7 @@ export default function RootLayout({
         />
       </Head>
       <body>
-        <header>
-          <Navbar />
-        </header>
-
-        <main>{children}</main>
-
-        <Footer />
+        <PageLayout>{children}</PageLayout>
       </body>
     </html>
   );

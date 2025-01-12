@@ -1,7 +1,9 @@
 import { pushFile } from "@/lib/github";
+import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
 import ProjetModel from "@/models/ProjetModel";
-import { NextRequest, NextResponse } from "next/server";
+import { StatusCode } from "@/types/enumStatusCode";
+import { NextRequest } from "next/server";
 
 type imgsContent = {
   img: string | string[];
@@ -146,32 +148,15 @@ export async function POST(req: NextRequest) {
 
         await projet.save();
 
-        return NextResponse.json({
-          message: "Votre projet a ete ajouter",
-          status: 200,
-        });
+        return httpResponse(StatusCode.Success, projet);
       }
 
-      return NextResponse.json(
-        {
-          message: "Il manque des donnees",
-          status: 404,
-        },
-        { status: 404 },
-      );
+      return httpResponse(StatusCode.UnprocessableEntity);
     }
 
-    return NextResponse.json(
-      {
-        message: "Votre projet existe deja",
-        status: 401,
-      },
-      { status: 401 },
-    );
+    return httpResponse(StatusCode.Conflict);
   } catch (error) {
     console.error("Erreur de connexion :", error);
-    return NextResponse.json({
-      error: "Impossible de se connecter à la base de données",
-    });
+    return httpResponse(StatusCode.InternalError);
   }
 }

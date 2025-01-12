@@ -1,6 +1,7 @@
+import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
 import CompetancesModel from "@/models/CompetancesModel";
-import { NextResponse } from "next/server";
+import { StatusCode } from "@/types/enumStatusCode";
 
 export async function GET() {
   try {
@@ -9,17 +10,12 @@ export async function GET() {
     const competances = await CompetancesModel.find({});
 
     if (competances) {
-      return NextResponse.json({ competances: competances, status: 200 });
+      return httpResponse(StatusCode.Success, competances);
     }
-    return NextResponse.json({
-      message: "Nous n'avons pas trouver de competances",
-      status: 404,
-    });
+
+    return httpResponse(StatusCode.NotFound);
   } catch (error) {
     console.error("Erreur de connexion :", error);
-    return NextResponse.json({
-      error: "Impossible de se connecter à la base de données",
-      status: 400,
-    });
+    return httpResponse(StatusCode.InternalError);
   }
 }

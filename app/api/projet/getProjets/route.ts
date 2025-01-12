@@ -1,6 +1,7 @@
+import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
 import ProjetModel from "@/models/ProjetModel";
-import { NextResponse } from "next/server";
+import { StatusCode } from "@/types/enumStatusCode";
 
 export async function GET() {
   try {
@@ -9,17 +10,12 @@ export async function GET() {
     const projets = await ProjetModel.find({});
 
     if (projets) {
-      return NextResponse.json({ projets: projets });
+      return httpResponse(StatusCode.Success, projets);
     }
 
-    return NextResponse.json({
-      message: "Nous n'avons pas de trouver de projet",
-      status: 404,
-    });
+    return httpResponse(StatusCode.NotFound);
   } catch (error) {
     console.error("Erreur de connexion :", error);
-    return NextResponse.json({
-      error: "Impossible de se connecter à la base de données",
-    });
+    return httpResponse(StatusCode.InternalError);
   }
 }

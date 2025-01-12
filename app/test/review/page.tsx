@@ -35,7 +35,7 @@ export default function Review() {
       formData.append("poste", reviewValues.poste);
       formData.append("message", reviewValues.message);
 
-      const response = await useFetch.UPDATEReview(reviewValues);
+      const response = await useFetch.NewReview(reviewValues);
 
       console.log(response);
     }

@@ -8,17 +8,21 @@ import { Parallax } from "@/lib/parallax";
 import { ProjetType } from "@/types/projetType";
 import useFetch from "@/hooks/useFetch";
 import Link from "next/link";
+import { useAppStore } from "@/store";
 
 export default function Projet() {
   const [projet, setProjet] = React.useState<ProjetType>();
 
   const [nextProjets, setNextProjets] = React.useState<ProjetType[]>([]);
 
+  const { isLoading, setIsLoading } = useAppStore();
+
   React.useEffect(() => {
     const id = window.location.href.split("/")[4];
 
     const fetchProjet = async () => {
       try {
+        setIsLoading(true);
         const data = await useFetch.GET("projet", id);
         setProjet(data.projet);
       } catch (error) {
@@ -30,8 +34,6 @@ export default function Projet() {
   }, []);
 
   React.useEffect(() => {
-    Parallax.bind();
-
     const fetchProjets = async () => {
       if (!projet) return;
 
@@ -41,6 +43,8 @@ export default function Projet() {
           (projetSelect: ProjetType) => projetSelect._id !== projet._id,
         );
         setNextProjets(dataFiltered.slice(0, 2));
+
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -48,6 +52,12 @@ export default function Projet() {
 
     fetchProjets();
   }, [projet]);
+
+  React.useEffect(() => {
+    if (!isLoading) {
+      Parallax.bind();
+    }
+  }, [isLoading]);
 
   return (
     <>

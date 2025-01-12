@@ -1,7 +1,9 @@
 import { deleteFile, pushFile } from "@/lib/github";
+import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
 import CompetancesModel from "@/models/CompetancesModel";
-import { NextRequest, NextResponse } from "next/server";
+import { StatusCode } from "@/types/enumStatusCode";
+import { NextRequest } from "next/server";
 
 export async function PATCH(req: NextRequest) {
   try {
@@ -13,13 +15,13 @@ export async function PATCH(req: NextRequest) {
     const competanceExist = await CompetancesModel.findOne({ name: name });
 
     if (competanceExist) {
-      await deleteFile("competance", competanceExist.image)
+      await deleteFile("competance", competanceExist.image);
 
       const image = body.get("image") as string;
       let imageName = body.get("image-name") as string;
-      imageName = imageName.split(" ").join("_")
+      imageName = imageName.split(" ").join("_");
       const type = body.get("type") as string;
-      console.log(imageName)
+      console.log(imageName);
 
       if (image && imageName && name) {
         await pushFile("competance", image, imageName);
@@ -39,32 +41,15 @@ export async function PATCH(req: NextRequest) {
           },
         );
 
-        return NextResponse.json({
-          message: "Votre competance a ete modifier",
-          status: 200,
-        });
+        return httpResponse(StatusCode.Success);
       }
 
-      return NextResponse.json(
-        {
-          message: "Il manque des donnees",
-          status: 404,
-        },
-        { status: 404 },
-      );
+      return httpResponse(StatusCode.UnprocessableEntity);
     }
 
-    return NextResponse.json(
-      {
-        message: "Votre competance n'existe pas",
-        status: 401,
-      },
-      { status: 401 },
-    );
+    return httpResponse(StatusCode.NotFound);
   } catch (error) {
     console.error("Erreur de connexion :", error);
-    return NextResponse.json({
-      error: "Impossible de se connecter à la base de données",
-    });
+    return httpResponse(StatusCode.InternalError);
   }
 }

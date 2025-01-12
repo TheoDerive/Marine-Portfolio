@@ -4,4 +4,7 @@ import { StoreInterface } from "./types/storeInterface";
 export const useAppStore = create<StoreInterface>((set) => ({
   scrollPosition: 0,
   setScrollPosition: (scrollPosition) => set({ scrollPosition }),
+
+  isLoading: true,
+  setIsLoading: (isLoading) => set({ isLoading }),
 }));

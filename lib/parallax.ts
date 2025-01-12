@@ -18,8 +18,8 @@ export class Parallax {
     window.requestAnimationFrame(() => {
       const scrollY = window.scrollY + window.innerHeight / 2;
       const diffY = scrollY - this.elementY;
-      const resultBigOne = diffY * -1 * this.ratio - window.innerHeight / 2;
-      const resultLittles = diffY * this.ratio - window.innerHeight / 2;
+      const resultLittles =
+        diffY * this.ratio - window.innerHeight / 2 + window.innerHeight / 10;
       this.element.style.transform = `translate(-50%, ${resultLittles}px)`;
     });
   }

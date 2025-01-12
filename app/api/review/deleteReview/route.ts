@@ -1,7 +1,9 @@
 import { deleteFile } from "@/lib/github";
+import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
 import ReviewModel from "@/models/ReviewModel";
-import { NextRequest, NextResponse } from "next/server";
+import { StatusCode } from "@/types/enumStatusCode";
+import { NextRequest } from "next/server";
 
 export async function DELETE(req: NextRequest) {
   try {
@@ -19,20 +21,12 @@ export async function DELETE(req: NextRequest) {
         _id: "675c2ea9d12a134f92436385",
       });
 
-      return NextResponse.json({
-        message: "Votre projet a ete supprimer",
-        status: 200,
-      });
+      return httpResponse(StatusCode.Success);
     }
 
-    return NextResponse.json({
-      message: "Nous n'avons pas trouver votre projet",
-      status: 404,
-    });
+    return httpResponse(StatusCode.NotFound);
   } catch (error) {
     console.error("Erreur de connexion :", error);
-    return NextResponse.json({
-      error: "Impossible de se connecter à la base de données",
-    });
+    return httpResponse(StatusCode.InternalError);
   }
 }

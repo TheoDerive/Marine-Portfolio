@@ -1,7 +1,6 @@
-import { deleteFile } from "@/lib/github";
 import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
-import CompetancesModel from "@/models/CompetancesModel";
+import DiplomesModel from "@/models/DiplomesModel";
 import { StatusCode } from "@/types/enumStatusCode";
 import { NextRequest } from "next/server";
 
@@ -12,11 +11,10 @@ export async function DELETE(req: NextRequest) {
     const body = await req.formData();
     const id = body.get("id");
 
-    const competanceExist = await CompetancesModel.findOne({ _id: id });
+    const diplomeExist = await DiplomesModel.findOne({ _id: id });
 
-    if (competanceExist) {
-      await deleteFile("competance", competanceExist.image);
-      await CompetancesModel.findOneAndDelete({
+    if (diplomeExist) {
+      await DiplomesModel.findOneAndDelete({
         _id: id,
       });
 

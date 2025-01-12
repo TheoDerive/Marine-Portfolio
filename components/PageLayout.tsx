@@ -1,0 +1,31 @@
+"use client";
+
+import { useAppStore } from "@/store";
+import React from "react";
+import Loading from "./Loading";
+import Navbar from "./Navbar";
+import { Footer } from "./Footer";
+
+type Props = {
+  children: React.ReactNode;
+};
+
+export default function PageLayout({ children }: Props) {
+  const { isLoading } = useAppStore();
+
+  React.useEffect(() => {}, [isLoading]);
+  return (
+    <>
+      {!isLoading ? (
+        <header>
+          <Navbar />
+        </header>
+      ) : null}
+
+      {isLoading ? <Loading /> : null}
+      {children}
+
+      {!isLoading ? <Footer /> : null}
+    </>
+  );
+}

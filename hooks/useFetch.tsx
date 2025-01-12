@@ -1,9 +1,10 @@
 import toBase64 from "@/lib/base64";
 import { CompetanceForBack } from "@/types/competanceType";
+import { DiplomeForBack, DiplomeType } from "@/types/diplomeType";
 import { ProjetForBack } from "@/types/projetType";
 import { ReviewForBack } from "@/types/reviewType";
 
-type categorieType = "competance" | "projet" | "review";
+type categorieType = "competance" | "projet" | "review" | "diplome";
 
 const imgKeys: (keyof ProjetForBack)[] = [
   "presImg",
@@ -53,6 +54,22 @@ const useFetch = {
         body: formData,
       },
     );
+    const data = await response.json();
+
+    return data;
+  },
+
+  UPDATEDiplome: async (element: DiplomeForBack) => {
+    const formData = new FormData();
+
+    formData.append("name", element.diplomeName);
+    formData.append("school", element.ecole);
+    formData.append("description", element.description);
+
+    const response = await fetch(`/api/diplome/patchDiplome`, {
+      method: "PATCH",
+      body: formData,
+    });
     const data = await response.json();
 
     return data;
@@ -257,6 +274,28 @@ const useFetch = {
       formData.append("message", element.message);
 
       const response = await fetch(`/api/review/newReview`, {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+
+      return data;
+    }
+  },
+
+  NewDiplome: async (element: DiplomeForBack) => {
+    if (
+      element.description !== "" &&
+      element.diplomeName !== "" &&
+      element.ecole !== ""
+    ) {
+      const formData = new FormData();
+
+      formData.append("name", element.diplomeName);
+      formData.append("school", element.ecole);
+      formData.append("description", element.description);
+
+      const response = await fetch(`/api/diplome/newDiplome`, {
         method: "POST",
         body: formData,
       });

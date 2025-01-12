@@ -18,7 +18,7 @@ export default function HomeProjets({ projets }: Props) {
       <section className="mobile-scroll-container">
         <section className="projets-homepage">
           {projets.map((projet, i) => (
-            <ProjetComponent key={i} />
+            <ProjetComponent key={i} projet={projet} />
           ))}
         </section>
       </section>

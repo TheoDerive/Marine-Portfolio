@@ -17,7 +17,7 @@ export default function Projets() {
       try {
         setIsLoading(true);
         const data = await useFetch.GETMultiples("projet");
-        setProjets(data.projets);
+        setProjets(data.data);
 
         setIsLoading(false);
       } catch (error) {

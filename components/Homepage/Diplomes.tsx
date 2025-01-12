@@ -12,7 +12,7 @@ export default function Diplomes({ diplomes }: { diplomes: DiplomeType[] }) {
   }, [diplomes]);
 
   function activeDiplome(diplomeId: string) {
-    const newDiplome = diplomes.map((diplome) =>
+    const newDiplome = allDiplomes.map((diplome) =>
       diplome._id === diplomeId
         ? { ...diplome, isActive: !diplome.isActive }
         : { ...diplome, isActive: false },
@@ -105,12 +105,7 @@ function Diplome({
         ref={contentRef}
         style={{ whiteSpace: "pre-line" }}
       >
-        <Markdown>
-          {diplome.description
-            .split(" ")
-            .map((w, i) => (w === "/n" ? <br key={i} /> : w))
-            .join(" ")}
-        </Markdown>
+        <Markdown>{diplome.description.replace(/\\n/g, "\n")}</Markdown>
       </section>
     </article>
   );

@@ -13,6 +13,16 @@ type Props = {
 export default function PageLayout({ children }: Props) {
   const { isLoading } = useAppStore();
 
+  const body = document.body;
+
+  React.useEffect(() => {
+    if (isLoading) {
+      body.style.overflowY = "hidden";
+    } else {
+      body.style.overflowY = "auto";
+    }
+  });
+
   React.useEffect(() => {}, [isLoading]);
   return (
     <>

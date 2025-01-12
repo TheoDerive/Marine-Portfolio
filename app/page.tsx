@@ -40,7 +40,6 @@ export default function Home() {
         setReviews(reviewsResponse.data || []);
 
         const diplomeResponse = await useFetch.GETMultiples("diplome");
-        console.log(diplomeResponse);
         setDiplomes(diplomeResponse.data);
 
         setIsLoading(false);

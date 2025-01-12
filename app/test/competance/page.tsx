@@ -2,6 +2,7 @@
 
 import useFetch from "@/hooks/useFetch";
 import toBase64 from "@/lib/base64";
+import { useAppStore } from "@/store";
 import { CompetanceForBack } from "@/types/competanceType";
 import React from "react";
 
@@ -10,8 +11,10 @@ export default function Projet() {
     React.useState<CompetanceForBack>({
       name: "",
       image: null,
-      type: "design"
+      type: "design",
     });
+
+  const { setIsLoading } = useAppStore();
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -24,16 +27,20 @@ export default function Projet() {
       formData.append("image-name", competanceValues.image.name);
       formData.append("type", competanceValues.type);
 
-const response = await useFetch.UPDATECompetance(competanceValues)
+      const response = await useFetch.NewCompetance(competanceValues);
 
       console.log(response);
     }
   }
 
+  React.useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   return (
     <form
       style={{
-        margin: "500px 0",
+        padding: "500px 0",
         display: "flex",
         flexDirection: "column",
       }}
@@ -61,6 +68,18 @@ const response = await useFetch.UPDATECompetance(competanceValues)
             : null
         }
       />
+
+      <select
+        onChange={(e) =>
+          setCompetanceValues({
+            ...competanceValues,
+            type: e.target.value,
+          })
+        }
+      >
+        <option value={"design"}>design</option>
+        <option value={"marketing"}>marketing</option>
+      </select>
 
       <button type="submit" onClick={async (e) => submit(e)}>
         Push

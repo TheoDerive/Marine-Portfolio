@@ -24,7 +24,7 @@ export default function Projet() {
       try {
         setIsLoading(true);
         const data = await useFetch.GET("projet", id);
-        setProjet(data.projet);
+        setProjet(data.data);
       } catch (error) {
         console.log(error);
       }
@@ -39,7 +39,7 @@ export default function Projet() {
 
       try {
         const data = await useFetch.GETMultiples("projet");
-        const dataFiltered = data.projets.filter(
+        const dataFiltered = data.data.filter(
           (projetSelect: ProjetType) => projetSelect._id !== projet._id,
         );
         setNextProjets(dataFiltered.slice(0, 2));

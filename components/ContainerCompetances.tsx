@@ -2,11 +2,28 @@ import React from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { getRandomNumber } from "@/lib/randomNumber";
+import useUtilities from "@/hooks/useUtilities";
 
 const colors: string[] = ["#f874d8", "#b992f9", "#ff852b"];
 
+type CompetancesProfilType = {
+  text: string;
+  color: number;
+  position: {
+    x: number;
+    y: number;
+    deg: number;
+  };
+};
+
 export default function ContainercCompetances() {
+  const [competances, setCompetances] = React.useState<CompetancesProfilType[]>(
+    [],
+  );
+
   const elementRef = React.useRef<(HTMLLIElement | null)[]>([]);
+
+  const { windowProperties } = useUtilities();
 
   useGSAP(() => {
     if (!elementRef.current) return;
@@ -25,100 +42,104 @@ export default function ContainercCompetances() {
     }
   }, [elementRef]);
 
-  const competances = [
-    {
-      text: "Perseverence",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 5,
-        y: 63,
-        deg: 50,
-      },
-    },
-    {
-      text: "Autonomie",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 40,
-        y: 50,
-        deg: 4,
-      },
-    },
+  React.useEffect(() => {
+    if (!windowProperties) return;
 
-    {
-      text: "Adatibiliter",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 58,
-        y: 39,
-        deg: 2,
+    setCompetances([
+      {
+        text: "Perseverence",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 5,
+          y: 63,
+          deg: 50,
+        },
       },
-    },
-    {
-      text: "Organiser",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 73,
-        y: 50,
-        deg: 0,
+      {
+        text: "Autonomie",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 40,
+          y: 50,
+          deg: 4,
+        },
       },
-    },
-    {
-      text: "Creativiter",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 55,
-        y: 60,
-        deg: -2,
-      },
-    },
 
-    {
-      text: "Curieusiter",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 37,
-        y: 72,
-        deg: 0,
+      {
+        text: "Adatibiliter",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 58,
+          y: 39,
+          deg: 2,
+        },
       },
-    },
-    {
-      text: "Communication",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 80,
-        y: 52,
-        deg: -30,
+      {
+        text: "Organiser",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 73,
+          y: 50,
+          deg: 0,
+        },
       },
-    },
-    {
-      text: "Leadership",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 48,
-        y: 83,
-        deg: 0,
+      {
+        text: "Creativiter",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 55,
+          y: 60,
+          deg: -2,
+        },
       },
-    },
-    {
-      text: "Autodidacte",
-      color: getRandomNumber(0, colors.length),
-      position: {
-        x: 55,
-        y: 92,
-        deg: -5,
+
+      {
+        text: "Curieusiter",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 37,
+          y: 72,
+          deg: 0,
+        },
       },
-    },
-    {
-      text: "Espris critique",
-      color: getRandomNumber(0, colors.length - 1),
-      position: {
-        x: 11,
-        y: 100 - (100 * 50) / window.innerHeight,
-        deg: 45,
+      {
+        text: "Communication",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 80,
+          y: 52,
+          deg: -30,
+        },
       },
-    },
-  ];
+      {
+        text: "Leadership",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 48,
+          y: 83,
+          deg: 0,
+        },
+      },
+      {
+        text: "Autodidacte",
+        color: getRandomNumber(0, colors.length),
+        position: {
+          x: 55,
+          y: 92,
+          deg: -5,
+        },
+      },
+      {
+        text: "Espris critique",
+        color: getRandomNumber(0, colors.length - 1),
+        position: {
+          x: 11,
+          y: 100 - (100 * 50) / windowProperties.innerHeight,
+          deg: 45,
+        },
+      },
+    ]);
+  }, [windowProperties]);
 
   function handleHover(el: React.MouseEvent<HTMLElement, MouseEvent>) {
     if (!elementRef.current) return;
@@ -126,13 +147,13 @@ export default function ContainercCompetances() {
     for (let i = 0; i < elementRef.current.length; i++) {
       const element = elementRef.current[i];
 
-      if (element && element.id !== el.target.id) {
+      if (element && element.id !== (el.target as HTMLElement).id) {
         element.classList.add("competance-active");
       }
     }
   }
 
-  function handleUnHover(el: React.MouseEvent<HTMLElement, MouseEvent>) {
+  function handleUnHover() {
     if (!elementRef.current) return;
 
     for (let i = 0; i < elementRef.current.length; i++) {
@@ -151,7 +172,9 @@ export default function ContainercCompetances() {
         {competances.map((competance, i) => {
           return (
             <li
-              ref={(el) => (elementRef.current[i] = el)}
+              ref={(el) => {
+                elementRef.current[i] = el;
+              }}
               key={i}
               id={`competance-${i}`}
               className="competance"
@@ -162,7 +185,7 @@ export default function ContainercCompetances() {
                 backgroundColor: `${colors[competance.color]}`,
               }}
               onMouseEnter={(el) => handleHover(el)}
-              onMouseLeave={(el) => handleUnHover(el)}
+              onMouseLeave={() => handleUnHover()}
             >
               {competance.text}
             </li>

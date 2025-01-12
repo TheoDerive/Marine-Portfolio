@@ -2,11 +2,11 @@ export type CompetanceType = {
   id: number;
   name: string;
   image: string;
-  type: "marketing" | "design";
+  type: string;
 };
 
 export type CompetanceForBack = {
   name: string;
   image: File | null;
-  type: "marketing" | "design";
+  type: string;
 };

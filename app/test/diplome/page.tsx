@@ -15,7 +15,6 @@ export default function Review() {
     e.preventDefault();
 
     const response = await useFetch.NewDiplome(diplomeValue);
-    console.log(response);
   }
 
   return (

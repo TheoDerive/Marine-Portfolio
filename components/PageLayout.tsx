@@ -13,9 +13,8 @@ type Props = {
 export default function PageLayout({ children }: Props) {
   const { isLoading } = useAppStore();
 
-  const body = document.body;
-
   React.useEffect(() => {
+    const body = document.body;
     if (isLoading) {
       body.style.overflowY = "hidden";
     } else {

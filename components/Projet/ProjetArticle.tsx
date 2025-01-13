@@ -11,9 +11,13 @@ export default function ProjetArticle({ projet }: { projet: ProjetType }) {
       <h2>{projet.name}</h2>
 
       <ul className="projet-article-tags-container">
-        <li className="projet-tag">Image de Marque</li>
-
-        <li className="projet-tag">Logo</li>
+        {projet.competances.map((comp, i) =>
+          comp !== "" && comp !== "[]" ? (
+            <li key={i} className="projet-tag">
+              {comp}
+            </li>
+          ) : null,
+        )}
       </ul>
       <p>{projet.description}</p>
     </Link>

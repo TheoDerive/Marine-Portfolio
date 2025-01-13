@@ -14,7 +14,6 @@ export default function Reviews({ reviews }: { reviews: ReviewType[] }) {
 
   React.useEffect(() => {
     setReviewsLength(reviews.length);
-    console.log(reviews);
   }, [reviews]);
 
   return (

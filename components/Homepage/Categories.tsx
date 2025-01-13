@@ -38,13 +38,13 @@ export default function HomeCategories() {
 
       <ul className="categories-homepage">
         <li className="categorie-homepage">
-          <Link href={"/marketing"}>Marketing</Link>
+          <span>Marketing</span>
         </li>
         <li className="categorie-homepage">
-          <Link href={"/logofolio"}>Logofolio</Link>
+          <span>Logofolio</span>
         </li>
         <li className="categorie-homepage">
-          <Link href={"/branding"}>Branding</Link>
+          <span>Branding</span>
         </li>
       </ul>
 

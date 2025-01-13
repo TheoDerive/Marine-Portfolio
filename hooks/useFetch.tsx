@@ -95,7 +95,6 @@ const useFetch = {
           const base64File = (await toBase64(file)) as string;
 
           formData.append(`${el}-${index}`, base64File);
-          console.log(`${el}-${index}`);
           formData.append(`${el}-${index}-name`, file.name);
         }
       } else {
@@ -197,7 +196,6 @@ const useFetch = {
           const base64File = (await toBase64(file)) as string;
 
           formData.append(`${el}-${index}`, base64File);
-          console.log(`${el}-${index}`);
           formData.append(`${el}-${index}-name`, file.name);
         }
       } else {

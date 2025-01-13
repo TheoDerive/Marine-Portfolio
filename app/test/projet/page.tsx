@@ -53,8 +53,7 @@ export default function Projet() {
       projetValues.ctxImg.length !== 0 &&
       projetValues.presImg
     ) {
-      const response = await useFetch.NewProjet(projetValues);
-      console.log(response);
+      await useFetch.NewProjet(projetValues);
     }
   }
 

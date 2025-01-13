@@ -520,7 +520,8 @@ body {
     }
 
     .footer-title {
-      margin: 0px 0 !important;
+      margin: 0px auto !important;
+      font-size: 11widtovw !important;
     }
   }
 
@@ -660,8 +661,12 @@ body {
     flex-direction: column;
 
     li {
-      height: 70svh !important;
+      height: 73svh !important;
     }
+  }
+
+  .next-projet-container {
+    grid: auto / 1fr !important;
   }
 
   .next-projet-title {
@@ -673,5 +678,9 @@ body {
       width: 100% !important;
       font-size: 1.2rem !important;
     }
+  }
+
+  .projets-page {
+    grid: auto / 1fr !important;
   }
 }

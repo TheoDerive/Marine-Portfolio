@@ -1,10 +1,8 @@
-import { ComponentType } from "react";
-
 export type ProjetType = {
   _id: number;
   name: string;
   description: string;
-  competances: ComponentType[];
+  competances: string[];
   client: string;
   duree: string;
   lien?: string;
@@ -23,7 +21,7 @@ export type ProjetType = {
 export type ProjetForBack = {
   name: string;
   description: string;
-  competances: ComponentType[];
+  competances: string[];
   client: string;
   duree: string;
   lien?: string;

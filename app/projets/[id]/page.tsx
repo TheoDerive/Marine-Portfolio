@@ -42,7 +42,11 @@ export default function Projet() {
         const dataFiltered = data.data.filter(
           (projetSelect: ProjetType) => projetSelect._id !== projet._id,
         );
-        setNextProjets(dataFiltered.slice(0, 2));
+        if (window && window.innerWidth < 1000) {
+          setNextProjets(dataFiltered.slice(0, 1));
+        } else {
+          setNextProjets(dataFiltered.slice(0, 2));
+        }
 
         setIsLoading(false);
       } catch (error) {
@@ -89,7 +93,9 @@ export default function Projet() {
                 </li>
               </ul>
 
-              <Link href={projet.lien || ""}>Voir le site</Link>
+              {projet.lien ? (
+                <Link href={projet.lien}>Voir le site</Link>
+              ) : null}
             </section>
           </section>
           <div className="projet-presentation-image-container">

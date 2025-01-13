@@ -27,9 +27,7 @@ export default function Projet() {
       formData.append("image-name", competanceValues.image.name);
       formData.append("type", competanceValues.type);
 
-      const response = await useFetch.NewCompetance(competanceValues);
-
-      console.log(response);
+      await useFetch.NewCompetance(competanceValues);
     }
   }
 

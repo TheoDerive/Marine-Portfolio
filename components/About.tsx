@@ -1,6 +1,7 @@
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ContainerCompetances from "./ContainerCompetances";
+import Link from "next/link";
 
 export default function About() {
   return (
@@ -13,12 +14,18 @@ export default function About() {
             </div>
             Marine Sicaud
             <div className="button-container">
-              <button className="boutton-about button-contact">
+              <Link
+                href={"mailto:marine.sicaud.pro@gmail.com"}
+                className="boutton-about button-contact"
+              >
                 Contact <FontAwesomeIcon icon={faArrowRight} />
-              </button>
-              <button className="boutton-about button-linkedin">
+              </Link>
+              <Link
+                href={"https://www.linkedin.com/in/marine-sicaud/"}
+                className="boutton-about button-linkedin"
+              >
                 Linkedin <FontAwesomeIcon icon={faArrowRight} />
-              </button>
+              </Link>
             </div>
           </div>
         </section>

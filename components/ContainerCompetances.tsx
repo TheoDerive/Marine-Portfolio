@@ -29,7 +29,6 @@ export default function ContainercCompetances() {
     if (!elementRef.current) return;
     for (let index = 0; index < elementRef.current.length; index++) {
       const el = elementRef.current[index] as HTMLElement;
-      console.log(el);
 
       gsap.from(el.style, {
         transform: `translate(-50%, -${getRandomNumber(300, 700)}%)`,

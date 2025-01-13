@@ -135,24 +135,31 @@ function MobileNav() {
 
         <ul className="navbar-onglet-container">
           <span className="close" onClick={() => close()} />
-          <li className="onglet">
-            <Link href={"/"}>Accueil</Link>
-          </li>
-          <li className="onglet ">
-            <Link href={"/profil"}>Profil</Link>
-          </li>
+          <Link href={"/"} className="onglet">
+            <span>Accueil</span>
+          </Link>
+          <Link href={"/profil"} className="onglet ">
+            <span>Profil</span>
+          </Link>
 
-          <li className="onglet ">
-            <Link href={"/projets"}>Projets</Link>
-          </li>
+          <Link href={"/projets"} className="onglet ">
+            <span>Projets</span>
+          </Link>
         </ul>
 
-        <button className="nav-button">
+        <Link
+          href={"mailto:marine.sicaud.pro@gmail.com"}
+          className="nav-button"
+        >
           Parlons-en <FontAwesomeIcon icon={faArrowRight} />
-        </button>
+        </Link>
 
         <span className="social">
-          <Link href="">Linkedin</Link>
+          <Link href="https://www.linkedin.com/in/marine-sicaud/">
+            Linkedin
+          </Link>
+          <Link href="mailto:sicaud.marine.pro@gmail.com">Gmail</Link>
+          {/* <Link href="">Behance</Link> */}
         </span>
       </section>
     </nav>

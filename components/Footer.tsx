@@ -189,24 +189,30 @@ export function Footer() {
       <h2 className="footer-title">MARINE SICAUD</h2>
 
       <section className="footer-social-media">
-        <Link href={"#"} className="social-media">
+        <Link
+          href={"https://www.linkedin.com/in/marine-sicaud/"}
+          className="social-media"
+        >
           <section className="social-media-container">
             <span>Linkedin</span>
             <span>Linkedin</span>
           </section>
         </Link>
-        <Link href={"#"} className="social-media">
+        <Link
+          href={"mailto:sicaud.marine.pro@gmail.com"}
+          className="social-media"
+        >
           <section className="social-media-container">
             <span>Gmail</span>
             <span>Gmail</span>
           </section>
         </Link>
-        <Link href={"#"} className="social-media">
-          <section className="social-media-container">
-            <span>Behance</span>
-            <span>Behance</span>
-          </section>
-        </Link>
+        {/* <Link href={"#"} className="social-media"> */}
+        {/*   <section className="social-media-container"> */}
+        {/*     <span>Behance</span> */}
+        {/*     <span>Behance</span> */}
+        {/*   </section> */}
+        {/* </Link> */}
       </section>
     </footer>
   );

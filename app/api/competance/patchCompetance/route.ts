@@ -21,7 +21,6 @@ export async function PATCH(req: NextRequest) {
       let imageName = body.get("image-name") as string;
       imageName = imageName.split(" ").join("_");
       const type = body.get("type") as string;
-      console.log(imageName);
 
       if (image && imageName && name) {
         await pushFile("competance", image, imageName);

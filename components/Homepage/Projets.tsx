@@ -34,7 +34,6 @@ export default function HomeProjets({ projets }: Props) {
             grid: `auto / ${Array.from({ length: projets.length })
               .map(() => "1fr")
               .join(" ")}`,
-            width: `${projets.length * componentWidth}px`,
           }}
         >
           {projets.map((projet, i) => (

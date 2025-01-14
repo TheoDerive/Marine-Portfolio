@@ -1,3 +1,5 @@
+import useAnimation from "@/hooks/useAnimation";
+
 export default function HomeHeader() {
   return (
     <section className="header-homepage">
@@ -11,8 +13,14 @@ export default function HomeHeader() {
 
       <div className="left">
         <h1 className="header-homepage-title">
-          Marketing <span className="header-special-word">Digital</span> <br />{" "}
-          & Communication <span className="header-point">.</span>
+          {useAnimation().letterAnimaton("Marketing ")}
+          <span className="header-special-word">
+            {useAnimation().letterAnimaton("Digital", 0.45)}
+          </span>{" "}
+          <br /> {useAnimation().letterAnimaton("& Communication", 0.9)}{" "}
+          <span className="header-point">
+            {useAnimation().letterAnimaton(".", 1.65)}
+          </span>
         </h1>
         <button className="header-homepage-button">
           Prendre Contact

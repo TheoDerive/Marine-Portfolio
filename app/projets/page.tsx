@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import gsap from "gsap";
 
 import ProjetArticle from "@/components/Projet/ProjetArticle";
 import useFetch from "@/hooks/useFetch";
@@ -10,7 +11,7 @@ import { useAppStore } from "@/store";
 export default function Projets() {
   const [projets, setProjets] = React.useState<ProjetType[]>([]);
 
-  const { setIsLoading } = useAppStore();
+  const { setIsLoading, isLoading } = useAppStore();
 
   React.useEffect(() => {
     const fetchData = async () => {
@@ -28,11 +29,29 @@ export default function Projets() {
     fetchData();
   }, []);
 
+  React.useEffect(() => {
+    const projetsElements = document.querySelectorAll(".projet-article");
+    if (projetsElements.length === 0) return;
+
+    const tl = gsap.timeline();
+
+    Array.from(projetsElements).map((el: Element) => {
+      tl.to(el, {
+        opacity: 1,
+        duration: 0.5,
+      });
+    });
+  }, [projets]);
+
   return (
-    <section className="projets-page">
-      {projets.map((projet, i) => (
-        <ProjetArticle key={i} projet={projet} />
-      ))}
-    </section>
+    <>
+      {isLoading ? null : (
+        <section className="projets-page">
+          {projets.map((projet, i) => (
+            <ProjetArticle key={i} projet={projet} />
+          ))}
+        </section>
+      )}
+    </>
   );
 }

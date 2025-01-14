@@ -26,6 +26,17 @@ body {
   overflow-x: hidden;
 }
 
+.animations {
+  .desktop-navbar {
+    top: -300px;
+    animation: nav-openning 0.7s 3.5s ease-in-out forwards;
+  }
+  .projets-homepage-container {
+    opacity: 0;
+    animation: opacityAppear 1s 4.5s forwards;
+  }
+}
+
 .section-title {
   font-size: 64px;
   text-transform: capitalize;
@@ -47,8 +58,8 @@ body {
   z-index: 999;
   transition: all 0.5s;
   position: absolute;
-  animation: nav-openning 0.7s ease-out forwards;
   left: 50%;
+  top: 20px;
   transform: translateX(-50%);
   width: 90vw;
   display: flex;
@@ -229,9 +240,7 @@ main {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 30px;
-    scale: 0;
-    animation: bounce 0.3s ease forwards;
-    animation-delay: 0.8s;
+    scale: 1;
 
     .header-homepage-title {
       font-size: 4.5rem;
@@ -261,6 +270,9 @@ main {
       gap: 10px;
       font-size: 1.05rem;
       transition: 0.3s;
+      scale: 0;
+      @include customBounce(1.2, "header-button-bounce");
+      animation: header-button-bounce 0.3s 2s forwards;
       transition-property: background, scale;
 
       .header-homepage-button-icon {
@@ -296,6 +308,24 @@ main {
           width: 50%;
         }
 
+        &:nth-child(1) {
+          scale: 0;
+          @include customBounce(1, "header-information-1");
+          animation: header-information-1 0.5s 2.4s forwards ease-out;
+        }
+
+        &:nth-child(2) {
+          scale: 0;
+          @include customBounce(1, "header-information-2");
+          animation: header-information-2 0.5s 2.7s forwards ease-out;
+        }
+
+        &:nth-child(3) {
+          scale: 0;
+          @include customBounce(1, "header-information-3");
+          animation: header-information-3 0.5s 3s forwards ease-out;
+        }
+
         .number-information {
           font-size: 40px;
           font-weight: bold;
@@ -310,11 +340,10 @@ main {
 
   .right {
     position: absolute;
-    right: 5vw;
+    right: -100%;
     z-index: -1;
-    scale: 0;
-    animation: bounce 0.3s ease forwards;
-    animation-delay: 1.2s;
+    scale: 1;
+    animation: header-right-appear 1s 3.2s ease-out forwards;
 
     &::before {
       content: "";
@@ -351,6 +380,7 @@ main {
   padding-left: 5vw;
   padding-right: 5vw;
   padding-bottom: 50px;
+  transition: opacity 1s;
 
   .section-title span {
     background: $rose;
@@ -368,40 +398,58 @@ main {
 
 // Projet
 .projet-component {
-  height: calc(90vw / 3);
   width: 100%;
   position: relative;
   border-radius: 35px;
   overflow: hidden;
   cursor: pointer;
+  min-height: 50vh;
+
+  .view-follow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 90;
+    backdrop-filter: blur(5px);
+    text-transform: uppercase;
+    opacity: 0;
+    border: 2px solid white;
+    color: white;
+    font-size: 1.5rem;
+    transition: opacity 0.2s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.1);
+      z-index: -1;
+    }
+  }
 
   img {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(1);
-    width: 100%;
-    min-height: 100%;
+    height: 100%;
     transition: transform 0.3s;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba($color: #000000, $alpha: 0.2);
-    transition: background 0.3s;
-  }
-
   &:hover {
-    cursor: url("/images/eye2.png"), auto;
-
-    &::after {
-      background: rgba($color: #000000, $alpha: 0.8);
-    }
+    cursor: none;
 
     .hover-projet {
       opacity: 1;
@@ -960,6 +1008,7 @@ footer {
     .left {
       position: relative;
       scale: 1.2;
+      animation: profil-header 1s forwards ease;
       left: 2%;
 
       &::before {
@@ -1075,9 +1124,12 @@ footer {
       font-size: 22vw;
       z-index: -50;
       left: 28vw;
+      opacity: 0;
+      transition: opacity 0.4s;
     }
 
     .container-competances {
+      scale: 0;
       width: 500px;
       height: 500px;
       border-radius: 50%;
@@ -1552,6 +1604,7 @@ footer {
   flex-direction: column;
   gap: 10px;
   cursor: pointer;
+  opacity: 0;
 
   h2 {
     font-size: 35px;
@@ -1565,11 +1618,45 @@ footer {
     border-radius: 30px;
 
     &:hover {
-      cursor: url("/images/eye2.png"), auto;
+      cursor: none;
     }
 
     &:hover img {
       height: 105%;
+    }
+
+    .view-follow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 90;
+      backdrop-filter: blur(5px);
+      text-transform: uppercase;
+      opacity: 0;
+      border: 2px solid white;
+      color: white;
+      font-size: 1.5rem;
+      transition: opacity 0.2s;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        border-radius: 50%;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.1);
+        z-index: -1;
+      }
     }
 
     img {
@@ -1614,6 +1701,20 @@ footer {
   img {
     width: 10%;
     animation: loadingImg infinite 3s;
+  }
+}
+// }
+
+// Animations {
+.letter-animation-container {
+  width: fit-content;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  .letter-animation {
+    position: relative;
+    display: inline-block;
   }
 }
 // }

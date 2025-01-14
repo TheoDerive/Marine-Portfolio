@@ -57,7 +57,7 @@ function Review({
     >
       <article className="review">
         <section className="review-information">
-          <img src={`/images/${review.imageName}`} />
+          <img src={review.image} />
           <span className="review-personne">{review.entrepriseName}</span>
           <div className="stars-container">
             {Array.from(Array(5).keys()).map((el, i) =>

@@ -11,7 +11,7 @@ import useFetch from "@/hooks/useFetch";
 export default function Profil() {
   const [diplomes, setDiplomes] = React.useState<DiplomeType[]>([]);
 
-  const { setIsLoading } = useAppStore();
+  const { setIsLoading, isLoading } = useAppStore();
 
   React.useEffect(() => {
     async function fetchingData() {
@@ -31,9 +31,13 @@ export default function Profil() {
   }, []);
   return (
     <>
-      <About />
-      <Vision />
-      <Diplomes diplomes={diplomes} />
+      {isLoading ? null : (
+        <>
+          <About />
+          <Vision />
+          <Diplomes diplomes={diplomes} />
+        </>
+      )}
     </>
   );
 }

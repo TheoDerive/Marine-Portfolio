@@ -2,6 +2,7 @@
 
 import useFetch from "@/hooks/useFetch";
 import toBase64 from "@/lib/base64";
+import { useAppStore } from "@/store";
 import { ReviewForBack } from "@/types/reviewType";
 import React from "react";
 
@@ -14,6 +15,8 @@ export default function Review() {
     poste: "",
     message: "",
   });
+
+  const { setIsLoading } = useAppStore();
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -36,13 +39,18 @@ export default function Review() {
       formData.append("message", reviewValues.message);
 
       await useFetch.NewReview(reviewValues);
+      console.log(reviewValues);
     }
   }
+
+  React.useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <form
       style={{
-        margin: "500px 0",
+        padding: "500px 0",
         display: "flex",
         flexDirection: "column",
       }}

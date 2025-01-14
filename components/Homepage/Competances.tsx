@@ -13,7 +13,7 @@ export default function HomeCompetences({
   const [isPhone, setIsPhone] = React.useState(false);
 
   React.useEffect(() => {
-    if (windowProperties && windowProperties.innerWidth <= 480) {
+    if (windowProperties && windowProperties.innerWidth <= 1000) {
       setIsPhone(true);
     }
   }, [windowProperties]);

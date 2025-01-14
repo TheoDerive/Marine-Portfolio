@@ -21,25 +21,45 @@ export default function ContainercCompetances() {
     [],
   );
 
-  const elementRef = React.useRef<(HTMLLIElement | null)[]>([]);
+  const elementRef = React.useRef<HTMLLIElement[]>([]);
+  const textRef = React.useRef<HTMLHeadingElement>(null);
+  const competanceContainerRef = React.useRef<HTMLUListElement>(null);
 
   const { windowProperties } = useUtilities();
 
   useGSAP(() => {
-    if (!elementRef.current) return;
+    if (
+      elementRef.current.length === 0 ||
+      !textRef.current ||
+      !competanceContainerRef.current
+    )
+      return;
+    const tl = gsap.timeline();
+
+    tl.to(textRef.current, {
+      opacity: 1,
+      duration: 0.3,
+      delay: 1,
+    });
+    tl.to(competanceContainerRef.current, {
+      scale: 1,
+      duration: 0.3,
+    });
     for (let index = 0; index < elementRef.current.length; index++) {
       const el = elementRef.current[index] as HTMLElement;
 
       gsap.from(el.style, {
         transform: `translate(-50%, -${getRandomNumber(300, 700)}%)`,
+        delay: 1,
       });
       gsap.to(el.style, {
         transform: `translate(-50%, -50%)`,
         duration: 2,
+        delay: 1,
         ease: "bounce.out",
       });
     }
-  }, [elementRef]);
+  }, [elementRef.current, competances, textRef, competanceContainerRef]);
 
   React.useEffect(() => {
     if (!windowProperties) return;
@@ -166,13 +186,15 @@ export default function ContainercCompetances() {
 
   return (
     <section className="container-competances-section">
-      <h2 className="profil-title-header">SKILLS</h2>
-      <ul className="container-competances">
+      <h2 className="profil-title-header" ref={textRef}>
+        SKILLS
+      </h2>
+      <ul className="container-competances" ref={competanceContainerRef}>
         {competances.map((competance, i) => {
           return (
             <li
               ref={(el) => {
-                elementRef.current[i] = el;
+                if (el) elementRef.current[i] = el;
               }}
               key={i}
               id={`competance-${i}`}

@@ -24,9 +24,7 @@ export default function RootLayout({
           content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0"
         />
       </Head>
-      <body>
-        <PageLayout>{children}</PageLayout>
-      </body>
+      <PageLayout>{children}</PageLayout>
     </html>
   );
 }

@@ -7,7 +7,6 @@ import HomeHeader from "@/components/Homepage/Header";
 import HomeProjets from "@/components/Homepage/Projets";
 import Reviews from "@/components/Homepage/Reviews";
 import useFetch from "@/hooks/useFetch";
-import useUtilities from "@/hooks/useUtilities";
 import { useAppStore } from "@/store";
 import { CompetanceType } from "@/types/competanceType";
 import { DiplomeType } from "@/types/diplomeType";
@@ -21,9 +20,7 @@ export default function Home() {
   const [reviews, setReviews] = React.useState<ReviewType[]>([]);
   const [diplomes, setDiplomes] = React.useState<DiplomeType[]>([]);
 
-  useUtilities();
-
-  const { setIsLoading } = useAppStore();
+  const { setIsLoading, isLoading } = useAppStore();
 
   React.useEffect(() => {
     async function fetchingData() {
@@ -53,12 +50,16 @@ export default function Home() {
 
   return (
     <>
-      <HomeHeader />
-      <HomeProjets projets={projets} />
-      <HomeCategories />
-      <HomeCompetences competences={competances} />
-      <Diplomes diplomes={diplomes} />
-      <Reviews reviews={reviews} />
+      {isLoading ? null : (
+        <>
+          <HomeHeader />
+          <HomeProjets projets={projets} />
+          <HomeCategories />
+          <HomeCompetences competences={competances} />
+          <Diplomes diplomes={diplomes} />
+          <Reviews reviews={reviews} />
+        </>
+      )}
     </>
   );
 }

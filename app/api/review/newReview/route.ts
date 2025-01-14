@@ -24,6 +24,7 @@ export async function POST(req: NextRequest) {
       const personne = body.get("personne");
       const poste = body.get("poste");
       const message = body.get("message");
+      console.log(imageName);
 
       if (
         image &&

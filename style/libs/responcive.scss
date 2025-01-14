@@ -245,11 +245,18 @@ body {
     }
   }
 
+  .animations {
+    .projets-homepage-container {
+      opacity: 0;
+      animation: opacityAppear 1s 3.5s forwards !important;
+    }
+  }
+
   .header-homepage {
     min-height: 80svh !important;
     height: unset !important;
-    margin-bottom: 50px;
     padding-top: 80px !important;
+    padding-bottom: 0px !important;
 
     &::after {
       display: none !important;

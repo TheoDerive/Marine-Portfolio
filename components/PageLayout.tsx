@@ -5,13 +5,17 @@ import React from "react";
 import Loading from "./Loading";
 import Navbar from "./Navbar";
 import { Footer } from "./Footer";
+import useUtilities from "@/hooks/useUtilities";
 
 type Props = {
   children: React.ReactNode;
 };
 
 export default function PageLayout({ children }: Props) {
-  const { isLoading } = useAppStore();
+  const bodyRef = React.useRef<HTMLBodyElement>(null);
+
+  const { isLoading, scrollPosition } = useAppStore();
+  const { windowProperties } = useUtilities();
 
   React.useEffect(() => {
     const body = document.body;
@@ -22,19 +26,36 @@ export default function PageLayout({ children }: Props) {
     }
   }, [isLoading]);
 
-  React.useEffect(() => {}, [isLoading]);
+  React.useEffect(() => {
+    if (!bodyRef.current || !windowProperties) return;
+
+    console.log(windowProperties.location.pathname);
+    if (windowProperties.location.pathname !== "/") {
+      bodyRef.current.classList.remove("animations");
+    }
+
+    if (
+      scrollPosition !== 0 &&
+      bodyRef.current.classList.contains("animations")
+    ) {
+      bodyRef.current.classList.remove("animations");
+    }
+  }, [scrollPosition, bodyRef, windowProperties]);
+
   return (
-    <>
+    <body className="animations" ref={bodyRef}>
       {!isLoading ? (
         <header>
           <Navbar />
         </header>
       ) : null}
 
-      {isLoading ? <Loading /> : null}
-      {children}
+      <main>
+        {isLoading ? <Loading /> : null}
+        {children}
+      </main>
 
       {!isLoading ? <Footer /> : null}
-    </>
+    </body>
   );
 }

@@ -1,6 +1,6 @@
 @keyframes nav-openning {
   0% {
-    top: -100%;
+    top: -300px;
   }
 
   100% {
@@ -8,17 +8,21 @@
   }
 }
 
-@keyframes bounce {
-  0% {
-    scale: 0;
+@keyframes opacityAppear {
+  from {
+    opacity: 0;
   }
-
-  60% {
-    scale: 1.2;
+  to {
+    opacity: 1;
   }
+}
 
-  100% {
-    scale: 1;
+@keyframes profil-header {
+  from {
+    left: -200%;
+  }
+  to {
+    left: 2%;
   }
 }
 
@@ -41,6 +45,15 @@
   }
 }
 
+@keyframes header-right-appear {
+  0% {
+    right: -50vw;
+  }
+  100% {
+    right: 5vw;
+  }
+}
+
 @mixin infiniteScrollLeft($offset, $name) {
   @keyframes #{$name} {
     from {
@@ -56,6 +69,22 @@
   @keyframes #{$name} {
     to {
       transform: translateX(calc(-100% - #{$offset}));
+    }
+  }
+}
+
+@mixin customBounce($offset, $name) {
+  @keyframes #{$name} {
+    0% {
+      scale: 0;
+    }
+
+    60% {
+      scale: calc(#{$offset} + 0.2);
+    }
+
+    100% {
+      scale: #{$offset};
     }
   }
 }

@@ -1081,12 +1081,13 @@ footer {
 
             svg {
               width: 0;
-              display: none;
-              transition: width 0.3s;
+              opacity: 0;
+              transition:  0.3s;
+              transition-property: width, opacity;
             }
 
             &:hover svg {
-              display: flex;
+              opacity: 1;
               width: 15px;
             }
           }

@@ -59,15 +59,14 @@ export default function VisionDesign() {
             <section className="vision-bottom-container">
                 <ul className="vision-competances">
                     <li>Création visuelle</li>
-                    <li>Stratégie d’acquisition</li>
-                    <li>Stratégie d’acquisition</li>
-                    <li>Stratégie d’acquisition</li>
+                    <li>Design print</li>
+                    <li>Réseaux sociaux</li>
                 </ul>
                 <ul className="vision-competances">
                     <li>Branding</li>
-                    <li>Stratégie d’acquisition</li>
-                    <li>Stratégie d’acquisition</li>
-                    <li>Stratégie d’acquisition</li>
+                    <li>Logos</li>
+                    <li>Identité visuelle</li>
+                    <li>Chartes graphiques</li>
                 </ul>
                 <ul className="vision-competances">
                     <li>Gestion créative</li>

@@ -49,7 +49,7 @@ export default function HomeHeader() {
           <li>
             <span className="number-information">+10</span>
             <span className="text-information">
-              Outils Stratégiques maitrisées
+              Outils Stratégiques maitrisés
             </span>
           </li>
         </ul>

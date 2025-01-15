@@ -157,6 +157,15 @@ export default function ContainercCompetances() {
           deg: 45,
         },
       },
+ {
+        text: "Espris d'equipe",
+        color: getRandomNumber(0, colors.length - 1),
+        position: {
+          x: 27,
+          y: 28,
+          deg: -2,
+        },
+      },
     ]);
   }, [windowProperties]);
 

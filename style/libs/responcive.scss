@@ -628,19 +628,24 @@ body {
     margin-bottom: 50px;
   }
 
+  .projet-header {
+    gap: 50px !important;
+  }
+
   .projet-informations {
-    flex-direction: column;
+    flex-direction: column ;
     align-items: flex-start !important;
     justify-content: flex-start;
     gap: 40px;
   }
 
   .projet-page-tags {
+    flex-direction: column ;
     gap: 20px !important;
     align-items: flex-start !important;
 
     .projet-tag .tag-service li {
-      width: 70%;
+      width: 100%;
     }
   }
 

@@ -8,6 +8,15 @@
   }
 }
 
+@keyframes projet-header-appear {
+  from {
+    top: -1000px
+  }
+  to {
+    top: 0
+  }
+}
+
 @keyframes opacityAppear {
   from {
     opacity: 0;

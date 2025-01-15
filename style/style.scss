@@ -35,6 +35,7 @@ body {
     opacity: 0;
     animation: opacityAppear 1s 4.5s forwards;
   }
+
 }
 
 .section-title {
@@ -1429,6 +1430,9 @@ footer {
     background: $background;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
+    position: relative;
+    animation: projet-header-appear 1s .5s forwards;
+    top: -1000px;
 
     .projet-title-container {
       h1 {
@@ -1486,6 +1490,8 @@ footer {
       width: unset;
       height: 150%;
       transform: translate(-50%, -50%);
+      animation: opacityAppear .7s 1.5s forwards;
+      opacity: 0;
     }
   }
 

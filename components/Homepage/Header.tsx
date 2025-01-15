@@ -1,4 +1,5 @@
 import useAnimation from "@/hooks/useAnimation";
+import LetterAnimation from "../LetterAnimation";
 
 export default function HomeHeader() {
   return (
@@ -13,13 +14,15 @@ export default function HomeHeader() {
 
       <div className="left">
         <h1 className="header-homepage-title">
-          {useAnimation().letterAnimaton("Marketing ")}
+          <LetterAnimation text="Marketing " />
           <span className="header-special-word">
-            {useAnimation().letterAnimaton("Digital", 0.45)}
+          <LetterAnimation text="Digital" delay={.45} />
           </span>{" "}
-          <br /> {useAnimation().letterAnimaton("& Communication", 0.9)}{" "}
+          <br />
+          <LetterAnimation text="& Communication" delay={.9} />
           <span className="header-point">
             {useAnimation().letterAnimaton(".", 1.65)}
+          <LetterAnimation text="." delay={1.65} />
           </span>
         </h1>
         <button className="header-homepage-button">

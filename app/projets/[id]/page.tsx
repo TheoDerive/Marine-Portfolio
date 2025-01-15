@@ -1,19 +1,23 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 
 import ProjetArticle from "@/components/Projet/ProjetArticle";
 import ProjetInformation from "@/components/Projet/ProjetInformation";
 import { Parallax } from "@/lib/parallax";
 import { ProjetType } from "@/types/projetType";
 import useFetch from "@/hooks/useFetch";
-import Link from "next/link";
 import { useAppStore } from "@/store";
+import LetterAnimation from "@/components/LetterAnimation";
+
 
 export default function Projet() {
   const [projet, setProjet] = React.useState<ProjetType>();
-
   const [nextProjets, setNextProjets] = React.useState<ProjetType[]>([]);
+
+  const headerRef = React.useRef<HTMLElement>(null)
+  const imagePresRef = React.useRef<HTMLImageElement>(null)
 
   const { isLoading, setIsLoading } = useAppStore();
 
@@ -63,33 +67,38 @@ export default function Projet() {
     }
   }, [isLoading]);
 
+
   return (
     <>
-      {projet ? (
+      {projet && typeof window !== "undefined" ? (
         <section className="projet-page">
-          <section className="projet-header">
+          <section className="projet-header" ref={headerRef}>
             <section className="projet-title-container">
-              <h1>{projet.name}</h1>
-              <p>{projet.description}</p>
+              <h1>
+                <LetterAnimation text={projet.name} delay={1}/>
+              </h1>
+              <p>
+                <LetterAnimation text={projet.description}  delay={1}/>
+              </p>
             </section>
 
             <section className="projet-informations">
               <ul className="projet-page-tags">
                 <li className="projet-tag">
-                  <h3 className="tag-title">Client</h3>
-                  <p>{projet.client}</p>
+                  <h3 className="tag-title"><LetterAnimation text="Client" delay={1.5}/></h3>
+                  <p><LetterAnimation text={projet.client} delay={1.5} /></p>
                 </li>
 
                 <li className="projet-tag">
-                  <h3 className="tag-title">Service</h3>
+                  <h3 className="tag-title"><LetterAnimation text="Service" delay={1.7}/></h3>
                   <ul className="tag-service">
-                    <li>{projet.service}</li>
+                    <li><LetterAnimation text={projet.service} delay={1.7} /></li>
                   </ul>
                 </li>
 
                 <li className="projet-tag">
-                  <h3 className="tag-title">Durée</h3>
-                  <p>{projet.duree}</p>
+                  <h3 className="tag-title"><LetterAnimation text="Duree" delay={1.9}/></h3>
+                  <p><LetterAnimation text={projet.client} delay={1.9} /></p>
                 </li>
               </ul>
 
@@ -100,6 +109,7 @@ export default function Projet() {
           </section>
           <div className="projet-presentation-image-container">
             <img
+            ref={imagePresRef}
               data-parallax="0.2"
               className="projet-page-image-presentation"
               src={`/images/projet/${projet.presImg}` || undefined}

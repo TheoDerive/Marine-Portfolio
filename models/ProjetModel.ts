@@ -65,6 +65,10 @@ const ProjetSchema = new Schema({
     type: String,
     require: true,
   },
+  type: {
+    type: String,
+    require: true,
+  },
 });
 
 export default mongoose.models.Projets ||

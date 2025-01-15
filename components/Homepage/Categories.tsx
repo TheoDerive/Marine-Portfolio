@@ -37,15 +37,15 @@ export default function HomeCategories() {
       </div>
 
       <ul className="categories-homepage">
-        <li className="categorie-homepage">
+        <Link href={"/projets/marketing"} className="categorie-homepage">
           <span>Marketing</span>
-        </li>
-        <li className="categorie-homepage">
+        </Link>
+        <Link href={"/projets/logofolio"} className="categorie-homepage">
           <span>Logofolio</span>
-        </li>
-        <li className="categorie-homepage">
+        </Link>
+        <Link href={"/projets/branding"} className="categorie-homepage">
           <span>Branding</span>
-        </li>
+        </Link>
       </ul>
 
       <div className="slider-container" style={{ rotate: "2deg" }}>

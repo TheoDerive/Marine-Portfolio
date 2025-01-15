@@ -35,7 +35,6 @@ body {
     opacity: 0;
     animation: opacityAppear 1s 4.5s forwards;
   }
-
 }
 
 .section-title {
@@ -188,7 +187,6 @@ main {
   flex-direction: column;
   align-items: flex-start;
   gap: 80px;
-  padding-top: 3vw;
 }
 
 .header-homepage {
@@ -745,7 +743,7 @@ main {
           left: 50%;
           transform: translateX(-50%);
           font-size: 100px;
-      color: rgba($color: #000000, $alpha: 0.7);
+          color: rgba($color: #000000, $alpha: 0.7);
           font-family: "Margin DEMO";
         }
       }
@@ -1083,7 +1081,7 @@ footer {
             svg {
               width: 0;
               opacity: 0;
-              transition:  0.3s;
+              transition: 0.3s;
               transition-property: width, opacity;
             }
 
@@ -1421,6 +1419,29 @@ footer {
 
 // Projet {
 
+.projets-page-container {
+  padding-top: 100px;
+  padding: 100px 5vw 40px 5vw;
+  width: 100vw;
+  min-height: 80vh;
+
+  .projets-page-title {
+    font-size: 2.5rem;
+  }
+
+  .projets-page {
+    padding: 50px 0 !important;
+
+    p {
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 1.2rem;
+    }
+  }
+}
+
 .projet-page {
   padding-top: 100px;
   width: 100vw;
@@ -1428,14 +1449,14 @@ footer {
   .projet-header {
     display: flex;
     flex-direction: column;
-    padding: 40px 5vw;
     gap: 100px;
     width: 100%;
+    padding: 40px 5vw;
     background: $background;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     position: relative;
-    animation: projet-header-appear 1s .5s forwards;
+    animation: projet-header-appear 1s 0.5s forwards;
     top: -1000px;
 
     .projet-title-container {
@@ -1494,7 +1515,7 @@ footer {
       width: unset;
       height: 150%;
       transform: translate(-50%, -50%);
-      animation: opacityAppear .7s 1.5s forwards;
+      animation: opacityAppear 0.7s 1.5s forwards;
       opacity: 0;
     }
   }
@@ -1517,12 +1538,73 @@ footer {
       gap: 70px;
 
       .projet-information-title {
+        position: relative;
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
 
+        .eclipse {
+          position: absolute;
+          width: 900px;
+          height: 900px;
+          top: -50px;
+
+          &-left {
+            left: -5vw;
+
+            &::after {
+              right: 50%;
+            }
+          }
+
+          &-right {
+            right: -5vw;
+
+            &::after {
+              left: 50%;
+            }
+          }
+
+          &-orange::after {
+            background: rgb(255, 133, 43);
+            background: radial-gradient(
+              circle,
+              rgba(255, 133, 43, 0.6) 30%,
+              rgba(2, 0, 36, 0) 70%
+            );
+          }
+
+          &-rose::after {
+            background: rgb(255, 133, 43);
+            background: radial-gradient(
+              circle,
+              rgba(248, 116, 216, 0.5) 0%,
+              rgba(2, 0, 36, 0) 70%
+            );
+          }
+
+          &-violet::after {
+            background: rgb(255, 133, 43);
+            background: radial-gradient(
+              circle,
+              rgba(185, 146, 249, 0.5) 0%,
+              rgba(2, 0, 36, 0) 70%
+            );
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 0%;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
+        }
+
         h3 {
+          z-index: 10;
           font-size: 40px;
           text-transform: uppercase;
         }
@@ -1707,6 +1789,41 @@ footer {
   align-items: center;
   justify-content: center;
   z-index: 999;
+  color: black;
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -40%;
+    right: -30%;
+    width: 900px;
+    height: 900px;
+    background: rgb(255, 133, 43);
+    background: radial-gradient(
+      circle,
+      rgba(255, 133, 43, 0.6) 30%,
+      rgba(2, 0, 36, 0) 70%
+    );
+    border-radius: 50%;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    bottom: -40%;
+    left: -30%;
+    width: 900px;
+    height: 900px;
+    background: rgb(248, 116, 216);
+    background: radial-gradient(
+      circle,
+      rgba(248, 116, 216, 0.7) 30%,
+      rgba(2, 0, 36, 0) 70%
+    );
+    border-radius: 50%;
+  }
 
   img {
     width: 10%;

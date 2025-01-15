@@ -11,6 +11,7 @@ export default function Projet() {
   const [projetValues, setProjetValues] = React.useState<ProjetForBack>({
     name: "",
     client: "",
+    type: "marketing",
     description: "",
     duree: "",
     lien: "",
@@ -26,14 +27,6 @@ export default function Projet() {
     solutionImg: [],
     challengeImg: [],
   });
-
-  const imgKeys: (keyof ProjetForBack)[] = [
-    "presImg",
-    "ctxImg",
-    "resultImg",
-    "solutionImg",
-    "challengeImg",
-  ];
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -94,6 +87,19 @@ export default function Projet() {
           })
         }
       />
+
+      <select
+        onChange={(e) =>
+          setProjetValues({
+            ...projetValues,
+            type: e.target.value,
+          })
+        }
+      >
+        <option value={"marketing"}>Marketing</option>
+        <option value={"branding"}>Branding</option>
+        <option value={"logofolio"}>Logofolio</option>
+      </select>
 
       <input
         type="text"

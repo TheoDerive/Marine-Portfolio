@@ -93,6 +93,7 @@ export async function POST(req: NextRequest) {
       }
 
       const description = body.get("description");
+      const type = body.get("type");
       const competances = body.get("competances");
       const client = body.get("client");
       const service = body.get("service");
@@ -129,6 +130,7 @@ export async function POST(req: NextRequest) {
 
         const projet = new ProjetModel({
           name,
+          type,
           presImg: imgs.presImg.name,
           ctxImg: imgs.ctxImg.name,
           challengeImg: imgs.challengeImg.name,

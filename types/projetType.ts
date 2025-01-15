@@ -1,5 +1,6 @@
 export type ProjetType = {
   _id: number;
+  type: string;
   name: string;
   description: string;
   competances: string[];
@@ -20,6 +21,7 @@ export type ProjetType = {
 
 export type ProjetForBack = {
   name: string;
+  type: string;
   description: string;
   competances: string[];
   client: string;

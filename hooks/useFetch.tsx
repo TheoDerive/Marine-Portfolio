@@ -210,6 +210,7 @@ const useFetch = {
     }
 
     formData.append("name", element.name);
+    formData.append("type", element.type);
     formData.append("description", element.description);
     formData.append("competances", JSON.stringify(element.competances));
     formData.append("client", element.client);

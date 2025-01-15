@@ -10,6 +10,8 @@ type Props = {
   description: string;
   image: string[];
   parallax?: number;
+  color?: "orange" | "rose" | "violet";
+  direction?: "left" | "right";
 };
 
 export default function ProjetInformation({
@@ -17,6 +19,8 @@ export default function ProjetInformation({
   description,
   image,
   parallax = 0.2,
+  color,
+  direction,
 }: Props) {
   let localCount = image.length;
   let next: number | null = null;
@@ -24,6 +28,7 @@ export default function ProjetInformation({
   return (
     <article className={`projet-information-{type} projet-informations`}>
       <section className="projet-information-title">
+        <span className={`eclipse eclipse-${direction} eclipse-${color}`} />
         <h3>{title}</h3>
         <p>{description}</p>
       </section>

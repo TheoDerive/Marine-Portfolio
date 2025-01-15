@@ -9,6 +9,9 @@ import PageLayout from "@/components/PageLayout";
 
 export const metadata: Metadata = {
   title: "Marine Sicaud | Portfolio",
+  icons: {
+    icon: "/images/logo.ico"
+  }
 };
 
 export default function RootLayout({

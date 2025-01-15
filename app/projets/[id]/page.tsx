@@ -150,7 +150,7 @@ export default function Projet() {
             <hr className="separation" />
             <section className="next-projet-container">
               {nextProjets.map((projet, i) => (
-                <ProjetArticle key={i} projet={projet} />
+                <ProjetArticle key={i} projet={projet} opacity={1}/>
               ))}
             </section>
           </section>

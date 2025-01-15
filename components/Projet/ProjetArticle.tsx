@@ -4,7 +4,7 @@ import React from "react";
 
 import { ProjetType } from "@/types/projetType";
 
-export default function ProjetArticle({ projet }: { projet: ProjetType }) {
+export default function ProjetArticle({ projet, opacity=0 }: { projet: ProjetType, opacity?: number }) {
   const [position, setPosition] = React.useState<{
     x: number;
     y: number;
@@ -53,7 +53,9 @@ export default function ProjetArticle({ projet }: { projet: ProjetType }) {
   }, [projetRef, mouseRef]);
 
   return (
-    <a href={`/projets/${projet._id}`} className="projet-article">
+    <a href={`/projets/${projet._id}`} className="projet-article" style={{
+      opacity
+    }}>
       <div className="projet-image-container" ref={projetRef}>
         <span
           className="view-follow"

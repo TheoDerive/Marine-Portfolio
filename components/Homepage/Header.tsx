@@ -1,5 +1,6 @@
 import useAnimation from "@/hooks/useAnimation";
 import LetterAnimation from "../LetterAnimation";
+import Link from "next/link";
 
 export default function HomeHeader() {
   return (
@@ -21,17 +22,16 @@ export default function HomeHeader() {
           <br />
           <LetterAnimation text="& Communication" delay={.9} />
           <span className="header-point">
-            {useAnimation().letterAnimaton(".", 1.65)}
           <LetterAnimation text="." delay={1.65} />
           </span>
         </h1>
-        <button className="header-homepage-button">
+        <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="header-homepage-button">
           Prendre Contact
           <img
             className="header-homepage-button-icon"
             src="/images/coucou-icon.png"
           />
-        </button>
+        </Link>
 
         <ul className="left-usefull-information">
           <li>

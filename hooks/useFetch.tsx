@@ -140,13 +140,20 @@ const useFetch = {
   },
 
   // Update une competances
-  UPDATECompetance: async (element: CompetanceForBack) => {
+  UPDATECompetance: async (element: CompetanceForBack, id: string) => {
     if (element.name !== "" && element.image) {
-      const base64File = (await toBase64(element.image)) as string;
       const formData = new FormData();
+      if (typeof element.image !== "string") {
+        const base64File = (await toBase64(element.image)) as string;
+        formData.append("image", base64File);
+        formData.append("image-name", element.image.name);
+      } else {
+        formData.append("image", "0");
+        formData.append("image-name", element.image);
+      }
+
       formData.append("name", element.name);
-      formData.append("image", base64File);
-      formData.append("image-name", element.image.name);
+      formData.append("id", id);
       formData.append("type", element.type);
 
       const response = await fetch(`/api/competance/patchCompetance`, {

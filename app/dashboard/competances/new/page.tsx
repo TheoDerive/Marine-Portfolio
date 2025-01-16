@@ -4,9 +4,10 @@ import useFetch from "@/hooks/useFetch";
 import toBase64 from "@/lib/base64";
 import { useAppStore } from "@/store";
 import { CompetanceForBack } from "@/types/competanceType";
+import Link from "next/link";
 import React from "react";
 
-export default function Projet() {
+export default function Competance() {
   const [competanceValues, setCompetanceValues] =
     React.useState<CompetanceForBack>({
       name: "",
@@ -14,11 +15,17 @@ export default function Projet() {
       type: "design",
     });
 
+  const [result, setResult] = React.useState({
+    message: "",
+    isError: false,
+  });
+
   const { setIsLoading } = useAppStore();
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
     if (competanceValues.name !== "" && competanceValues.image) {
+      setIsLoading(true);
       const base64File = (await toBase64(competanceValues.image)) as string;
 
       const formData = new FormData();
@@ -27,7 +34,12 @@ export default function Projet() {
       formData.append("image-name", competanceValues.image.name);
       formData.append("type", competanceValues.type);
 
-      await useFetch.NewCompetance(competanceValues);
+      const response = await useFetch.NewCompetance(competanceValues);
+      setResult({
+        message: response.message,
+        isError: response.status === 200 ? false : true,
+      });
+      setIsLoading(false);
     }
   }
 
@@ -36,13 +48,13 @@ export default function Projet() {
   }, []);
 
   return (
-    <form
-      style={{
-        padding: "500px 0",
-        display: "flex",
-        flexDirection: "column",
-      }}
-    >
+    <section className="dashboard-new-competences">
+      <Link href={"/dashboard/competances"}>Retour</Link>
+      {result.message !== "" ? (
+        <p style={result.isError ? { color: "red" } : { color: "green" }}>
+          {result.message}
+        </p>
+      ) : null}
       <input
         type="text"
         required
@@ -82,6 +94,6 @@ export default function Projet() {
       <button type="submit" onClick={async (e) => submit(e)}>
         Push
       </button>
-    </form>
+    </section>
   );
 }

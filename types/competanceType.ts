@@ -7,6 +7,6 @@ export type CompetanceType = {
 
 export type CompetanceForBack = {
   name: string;
-  image: File | null;
+  image: File | null | string;
   type: string;
 };

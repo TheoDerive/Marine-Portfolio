@@ -8,7 +8,7 @@ import useFetch from "@/hooks/useFetch";
 import Link from "next/link";
 import { CompetanceType } from "@/types/competanceType";
 
-export default function DashboardProjets() {
+export default function DashboardCompetances() {
   const [competances, setCompetances] = React.useState<CompetanceType[]>([]);
 
   const { setIsLoading, connection } = useAppStore();
@@ -50,7 +50,7 @@ export default function DashboardProjets() {
           <img className="projet-competances" src={`${competance.image}`} />
 
           <div className="projet-modifications">
-            <Link href={`/dashboard/projets/update/${competance._id}`}>
+            <Link href={`/dashboard/competances/update/${competance._id}`}>
               Modifier
             </Link>
             <button onClick={() => deleteCompetances(competance._id)}>

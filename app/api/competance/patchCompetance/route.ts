@@ -10,24 +10,33 @@ export async function PATCH(req: NextRequest) {
     await connectDB();
 
     const body = await req.formData();
-    const name = body.get("name") as string;
 
-    const competanceExist = await CompetancesModel.findOne({ name: name });
+    const id = body.get("id") as string;
+
+    const competanceExist = await CompetancesModel.findOne({ _id: id });
 
     if (competanceExist) {
-      await deleteFile("competance", competanceExist.image);
-
       const image = body.get("image") as string;
+      if (image !== "0") {
+        await deleteFile("competance", competanceExist.image);
+      }
+
+      const name = body.get("name") as string;
       let imageName = body.get("image-name") as string;
       imageName = imageName.split(" ").join("_");
       const type = body.get("type") as string;
 
       if (image && imageName && name) {
-        await pushFile("competance", image, imageName);
+        if (image !== "0") {
+          await pushFile("competance", image, imageName);
+        }
 
         const competance = {
           name: name,
-          image: `/images/competance/${imageName}`,
+          image:
+            image === "0"
+              ? competanceExist.image
+              : `/images/competance/${imageName}`,
           type: type,
         };
 

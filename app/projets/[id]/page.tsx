@@ -115,7 +115,7 @@ export default function Projet() {
                 </li>
               </ul>
 
-              {projet.lien ? (
+              {projet.lien === "" ? (
                 <Link href={projet.lien}>Voir le site</Link>
               ) : null}
             </section>

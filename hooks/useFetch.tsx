@@ -76,7 +76,7 @@ const useFetch = {
   },
 
   // Update un projet
-  UPDATEProjet: async (element: ProjetForBack) => {
+  UPDATEProjet: async (element: ProjetForBack, id: string) => {
     const formData = new FormData();
 
     // Boucler dans les index des image de element
@@ -86,31 +86,43 @@ const useFetch = {
       // Si c'est un array
       if (Array.isArray(projetElement)) {
         // Alors on recupere save sa longueur dans {el}-index
-        formData.append(`${el}-index`, `${projetElement.length}`);
+        const isString = projetElement.filter((el) => typeof el !== "string");
+        console.log(isString.length);
+        if (isString.length === 0) {
+          formData.append(`${el}-index`, "-2");
+          continue;
+        }
+
+        formData.append(`${el}-index`, `${isString.length}`);
 
         // Et ensuite on ajoute l'image, en base64, et le nom de l'image dans le FormData
-        for (let index = 0; index < projetElement.length; index++) {
+        for (let index = 0; index < isString.length; index++) {
           const file = projetElement[index];
 
           const base64File = (await toBase64(file)) as string;
 
           formData.append(`${el}-${index}`, base64File);
           formData.append(`${el}-${index}-name`, file.name);
+          console.log(file.name);
         }
       } else {
-        // Sinon on dit qu'il n'a pas de longueur ( 0 ), et on ajoute l'image et son nom
-        formData.append(`${el}-index`, "0");
+        if (typeof projetElement === "string") {
+          formData.append(`${el}-index`, "-2");
+        } else {
+          // Sinon on dit qu'il n'a pas de longueur ( -1 ), et on ajoute l'image et son nom
+          formData.append(`${el}-index`, "-1");
 
-        const base64File = (await toBase64(projetElement)) as string;
+          const base64File = (await toBase64(projetElement)) as string;
 
-        formData.append(`${el}`, base64File);
-        formData.append(`${el}-name`, projetElement.name);
+          formData.append(`${el}`, base64File);
+          formData.append(`${el}-name`, projetElement.name);
+        }
       }
     }
 
+    formData.append("id", id);
     formData.append("name", element.name);
     formData.append("description", element.description);
-    formData.append("competances", JSON.stringify(element.competances));
     formData.append("client", element.client);
     formData.append("service", element.service);
     formData.append("duree", element.duree);
@@ -212,7 +224,6 @@ const useFetch = {
     formData.append("name", element.name);
     formData.append("type", element.type);
     formData.append("description", element.description);
-    formData.append("competances", JSON.stringify(element.competances));
     formData.append("client", element.client);
     formData.append("service", element.service);
     formData.append("duree", element.duree);

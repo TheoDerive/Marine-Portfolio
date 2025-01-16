@@ -28,7 +28,7 @@ export default function Home() {
         setIsLoading(true);
 
         const projetsResponse = await useFetch.GETMultiples("projet");
-        setProjets(projetsResponse.data.slice(0, 3));
+        setProjets(projetsResponse.data.reverse().slice(0, 3));
 
         const competancesResponse = await useFetch.GETMultiples("competance");
         setCompetances(competancesResponse.data);

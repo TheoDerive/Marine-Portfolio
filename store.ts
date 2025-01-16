@@ -7,4 +7,7 @@ export const useAppStore = create<StoreInterface>((set) => ({
 
   isLoading: true,
   setIsLoading: (isLoading) => set({ isLoading }),
+
+  connection: false,
+  setConnection: (connection) => set({ connection }),
 }));

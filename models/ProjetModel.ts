@@ -45,10 +45,6 @@ const ProjetSchema = new Schema({
     type: String,
     require: true,
   },
-  competances: {
-    type: Array,
-    require: true,
-  },
   client: {
     type: String,
     require: true,
@@ -62,7 +58,7 @@ const ProjetSchema = new Schema({
     require: false,
   },
   service: {
-    type: String,
+    type: Array,
     require: true,
   },
   type: {

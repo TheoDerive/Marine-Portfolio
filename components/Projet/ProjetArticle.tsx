@@ -4,7 +4,13 @@ import React from "react";
 
 import { ProjetType } from "@/types/projetType";
 
-export default function ProjetArticle({ projet, opacity=0 }: { projet: ProjetType, opacity?: number }) {
+export default function ProjetArticle({
+  projet,
+  opacity = 0,
+}: {
+  projet: ProjetType;
+  opacity?: number;
+}) {
   const [position, setPosition] = React.useState<{
     x: number;
     y: number;
@@ -53,9 +59,13 @@ export default function ProjetArticle({ projet, opacity=0 }: { projet: ProjetTyp
   }, [projetRef, mouseRef]);
 
   return (
-    <a href={`/projets/${projet._id}`} className="projet-article" style={{
-      opacity
-    }}>
+    <a
+      href={`/projets/${projet._id}`}
+      className="projet-article"
+      style={{
+        opacity,
+      }}
+    >
       <div className="projet-image-container" ref={projetRef}>
         <span
           className="view-follow"
@@ -73,10 +83,10 @@ export default function ProjetArticle({ projet, opacity=0 }: { projet: ProjetTyp
       <h2>{projet.name}</h2>
 
       <ul className="projet-article-tags-container">
-        {projet.competances.map((comp, i) =>
-          comp !== "" && comp !== "[]" ? (
+        {projet.service.map((serv, i) =>
+          serv !== "" && serv !== "[]" ? (
             <li key={i} className="projet-tag">
-              {comp}
+              {serv}
             </li>
           ) : null,
         )}

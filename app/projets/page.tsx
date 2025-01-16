@@ -8,7 +8,7 @@ import useFetch from "@/hooks/useFetch";
 import { ProjetType } from "@/types/projetType";
 import { useAppStore } from "@/store";
 import { useGSAP } from "@gsap/react";
-import LetterAnimation from "@/components/LetterAnimation.tsx";
+import LetterAnimation from "@/components/LetterAnimation";
 
 export default function Projets() {
   const [projets, setProjets] = React.useState<ProjetType[]>([]);
@@ -58,7 +58,7 @@ export default function Projets() {
                 <ProjetArticle key={i} projet={projet} />
               ))
             ) : (
-              <p>Il y a aucun projet pour l'instant</p>
+              <p className="no-result">Il y a aucun projet pour l'instant</p>
             )}
           </section>
         </section>

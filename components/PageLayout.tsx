@@ -12,6 +12,7 @@ type Props = {
 };
 
 export default function PageLayout({ children }: Props) {
+  const [isDashboard, setIsDashboard] = React.useState(false);
   const bodyRef = React.useRef<HTMLBodyElement>(null);
 
   const { isLoading, scrollPosition } = useAppStore();
@@ -35,6 +36,14 @@ export default function PageLayout({ children }: Props) {
     }
 
     if (
+      windowProperties.location.pathname
+        .split("/")
+        .filter((el) => el === "dashboard").length > 0
+    ) {
+      setIsDashboard(true);
+    }
+
+    if (
       scrollPosition !== 0 &&
       bodyRef.current.classList.contains("animations")
     ) {
@@ -55,7 +64,7 @@ export default function PageLayout({ children }: Props) {
         {children}
       </main>
 
-      {!isLoading ? <Footer /> : null}
+      {!isLoading && !isDashboard ? <Footer /> : null}
     </body>
   );
 }

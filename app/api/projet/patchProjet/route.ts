@@ -55,9 +55,10 @@ export async function PATCH(req: NextRequest) {
 
     const body = await req.formData();
 
-    const name = body.get("name");
+    const id = body.get("id");
 
-    const projetExist = await ProjetModel.findOne({ name: name });
+    const projetExist = await ProjetModel.findOne({ _id: id });
+    console.log(projetExist);
 
     if (projetExist) {
       for (let index = 0; index < imgKeys.length; index++) {
@@ -79,7 +80,7 @@ export async function PATCH(req: NextRequest) {
 
         const indexElement = Number(body.get(`${el}-index`));
 
-        if (indexElement === 0) {
+        if (indexElement === -1) {
           const image = body.get(`${el}`);
           const name = body.get(`${el}-name`) as string;
           const imageName = name.split(" ").join("_");
@@ -89,7 +90,7 @@ export async function PATCH(req: NextRequest) {
             imgs.presImg.name = imageName as string;
           }
         } else if (
-          indexElement > 0 &&
+          indexElement >= 0 &&
           Array.isArray(imgs[el].img) &&
           Array.isArray(imgs[el].name)
         ) {
@@ -98,27 +99,30 @@ export async function PATCH(req: NextRequest) {
             const name = body.get(`${el}-${j}-name`) as string;
             const imageName = name.split(" ").join("_");
 
+            console.log(imageName);
+
             if (image && imageName) {
               imgs[el].img.push(image as string);
               imgs[el].name.push(imageName as string);
             }
           }
+        } else if (indexElement === -2) {
+          continue;
         }
       }
 
       const name = body.get("name");
       const description = body.get("description");
-      const competances = body.get("competances");
       const client = body.get("client");
       const service = body.get("service");
       const duree = body.get("duree");
       const lien = body.get("lien");
 
-      if (name && description && competances && client && service && duree) {
+      if (name && description && client && service && duree) {
         for (let index = 0; index < imgKeys.length; index++) {
           const el = imgKeys[index];
 
-          if (el === "presImg") {
+          if (el === "presImg" && imgs[el].img && imgs[el].name) {
             await pushFile(
               "projet",
               imgs[el].img as string,
@@ -140,13 +144,22 @@ export async function PATCH(req: NextRequest) {
 
         const projet = {
           name,
-          presImg: imgs.presImg.name,
-          ctxImg: imgs.ctxImg.name,
-          challengeImg: imgs.challengeImg.name,
-          solutionImg: imgs.solutionImg.name,
-          resultImg: imgs.resultImg.name,
+          presImg: imgs.presImg.name ? imgs.presImg.name : projetExist.presImg,
+          ctxImg:
+            imgs.ctxImg.name.length > 0 ? imgs.ctxImg.name : projetExist.ctxImg,
+          challengeImg:
+            imgs.challengeImg.name.length > 0
+              ? imgs.challengeImg.name
+              : projetExist.challengeImg,
+          solutionImg:
+            imgs.solutionImg.name.length > 0
+              ? imgs.solutionImg.name
+              : projetExist.solutionImg,
+          resultImg:
+            imgs.resultImg.name.length > 0
+              ? imgs.resultImg.name
+              : projetExist.resultImg,
           description: description,
-          competances: competances,
           client: client,
           duree: duree,
           lien: lien ? lien : null,

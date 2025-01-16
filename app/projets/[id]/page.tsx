@@ -2,7 +2,6 @@
 
 import React from "react";
 import Link from "next/link";
-
 import ProjetArticle from "@/components/Projet/ProjetArticle";
 import ProjetInformation from "@/components/Projet/ProjetInformation";
 import { Parallax } from "@/lib/parallax";
@@ -96,9 +95,13 @@ export default function Projet() {
                     <LetterAnimation text="Service" delay={1.7} />
                   </h3>
                   <ul className="tag-service">
-                    <li>
-                      <LetterAnimation text={projet.service} delay={1.7} />
-                    </li>
+                    {projet.service.map((serv, i) => {
+                      return (
+                        <li key={i}>
+                          <LetterAnimation text={serv} delay={1.7} />
+                        </li>
+                      );
+                    })}
                   </ul>
                 </li>
 
@@ -157,21 +160,23 @@ export default function Projet() {
             />
           </section>
 
-          <section className="next-projet">
-            <section className="next-projet-title">
-              <h3>Projets Suivants</h3>
-              <p>
-                View our other projects works that highlight our range of skills
-                and innovative design solutions
-              </p>
+          {nextProjets.length > 0 ? (
+            <section className="next-projet">
+              <section className="next-projet-title">
+                <h3>Projets Suivants</h3>
+                <p>
+                  View our other projects works that highlight our range of
+                  skills and innovative design solutions
+                </p>
+              </section>
+              <hr className="separation" />
+              <section className="next-projet-container">
+                {nextProjets.map((projet, i) => (
+                  <ProjetArticle key={i} projet={projet} opacity={1} />
+                ))}
+              </section>
             </section>
-            <hr className="separation" />
-            <section className="next-projet-container">
-              {nextProjets.map((projet, i) => (
-                <ProjetArticle key={i} projet={projet} opacity={1} />
-              ))}
-            </section>
-          </section>
+          ) : null}
         </section>
       ) : null}
     </>

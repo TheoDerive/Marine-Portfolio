@@ -66,7 +66,7 @@ export default function ContainercCompetances() {
 
     setCompetances([
       {
-        text: "Perseverence",
+        text: "Persévérance",
         color: getRandomNumber(0, colors.length),
         position: {
           x: 5,
@@ -85,7 +85,7 @@ export default function ContainercCompetances() {
       },
 
       {
-        text: "Adatibiliter",
+        text: "Adaptabilité",
         color: getRandomNumber(0, colors.length),
         position: {
           x: 58,
@@ -103,7 +103,7 @@ export default function ContainercCompetances() {
         },
       },
       {
-        text: "Creativiter",
+        text: "Créativité",
         color: getRandomNumber(0, colors.length),
         position: {
           x: 55,
@@ -149,7 +149,7 @@ export default function ContainercCompetances() {
         },
       },
       {
-        text: "Espris critique",
+        text: "Esprit critique",
         color: getRandomNumber(0, colors.length - 1),
         position: {
           x: 11,
@@ -157,8 +157,8 @@ export default function ContainercCompetances() {
           deg: 45,
         },
       },
- {
-        text: "Espris d'equipe",
+      {
+        text: "Esprit d'équipe",
         color: getRandomNumber(0, colors.length - 1),
         position: {
           x: 27,

@@ -23,7 +23,6 @@ export default function Projet() {
     resultImg: [],
     presImg: null,
     service: "",
-    competances: [],
     solutionImg: [],
     challengeImg: [],
   });

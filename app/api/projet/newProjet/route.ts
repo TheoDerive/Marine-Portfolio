@@ -94,7 +94,6 @@ export async function POST(req: NextRequest) {
 
       const description = body.get("description");
       const type = body.get("type");
-      const competances = body.get("competances");
       const client = body.get("client");
       const service = body.get("service");
       const duree = body.get("duree");
@@ -104,7 +103,7 @@ export async function POST(req: NextRequest) {
       const solutionDesc = body.get("solutionDesc");
       const resultDesc = body.get("resultDesc");
 
-      if (name && description && competances && client && service && duree) {
+      if (name && description && client && service && duree) {
         for (let index = 0; index < imgKeys.length; index++) {
           const el = imgKeys[index];
 
@@ -128,6 +127,8 @@ export async function POST(req: NextRequest) {
           }
         }
 
+        const services = service as string;
+
         const projet = new ProjetModel({
           name,
           type,
@@ -137,11 +138,10 @@ export async function POST(req: NextRequest) {
           solutionImg: imgs.solutionImg.name,
           resultImg: imgs.resultImg.name,
           description: description,
-          competances: competances,
           client: client,
           duree: duree,
           lien: lien ? lien : null,
-          service: service,
+          service: services.split("/"),
           ctxDesc: ctxDesc,
           challengeDesc: challengeDesc,
           solutionDesc: solutionDesc,

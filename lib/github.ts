@@ -48,6 +48,7 @@ export async function deleteFile(
   let url = "";
   let name = "";
 
+  console.log(filename, filepath);
   if (filepath) {
     const filepathSplit = filepath.split("/");
     const filename = filepathSplit[filepathSplit.length - 1];

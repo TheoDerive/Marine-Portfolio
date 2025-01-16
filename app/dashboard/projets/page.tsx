@@ -32,6 +32,7 @@ export default function DashboardProjets() {
     try {
       const response = await useFetch.GETMultiples("projet");
       setProjets(response.data.reverse());
+      console.log(response.data);
     } catch (error) {
       console.error(error);
     }

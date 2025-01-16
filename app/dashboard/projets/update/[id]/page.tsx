@@ -86,7 +86,9 @@ export default function DashboardUpdateProjet() {
     fetchData();
   }, [windowProperties]);
 
-  React.useEffect(() => {}, []);
+  React.useEffect(() => {
+    console.log(projetValues);
+  }, [projetValues]);
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();

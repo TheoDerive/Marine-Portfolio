@@ -58,7 +58,6 @@ export async function PATCH(req: NextRequest) {
     const id = body.get("id");
 
     const projetExist = await ProjetModel.findOne({ _id: id });
-    console.log(projetExist);
 
     if (projetExist) {
       for (let index = 0; index < imgKeys.length; index++) {
@@ -68,6 +67,8 @@ export async function PATCH(req: NextRequest) {
         if (Array.isArray(imgEl)) {
           for (let j = 0; j < imgEl.length; j++) {
             const element = imgEl[j];
+            console.log(element);
+
             await deleteFile("projet", undefined, element);
           }
         } else {
@@ -79,6 +80,7 @@ export async function PATCH(req: NextRequest) {
         const el = imgKeys[index];
 
         const indexElement = Number(body.get(`${el}-index`));
+        console.log(el, indexElement);
 
         if (indexElement === -1) {
           const image = body.get(`${el}`);
@@ -98,8 +100,6 @@ export async function PATCH(req: NextRequest) {
             const image = body.get(`${el}-${j}`);
             const name = body.get(`${el}-${j}-name`) as string;
             const imageName = name.split(" ").join("_");
-
-            console.log(imageName);
 
             if (image && imageName) {
               imgs[el].img.push(image as string);
@@ -142,11 +142,13 @@ export async function PATCH(req: NextRequest) {
           }
         }
 
+        const ctx =
+          imgs.ctxImg.name.length > 0 ? imgs.presImg.name : projetExist.ctxImg;
+
         const projet = {
           name,
           presImg: imgs.presImg.name ? imgs.presImg.name : projetExist.presImg,
-          ctxImg:
-            imgs.ctxImg.name.length > 0 ? imgs.ctxImg.name : projetExist.ctxImg,
+          ctxImg: ctx,
           challengeImg:
             imgs.challengeImg.name.length > 0
               ? imgs.challengeImg.name

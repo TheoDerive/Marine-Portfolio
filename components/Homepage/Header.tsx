@@ -15,7 +15,7 @@ export default function HomeHeader() {
 
       <div className="left">
         <h1 className="header-homepage-title">
-          <LetterAnimation text="Marketing " />
+          <LetterAnimation text="Marketing " delay={.3}/> {' '}
           <span className="header-special-word">
           <LetterAnimation text="Digital" delay={.45} />
           </span>{" "}
@@ -26,7 +26,7 @@ export default function HomeHeader() {
           </span>
         </h1>
         <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="header-homepage-button">
-          Prendre Contact
+          Contactez-moi
           <img
             className="header-homepage-button-icon"
             src="/images/coucou-icon.png"
@@ -35,22 +35,25 @@ export default function HomeHeader() {
 
         <ul className="left-usefull-information">
           <li>
-            <span className="number-information">+10</span>
+            <span className="number-information"><LetterAnimation text="+10" delay={2.3} /></span>
             <span className="text-information">
-              Stratégies marketing conçues et présentées
+              <LetterAnimation text="Stratégies marketing conçues et présentées" delay={2.3}/>
             </span>
           </li>
 
           <li>
-            <span className="number-information">+5</span>
-            <span className="text-information">Certifications obtenues</span>
+            <span className="number-information"><LetterAnimation text="+5" delay={2.3} /></span>
+            <span className="text-information">
+              <LetterAnimation text="Certifications obtenues" delay={2.3}/>
+            </span>
           </li>
 
           <li>
-            <span className="number-information">+10</span>
+            <span className="number-information"><LetterAnimation text="+10" delay={2.3} /></span>
             <span className="text-information">
-              Outils Stratégiques maitrisés
+              <LetterAnimation text="Outils Stratégiques maitrisés" delay={2.3}/>
             </span>
+              
           </li>
         </ul>
       </div>

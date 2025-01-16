@@ -14,9 +14,10 @@ export default function useAnimation() {
       if (!el) return;
 
       gsap.to(el, {
+        opacity: 1,
         y: 0,
-        duration: 0.2,
-        delay: delayRef.current + i / 20,
+        duration: 0.5,
+        delay: delayRef.current,
       });
     });
   }, [lettersRef.current]);
@@ -31,7 +32,7 @@ export default function useAnimation() {
 
     return (
       <>
-        {word.split("").map((w, i) =>
+        {word.split(" ").map((w, i) =>
           w !== " " ? (
             <span key={i} className="letter-animation-container">
               <span
@@ -41,6 +42,7 @@ export default function useAnimation() {
                 }}
                 style={{
                   transform: "translateY(200px)",
+                  opacity: "0"
                 }}
               >
                 {w}

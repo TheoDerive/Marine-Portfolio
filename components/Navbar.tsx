@@ -76,13 +76,13 @@ function DesktopNav() {
         <li
           className={`onglet onglet-rose ${activeOnglet.profil ? "onglet-active" : ""}`}
         >
-          <Link href={"/profil"}>Profil</Link>
+          <Link href={"/profil"}>Mon profil</Link>
         </li>
 
         <li
           className={`onglet onglet-orange ${activeOnglet.projets ? "onglet-active" : ""}`}
         >
-          <Link href={"/projets"}>Projets</Link>
+          <Link href={"/projets"}>Mes projets</Link>
         </li>
 
         <li className="onglet contact">

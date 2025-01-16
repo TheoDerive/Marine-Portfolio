@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { getRandomNumber } from "@/lib/randomNumber";
 import useUtilities from "@/hooks/useUtilities";
+import LetterAnimation from "./LetterAnimation";
 
 const colors: string[] = ["#f874d8", "#b992f9", "#ff852b"];
 
@@ -196,7 +197,7 @@ export default function ContainercCompetances() {
   return (
     <section className="container-competances-section">
       <h2 className="profil-title-header" ref={textRef}>
-        SKILLS
+        <LetterAnimation text="SKILLS" />
       </h2>
       <ul className="container-competances" ref={competanceContainerRef}>
         {competances.map((competance, i) => {

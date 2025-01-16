@@ -15,17 +15,20 @@ export default function HomeHeader() {
 
       <div className="left">
         <h1 className="header-homepage-title">
-          <LetterAnimation text="Marketing " delay={.3}/> {' '}
+          <LetterAnimation text="Marketing " delay={0.3} />
           <span className="header-special-word">
-          <LetterAnimation text="Digital" delay={.45} />
-          </span>{" "}
+            <LetterAnimation text="Digital" delay={0.45} />
+          </span>
           <br />
-          <LetterAnimation text="& Communication" delay={.9} />
+          <LetterAnimation text="& Communication" delay={0.9} />
           <span className="header-point">
-          <LetterAnimation text="." delay={1.65} />
+            <LetterAnimation text="." delay={1.65} />
           </span>
         </h1>
-        <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="header-homepage-button">
+        <Link
+          href={"mailto:sicaud.marine.pro@gmail.com"}
+          className="header-homepage-button"
+        >
           Contactez-moi
           <img
             className="header-homepage-button-icon"
@@ -35,25 +38,36 @@ export default function HomeHeader() {
 
         <ul className="left-usefull-information">
           <li>
-            <span className="number-information"><LetterAnimation text="+10" delay={2.3} /></span>
+            <span className="number-information">
+              <LetterAnimation text="+10" delay={2.3} />
+            </span>
             <span className="text-information">
-              <LetterAnimation text="Stratégies marketing conçues et présentées" delay={2.3}/>
+              <LetterAnimation
+                text="Stratégies marketing conçues et présentées"
+                delay={2.3}
+              />
             </span>
           </li>
 
           <li>
-            <span className="number-information"><LetterAnimation text="+5" delay={2.3} /></span>
+            <span className="number-information">
+              <LetterAnimation text="+5" delay={2.3} />
+            </span>
             <span className="text-information">
-              <LetterAnimation text="Certifications obtenues" delay={2.3}/>
+              <LetterAnimation text="Certifications obtenues" delay={2.3} />
             </span>
           </li>
 
           <li>
-            <span className="number-information"><LetterAnimation text="+10" delay={2.3} /></span>
-            <span className="text-information">
-              <LetterAnimation text="Outils Stratégiques maitrisés" delay={2.3}/>
+            <span className="number-information">
+              <LetterAnimation text="+10" delay={2.3} />
             </span>
-              
+            <span className="text-information">
+              <LetterAnimation
+                text="Outils Stratégiques maitrisés"
+                delay={2.3}
+              />
+            </span>
           </li>
         </ul>
       </div>

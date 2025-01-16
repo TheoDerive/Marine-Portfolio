@@ -3,43 +3,31 @@
 import useFetch from "@/hooks/useFetch";
 import toBase64 from "@/lib/base64";
 import { useAppStore } from "@/store";
-import { ReviewForBack } from "@/types/reviewType";
+import { CompetanceForBack } from "@/types/competanceType";
 import React from "react";
 
-export default function Review() {
-  const [reviewValues, setReviewValues] = React.useState<ReviewForBack>({
-    imageName: null,
-    entrepriseName: "",
-    stars: 0,
-    personne: "",
-    poste: "",
-    message: "",
-  });
+export default function Projet() {
+  const [competanceValues, setCompetanceValues] =
+    React.useState<CompetanceForBack>({
+      name: "",
+      image: null,
+      type: "design",
+    });
 
   const { setIsLoading } = useAppStore();
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
-    if (
-      reviewValues.imageName &&
-      reviewValues.entrepriseName !== "" &&
-      reviewValues.personne !== "" &&
-      reviewValues.poste !== "" &&
-      reviewValues.message !== ""
-    ) {
-      const base64File = (await toBase64(reviewValues.imageName)) as string;
+    if (competanceValues.name !== "" && competanceValues.image) {
+      const base64File = (await toBase64(competanceValues.image)) as string;
 
       const formData = new FormData();
-      formData.append("entreprise", reviewValues.entrepriseName);
+      formData.append("name", competanceValues.name);
       formData.append("image", base64File);
-      formData.append("image-name", reviewValues.imageName.name);
-      formData.append("stars", reviewValues.stars.toString());
-      formData.append("personne", reviewValues.personne);
-      formData.append("poste", reviewValues.poste);
-      formData.append("message", reviewValues.message);
+      formData.append("image-name", competanceValues.image.name);
+      formData.append("type", competanceValues.type);
 
-      await useFetch.NewReview(reviewValues);
-      console.log(reviewValues);
+      await useFetch.NewCompetance(competanceValues);
     }
   }
 
@@ -59,9 +47,9 @@ export default function Review() {
         type="text"
         required
         onChange={(e) =>
-          setReviewValues({
-            ...reviewValues,
-            entrepriseName: e.target.value,
+          setCompetanceValues({
+            ...competanceValues,
+            name: e.target.value,
           })
         }
       />
@@ -71,57 +59,25 @@ export default function Review() {
         required
         onChange={(e) =>
           e.target.files
-            ? setReviewValues({
-                ...reviewValues,
-                imageName: e.target.files[0],
+            ? setCompetanceValues({
+                ...competanceValues,
+                image: e.target.files[0],
               })
             : null
         }
       />
 
-      <input
-        type="text"
-        required
+      <select
         onChange={(e) =>
-          setReviewValues({
-            ...reviewValues,
-            personne: e.target.value,
+          setCompetanceValues({
+            ...competanceValues,
+            type: e.target.value,
           })
         }
-      />
-
-      <input
-        type="text"
-        required
-        onChange={(e) =>
-          setReviewValues({
-            ...reviewValues,
-            poste: e.target.value,
-          })
-        }
-      />
-
-      <input
-        type="text"
-        required
-        onChange={(e) =>
-          setReviewValues({
-            ...reviewValues,
-            message: e.target.value,
-          })
-        }
-      />
-
-      <input
-        type="number"
-        required
-        onChange={(e) =>
-          setReviewValues({
-            ...reviewValues,
-            stars: Number(e.target.value),
-          })
-        }
-      />
+      >
+        <option value={"design"}>design</option>
+        <option value={"marketing"}>marketing</option>
+      </select>
 
       <button type="submit" onClick={async (e) => submit(e)}>
         Push

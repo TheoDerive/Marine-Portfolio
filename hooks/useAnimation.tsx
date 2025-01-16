@@ -42,10 +42,13 @@ export default function useAnimation() {
                 }}
                 style={{
                   transform: "translateY(200px)",
-                  opacity: "0"
+                  opacity: "0",
                 }}
               >
                 {w}
+              </span>
+              <span className="space" style={{ width: ".5rem" }}>
+                &nbsp;
               </span>
             </span>
           ) : (

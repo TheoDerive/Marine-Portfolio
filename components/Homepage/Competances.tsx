@@ -21,7 +21,7 @@ export default function HomeCompetences({
   return (
     <>
       {isPhone ? (
-        <MobileCompetances />
+        <MobileCompetances competences={competences} />
       ) : (
         <DesktopCompetances competences={competences} />
       )}
@@ -64,7 +64,9 @@ function DesktopCompetances({
   );
 }
 
-function MobileCompetances() {
+function MobileCompetances({ competences }: { competences: CompetanceType[] }) {
+  const designComp = competences.filter((comp) => comp.type === "design");
+  const marketingComp = competences.filter((comp) => comp.type === "marketing");
   return (
     <section className="competences-homepage-container">
       <h3 className="section-title">
@@ -73,109 +75,39 @@ function MobileCompetances() {
 
       <section className="design-scroll-container">
         <ul className="competences-homepage">
-          <li>
-            <img src="/images/Photoshop.png" />
-            Photoshop
-          </li>
-
-          <li>
-            <img src="/images/Illustrator.png" />
-            Illustrator
-          </li>
-          <li>
-            <img src="/images/InDesign.png" />
-            InDesign
-          </li>
-
-          <li>
-            <img src="/images/Canva.png" />
-            Canva
-          </li>
-
-          <li>
-            <img src="/images/Figma.png" />
-            Figma
-          </li>
+          {designComp.map((comp, i) => (
+            <li key={i}>
+              <img src={comp.image} />
+              {comp.name}
+            </li>
+          ))}
         </ul>
         <ul className="competences-homepage">
-          <li>
-            <img src="/images/Photoshop.png" />
-            Photoshop
-          </li>
-
-          <li>
-            <img src="/images/Illustrator.png" />
-            Illustrator
-          </li>
-          <li>
-            <img src="/images/InDesign.png" />
-            InDesign
-          </li>
-
-          <li>
-            <img src="/images/Canva.png" />
-            Canva
-          </li>
-
-          <li>
-            <img src="/images/Figma.png" />
-            Figma
-          </li>
+          {designComp.map((comp, i) => (
+            <li key={i}>
+              <img src={comp.image} />
+              {comp.name}
+            </li>
+          ))}
         </ul>
       </section>
 
       <section className="marketing-scroll-container">
         <ul className="competences-homepage">
-          <li>
-            <img src="/images/Semrush.png" />
-            Semrush
-          </li>
-
-          <li>
-            <img src="/images/Wordpress.png" />
-            Wordpress
-          </li>
-
-          <li>
-            <img src="/images/Notion.png" />
-            Notion
-          </li>
-
-          <li>
-            <img src="/images/Hubspot.png" />
-            Hubspot
-          </li>
-
-          <li>
-            <img src="/images/Mailchimp.png" />
-            Mailchimp
-          </li>
+          {marketingComp.map((comp, i) => (
+            <li key={i}>
+              <img src={comp.image} />
+              {comp.name}
+            </li>
+          ))}
         </ul>
         <ul className="competences-homepage">
-          <li>
-            <img src="/images/Semrush.png" />
-            Semrush
-          </li>
-
-          <li>
-            <img src="/images/Wordpress.png" />
-            Wordpress
-          </li>
-
-          <li>
-            <img src="/images/Notion.png" />
-            Notion
-          </li>
-
-          <li>
-            <img src="/images/Hubspot.png" />
-            Hubspot
-          </li>
-
-          <li>
-            <img src="/images/Mailchimp.png" />
-            Mailchimp
-          </li>
+          {marketingComp.map((comp, i) => (
+            <li key={i}>
+              <img src={comp.image} />
+              {comp.name}
+            </li>
+          ))}
         </ul>
       </section>
     </section>

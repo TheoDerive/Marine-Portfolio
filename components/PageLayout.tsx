@@ -33,7 +33,6 @@ export default function PageLayout({ children }: Props) {
   React.useEffect(() => {
     if (!bodyRef.current || !windowProperties) return;
 
-    console.log(pathname, windowProperties.location.pathname);
     if (pathname !== "/") {
       bodyRef.current.classList.remove("animations");
     }

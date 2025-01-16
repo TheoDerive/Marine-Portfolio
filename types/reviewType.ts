@@ -1,5 +1,5 @@
 export type ReviewType = {
-  id: number;
+  id: string;
   image: string;
   entrepriseName: string;
   stars: number;
@@ -9,7 +9,7 @@ export type ReviewType = {
 };
 
 export type ReviewForBack = {
-  imageName: File | null;
+  imageName: File | null | string;
   entrepriseName: string;
   stars: number;
   personne: string;

@@ -16,6 +16,8 @@ export default function PageLayout({ children }: Props) {
   const [isDashboard, setIsDashboard] = React.useState(false);
   const bodyRef = React.useRef<HTMLBodyElement>(null);
 
+  const pathname = usePathname();
+
   const { isLoading, scrollPosition } = useAppStore();
   const { windowProperties } = useUtilities();
 
@@ -31,7 +33,7 @@ export default function PageLayout({ children }: Props) {
   React.useEffect(() => {
     if (!bodyRef.current || !windowProperties) return;
 
-    if (windowProperties.location.pathname !== "/") {
+    if (pathname !== "/") {
       bodyRef.current.classList.remove("animations");
     }
 
@@ -49,7 +51,7 @@ export default function PageLayout({ children }: Props) {
     ) {
       bodyRef.current.classList.remove("animations");
     }
-  }, [scrollPosition, bodyRef, windowProperties]);
+  }, [scrollPosition, bodyRef, pathname, windowProperties]);
 
   return (
     <body className="animations" ref={bodyRef}>

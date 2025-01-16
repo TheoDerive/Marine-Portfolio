@@ -31,7 +31,7 @@ export default function useAnimation() {
 
     return (
       <>
-        {word.split("").map((w, i) =>
+        {word.split(" ").map((w, i) =>
           w !== " " ? (
             <span key={i} className="letter-animation-container">
               <span

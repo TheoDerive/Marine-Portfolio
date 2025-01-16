@@ -6,7 +6,7 @@ import Loading from "./Loading";
 import Navbar from "./Navbar";
 import { Footer } from "./Footer";
 import useUtilities from "@/hooks/useUtilities";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 type Props = {
   children: React.ReactNode;
@@ -33,6 +33,7 @@ export default function PageLayout({ children }: Props) {
   React.useEffect(() => {
     if (!bodyRef.current || !windowProperties) return;
 
+    console.log(pathname, windowProperties.location.pathname);
     if (pathname !== "/") {
       bodyRef.current.classList.remove("animations");
     }

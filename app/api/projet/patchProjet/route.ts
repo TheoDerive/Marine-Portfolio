@@ -26,30 +26,29 @@ const imgKeys: (keyof imgsIndex)[] = [
   "challengeImg",
 ];
 
-const imgs: imgsIndex = {
-  presImg: {
-    img: "",
-    name: "",
-  },
-  ctxImg: {
-    img: [],
-    name: [],
-  },
-  challengeImg: {
-    img: [],
-    name: [],
-  },
-  solutionImg: {
-    img: [],
-    name: [],
-  },
-  resultImg: {
-    img: [],
-    name: [],
-  },
-};
-
 export async function PATCH(req: NextRequest) {
+  const imgs: imgsIndex = {
+    presImg: {
+      img: "",
+      name: "",
+    },
+    ctxImg: {
+      img: [],
+      name: [],
+    },
+    challengeImg: {
+      img: [],
+      name: [],
+    },
+    solutionImg: {
+      img: [],
+      name: [],
+    },
+    resultImg: {
+      img: [],
+      name: [],
+    },
+  };
   try {
     await connectDB();
 
@@ -67,7 +66,6 @@ export async function PATCH(req: NextRequest) {
         if (Array.isArray(imgEl)) {
           for (let j = 0; j < imgEl.length; j++) {
             const element = imgEl[j];
-            console.log(element);
 
             await deleteFile("projet", undefined, element);
           }
@@ -80,7 +78,6 @@ export async function PATCH(req: NextRequest) {
         const el = imgKeys[index];
 
         const indexElement = Number(body.get(`${el}-index`));
-        console.log(el, indexElement);
 
         if (indexElement === -1) {
           const image = body.get(`${el}`);
@@ -142,25 +139,33 @@ export async function PATCH(req: NextRequest) {
           }
         }
 
+        const pres =
+          imgs.presImg.name.length > 0
+            ? imgs.presImg.name
+            : projetExist.presImg;
         const ctx =
-          imgs.ctxImg.name.length > 0 ? imgs.presImg.name : projetExist.ctxImg;
+          imgs.ctxImg.name.length > 0 ? imgs.ctxImg.name : projetExist.ctxImg;
+        const challenge =
+          imgs.challengeImg.name.length > 0
+            ? imgs.challengeImg.name
+            : projetExist.challengeImg;
+        const solution =
+          imgs.solutionImg.name.length > 0
+            ? imgs.solutionImg.name
+            : projetExist.solutionImg;
+
+        const result =
+          imgs.resultImg.name.length > 0
+            ? imgs.resultImg.name
+            : projetExist.resultImg;
 
         const projet = {
           name,
-          presImg: imgs.presImg.name ? imgs.presImg.name : projetExist.presImg,
+          presImg: pres,
           ctxImg: ctx,
-          challengeImg:
-            imgs.challengeImg.name.length > 0
-              ? imgs.challengeImg.name
-              : projetExist.challengeImg,
-          solutionImg:
-            imgs.solutionImg.name.length > 0
-              ? imgs.solutionImg.name
-              : projetExist.solutionImg,
-          resultImg:
-            imgs.resultImg.name.length > 0
-              ? imgs.resultImg.name
-              : projetExist.resultImg,
+          challengeImg: challenge,
+          solutionImg: solution,
+          resultImg: result,
           description: description,
           client: client,
           duree: duree,

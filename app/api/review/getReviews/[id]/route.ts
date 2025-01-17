@@ -9,6 +9,7 @@ export async function GET(req: NextRequest) {
 
     const requestURL = req.url.split("/");
     const id = requestURL[requestURL.length - 1];
+    console.log(id);
 
     const review = await ReviewModel.findOne({ _id: id });
 

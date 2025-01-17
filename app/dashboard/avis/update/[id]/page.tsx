@@ -1,13 +1,15 @@
 "use client";
 
-import useFetch from "@/hooks/useFetch";
-import toBase64 from "@/lib/base64";
-import { useAppStore } from "@/store";
-import { ReviewForBack } from "@/types/reviewType";
-import Link from "next/link";
 import React from "react";
 
-export default function Competance() {
+import { useAppStore } from "@/store";
+import useUtilities from "@/hooks/useUtilities";
+import useFetch from "@/hooks/useFetch";
+import Link from "next/link";
+import { ReviewForBack, ReviewType } from "@/types/reviewType";
+import toBase64 from "@/lib/base64";
+
+export default function DashboardUpdateCompetances() {
   const [reviewValues, setReviewValues] = React.useState<ReviewForBack>({
     message: "",
     poste: "",
@@ -16,13 +18,55 @@ export default function Competance() {
     imageName: "",
     entrepriseName: "",
   });
-
   const [result, setResult] = React.useState({
     message: "",
     isError: false,
   });
+  const [id, setId] = React.useState("");
 
-  const { setIsLoading } = useAppStore();
+  const { setIsLoading, setConnection, connection } = useAppStore();
+  const { windowProperties } = useUtilities();
+
+  React.useEffect(() => {
+    if (!windowProperties) return;
+
+    if (!connection && !windowProperties.sessionStorage.getItem("connection")) {
+      windowProperties.location.pathname = "/dashboard";
+    }
+
+    if (windowProperties.sessionStorage.getItem("connection")) {
+      setConnection(true);
+    }
+
+    const pathNameSplit = windowProperties.location.pathname.split("/");
+    const pathNameId = pathNameSplit[pathNameSplit.length - 1];
+    setId(pathNameId);
+
+    if (id && reviewValues.entrepriseName === "") {
+      fetchData();
+    }
+  }, [windowProperties, id]);
+
+  const fetchData = async () => {
+    try {
+      setIsLoading(true);
+      const response = await useFetch.GET("review", id);
+      const review = response.data as ReviewType;
+      console.log(review);
+
+      setReviewValues({
+        message: review.message,
+        poste: review.poste,
+        stars: review.stars,
+        personne: review.personne,
+        imageName: review.image,
+        entrepriseName: review.entrepriseName,
+      });
+      setIsLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
@@ -34,19 +78,8 @@ export default function Competance() {
       reviewValues.message !== ""
     ) {
       setIsLoading(true);
-      const formData = new FormData();
-      if (typeof reviewValues.imageName !== "string") {
-        const base64File = (await toBase64(reviewValues.imageName)) as string;
-        formData.append("image", base64File);
-        formData.append("image-name", reviewValues.imageName.name);
-      }
-      formData.append("entreprise", reviewValues.entrepriseName);
-      formData.append("stars", reviewValues.stars.toString());
-      formData.append("personne", reviewValues.personne);
-      formData.append("poste", reviewValues.poste);
-      formData.append("message", reviewValues.message);
-
-      const response = await useFetch.NewReview(reviewValues);
+      console.log(reviewValues);
+      const response = await useFetch.UPDATEReview(reviewValues, id);
       setResult({
         message: response.message,
         isError: response.status === 200 ? false : true,
@@ -55,12 +88,8 @@ export default function Competance() {
     }
   }
 
-  React.useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
   return (
-    <section className="dashboard-new-competences">
+    <section className="dashboard-new-projet">
       <Link href={"/dashboard/avis"}>Retour</Link>
       {result.message !== "" ? (
         <p style={result.isError ? { color: "red" } : { color: "green" }}>
@@ -69,6 +98,7 @@ export default function Competance() {
       ) : null}
       <input
         type="text"
+        value={reviewValues.entrepriseName}
         placeholder="Nom de l'entreprise"
         required
         onChange={(e) =>
@@ -98,6 +128,7 @@ export default function Competance() {
       <input
         type="text"
         placeholder="Nom de la personne"
+        value={reviewValues.personne}
         required
         onChange={(e) =>
           setReviewValues({
@@ -109,6 +140,7 @@ export default function Competance() {
 
       <input
         type="text"
+        value={reviewValues.poste}
         placeholder="Nom de son poste"
         required
         onChange={(e) =>
@@ -121,6 +153,7 @@ export default function Competance() {
 
       <input
         type="text"
+        value={reviewValues.message}
         placeholder="Son message..."
         required
         onChange={(e) =>
@@ -141,12 +174,7 @@ export default function Competance() {
         onChange={(e) =>
           setReviewValues({
             ...reviewValues,
-            stars:
-              Number(e.target.value) > 5
-                ? 5
-                : Number(e.target.value) < 0
-                  ? 0
-                  : Number(e.target.value),
+            stars: Number(e.target.value) > 5 ? 5 : Number(e.target.value),
           })
         }
       />

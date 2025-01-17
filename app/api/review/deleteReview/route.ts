@@ -18,7 +18,7 @@ export async function DELETE(req: NextRequest) {
       await deleteFile("review", reviewExist.image);
 
       await ReviewModel.findOneAndDelete({
-        _id: "675c2ea9d12a134f92436385",
+        _id: id,
       });
 
       return httpResponse(StatusCode.Success);

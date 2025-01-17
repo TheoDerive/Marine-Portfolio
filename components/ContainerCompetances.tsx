@@ -197,7 +197,7 @@ export default function ContainercCompetances() {
   return (
     <section className="container-competances-section">
       <h2 className="profil-title-header" ref={textRef}>
-        <LetterAnimation text="SKILLS" />
+        SKILLS
       </h2>
       <ul className="container-competances" ref={competanceContainerRef}>
         {competances.map((competance, i) => {

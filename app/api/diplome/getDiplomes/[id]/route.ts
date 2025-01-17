@@ -1,6 +1,6 @@
 import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
-import ProjetModel from "@/models/ProjetModel";
+import DiplomesModel from "@/models/DiplomesModel";
 import { StatusCode } from "@/types/enumStatusCode";
 import { NextRequest } from "next/server";
 
@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
     const requestURL = req.url.split("/");
     const id = requestURL[requestURL.length - 1];
 
-    const diplome = await ProjetModel.findOne({ _id: id });
+    const diplome = await DiplomesModel.findOne({ _id: id });
 
     if (diplome) {
       return httpResponse(StatusCode.Success, diplome);

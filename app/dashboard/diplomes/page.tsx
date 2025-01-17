@@ -6,10 +6,10 @@ import { useAppStore } from "@/store";
 import useUtilities from "@/hooks/useUtilities";
 import useFetch from "@/hooks/useFetch";
 import Link from "next/link";
-import { ReviewType } from "@/types/reviewType";
+import { DiplomeType } from "@/types/diplomeType";
 
 export default function DashboardAvis() {
-  const [review, setReview] = React.useState<ReviewType[]>([]);
+  const [diplomes, setDiplomes] = React.useState<DiplomeType[]>([]);
 
   const { setIsLoading, connection } = useAppStore();
   const { windowProperties } = useUtilities();
@@ -30,8 +30,8 @@ export default function DashboardAvis() {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const response = await useFetch.GETMultiples("review");
-      setReview(response.data.reverse());
+      const response = await useFetch.GETMultiples("diplome");
+      setDiplomes(response.data.reverse());
       setIsLoading(false);
     } catch (error) {
       console.error(error);
@@ -40,23 +40,27 @@ export default function DashboardAvis() {
 
   async function deleteAvis(id: string) {
     setIsLoading(true);
-    await useFetch.DELETE("review", id);
+    await useFetch.DELETE("diplome", id);
     await fetchData();
     setIsLoading(false);
   }
   return (
     <section className="dashboard-reviews">
-      {review.map((review, i) => (
+      {diplomes.map((diplome, i) => (
         <li key={i}>
-          <img className="projet-image" src={`${review.image}`} />
-
+          <section className="diplome-element">
+            <strong>{diplome.school}</strong>
+            <span>{diplome.name}</span>
+          </section>
           <div className="competance-modifications">
-            <Link href={`/dashboard/avis/update/${review._id}`}>Modifier</Link>
-            <button onClick={() => deleteAvis(review._id)}>Supprimer</button>
+            <Link href={`/dashboard/diplomes/update/${diplome._id}`}>
+              Modifier
+            </Link>
+            <button onClick={() => deleteAvis(diplome._id)}>Supprimer</button>
           </div>
         </li>
       ))}
-      <Link href={"/dashboard/avis/new"} className="new" />
+      <Link href={"/dashboard/diplomes/new"} className="new" />
     </section>
   );
 }

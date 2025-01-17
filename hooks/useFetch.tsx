@@ -31,6 +31,8 @@ const useFetch = {
     const updatedCategorie =
       categorie.charAt(0).toUpperCase() + categorie.slice(1);
 
+    console.log(id);
+
     const response = await fetch(
       `/api/${categorie}/get${updatedCategorie}s/${id}`,
     );
@@ -59,10 +61,11 @@ const useFetch = {
     return data;
   },
 
-  UPDATEDiplome: async (element: DiplomeForBack) => {
+  UPDATEDiplome: async (element: DiplomeForBack, id: string) => {
     const formData = new FormData();
 
     formData.append("name", element.diplomeName);
+    formData.append("id", id);
     formData.append("school", element.ecole);
     formData.append("description", element.description);
 
@@ -167,7 +170,7 @@ const useFetch = {
   },
 
   // Update une review
-  UPDATEReview: async (element: ReviewForBack) => {
+  UPDATEReview: async (element: ReviewForBack, id: string) => {
     if (
       element.imageName &&
       element.entrepriseName !== "" &&
@@ -175,11 +178,18 @@ const useFetch = {
       element.poste !== "" &&
       element.message !== ""
     ) {
-      const base64File = (await toBase64(element.imageName)) as string;
       const formData = new FormData();
+      if (typeof element.imageName !== "string") {
+        console.log(element.imageName);
+        const base64File = (await toBase64(element.imageName)) as string;
+        formData.append("image", base64File);
+        formData.append("image-name", element.imageName.name);
+      } else {
+        formData.append("image", "0");
+        formData.append("image-name", element.imageName);
+      }
       formData.append("entreprise", element.entrepriseName);
-      formData.append("image", base64File);
-      formData.append("image-name", element.imageName.name);
+      formData.append("id", id);
       formData.append("stars", element.stars.toString());
       formData.append("personne", element.personne);
       formData.append("poste", element.poste);

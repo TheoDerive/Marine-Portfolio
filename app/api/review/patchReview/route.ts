@@ -10,16 +10,15 @@ export async function PATCH(req: NextRequest) {
     await connectDB();
 
     const body = await req.formData();
-    const entrepriseName = body.get("entreprise");
+    const id = body.get("id");
 
     const reviewExist = await ReviewModel.findOne({
-      entrepriseName: entrepriseName,
+      _id: id,
     });
 
     if (reviewExist) {
-      await deleteFile("review", reviewExist.image);
-
       const image = body.get("image") as string;
+      const entrepriseName = body.get("entreprise");
       const imageName = body.get("image-name") as string;
       const stars = body.get("stars");
       const personne = body.get("personne");
@@ -35,16 +34,20 @@ export async function PATCH(req: NextRequest) {
         poste &&
         message
       ) {
-        const response = await pushFile("review", image, imageName);
+        if (image !== "0") {
+          await deleteFile("review", reviewExist.image);
+          await pushFile("review", image, imageName);
+        }
 
-        const review = new ReviewModel({
-          image: `/images/review/${imageName}`,
+        const review = {
+          image:
+            image === "0" ? reviewExist.image : `/images/review/${imageName}`,
           entrepriseName,
           stars,
           personne,
           poste,
           message,
-        });
+        };
 
         await ReviewModel.findOneAndUpdate(
           { _id: reviewExist._id },

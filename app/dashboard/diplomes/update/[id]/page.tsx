@@ -6,15 +6,14 @@ import { useAppStore } from "@/store";
 import useUtilities from "@/hooks/useUtilities";
 import useFetch from "@/hooks/useFetch";
 import Link from "next/link";
-import { CompetanceForBack, CompetanceType } from "@/types/competanceType";
+import { DiplomeForBack, DiplomeType } from "@/types/diplomeType";
 
 export default function DashboardUpdateCompetances() {
-  const [competanceValues, setCompetanceValues] =
-    React.useState<CompetanceForBack>({
-      name: "",
-      image: null,
-      type: "design",
-    });
+  const [diplomeValues, setDiplomeValues] = React.useState<DiplomeForBack>({
+    ecole: "",
+    description: "",
+    diplomeName: "",
+  });
   const [result, setResult] = React.useState({
     message: "",
     isError: false,
@@ -39,7 +38,7 @@ export default function DashboardUpdateCompetances() {
     const pathNameId = pathNameSplit[pathNameSplit.length - 1];
     setId(pathNameId);
 
-    if (id && competanceValues.name === "") {
+    if (id && diplomeValues.ecole === "") {
       fetchData();
     }
   }, [windowProperties, id]);
@@ -47,13 +46,14 @@ export default function DashboardUpdateCompetances() {
   const fetchData = async () => {
     try {
       setIsLoading(true);
-      const response = await useFetch.GET("competance", id);
-      const projet = response.data as CompetanceType;
+      const response = await useFetch.GET("diplome", id);
+      const projet = response.data as DiplomeType;
+      console.log(response);
 
-      setCompetanceValues({
-        image: projet.image,
-        type: projet.type,
-        name: projet.name,
+      setDiplomeValues({
+        ecole: projet.school,
+        description: projet.description,
+        diplomeName: projet.name,
       });
       setIsLoading(false);
     } catch (error) {
@@ -63,9 +63,13 @@ export default function DashboardUpdateCompetances() {
 
   async function submit(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     e.preventDefault();
-    if (competanceValues.name !== "" && competanceValues.image !== "") {
+    if (
+      diplomeValues.description !== "" &&
+      diplomeValues.diplomeName !== "" &&
+      diplomeValues.ecole !== ""
+    ) {
       setIsLoading(true);
-      const response = await useFetch.UPDATECompetance(competanceValues, id);
+      const response = await useFetch.UPDATEDiplome(diplomeValues, id);
       console.log(response);
       setResult({
         message: response.message,
@@ -77,7 +81,7 @@ export default function DashboardUpdateCompetances() {
 
   return (
     <section className="dashboard-new-projet">
-      <Link href={"/dashboard/competances"}>Retour</Link>
+      <Link href={"/dashboard/diplomes"}>Retour</Link>
       {result.message !== "" ? (
         <p style={result.isError ? { color: "red" } : { color: "green" }}>
           {result.message}
@@ -85,48 +89,42 @@ export default function DashboardUpdateCompetances() {
       ) : null}
       <input
         type="text"
-        value={competanceValues.name}
-        placeholder="Name"
+        placeholder="ecole"
+        value={diplomeValues.ecole}
         required
         onChange={(e) =>
-          setCompetanceValues({
-            ...competanceValues,
-            name: e.target.value,
+          setDiplomeValues({
+            ...diplomeValues,
+            ecole: e.target.value,
           })
         }
       />
 
-      <label>
-        <p>Type de la competance</p>
-        <select
-          value={competanceValues.type}
-          onChange={(e) =>
-            setCompetanceValues({
-              ...competanceValues,
-              type: e.target.value,
-            })
-          }
-        >
-          <option value={"marketing"}>Marketing</option>
-          <option value={"design"}>Design</option>
-        </select>
-      </label>
+      <input
+        type="text"
+        value={diplomeValues.diplomeName}
+        placeholder="name"
+        required
+        onChange={(e) =>
+          setDiplomeValues({
+            ...diplomeValues,
+            diplomeName: e.target.value,
+          })
+        }
+      />
 
-      <label>
-        <p>Image de la competance (1 max)</p>
-        <input
-          type="file"
-          required
-          onChange={(e) =>
-            e.target.files
-              ? setCompetanceValues({
-                  ...competanceValues,
-                  image: e.target.files[0],
-                })
-              : null
-          }
-        />
-      </label>
+      <input
+        type="text"
+        value={diplomeValues.description}
+        placeholder="description"
+        required
+        onChange={(e) =>
+          setDiplomeValues({
+            ...diplomeValues,
+            description: e.target.value,
+          })
+        }
+      />
 
       <button type="submit" onClick={async (e) => submit(e)}>
         Push

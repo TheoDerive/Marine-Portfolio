@@ -1,7 +1,6 @@
 import httpResponse from "@/lib/httpResponse";
 import { connectDB } from "@/lib/mongodb";
 import DiplomesModel from "@/models/DiplomesModel";
-import ReviewModel from "@/models/ReviewModel";
 import { StatusCode } from "@/types/enumStatusCode";
 import { NextRequest } from "next/server";
 
@@ -10,13 +9,15 @@ export async function PATCH(req: NextRequest) {
     await connectDB();
 
     const body = await req.formData();
-    const name = body.get("name");
+
+    const id = body.get("id");
 
     const diplomeExist = await DiplomesModel.findOne({
-      name: name,
+      _id: id,
     });
 
     if (diplomeExist) {
+      const name = body.get("name");
       const school = body.get("school");
       const description = body.get("description");
 

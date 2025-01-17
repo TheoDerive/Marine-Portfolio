@@ -28,9 +28,10 @@ export default function Dashboard() {
       {connection ? null : <Connection setIsConnected={setConnection} />}
 
       <h2 className="dashboard-title">Que voulez-vous modifier ?</h2>
-      <Link href={"/dashboard/competances"}>Competances</Link>
       <Link href={"/dashboard/projets"}>Projets</Link>
       <Link href={"/dashboard/avis"}>Avis</Link>
+      <Link href={"/dashboard/diplomes"}>Diplomes</Link>
+      <Link href={"/dashboard/competances"}>Competances</Link>
     </section>
   );
 }

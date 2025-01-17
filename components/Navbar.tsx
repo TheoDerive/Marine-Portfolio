@@ -69,7 +69,7 @@ function DesktopNav() {
   return (
     <nav className={`desktop-navbar${activeNavbar ? "-active" : ""}`}>
       <Link href={"/"} className="logo-container">
-        <img src="/images/logo.png" />
+        <img src="/images/logo.svg" />
       </Link>
 
       <ul className="navbar-onglet-container">

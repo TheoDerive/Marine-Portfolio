@@ -264,11 +264,11 @@ const useFetch = {
   // Ajouter une competance
   NewCompetance: async (element: CompetanceForBack) => {
     if (element.name !== "" && element.image) {
-      const base64File = (await toBase64(element.image)) as string;
+      const base64File = (await toBase64(element.image as File)) as string;
       const formData = new FormData();
       formData.append("name", element.name);
       formData.append("image", base64File);
-      formData.append("image-name", element.image.name);
+      formData.append("image-name", (element.image as File).name);
       formData.append("type", element.type);
 
       const response = await fetch(`/api/competance/newCompetance`, {
@@ -290,11 +290,11 @@ const useFetch = {
       element.poste !== "" &&
       element.message !== ""
     ) {
-      const base64File = (await toBase64(element.imageName)) as string;
+      const base64File = (await toBase64(element.imageName as File)) as string;
       const formData = new FormData();
       formData.append("entreprise", element.entrepriseName);
       formData.append("image", base64File);
-      formData.append("image-name", element.imageName.name);
+      formData.append("image-name", (element.imageName as File).name);
       formData.append("stars", element.stars.toString());
       formData.append("personne", element.personne);
       formData.append("poste", element.poste);

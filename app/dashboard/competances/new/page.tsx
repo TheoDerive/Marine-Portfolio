@@ -26,14 +26,6 @@ export default function Competance() {
     e.preventDefault();
     if (competanceValues.name !== "" && competanceValues.image) {
       setIsLoading(true);
-      const base64File = (await toBase64(competanceValues.image)) as string;
-
-      const formData = new FormData();
-      formData.append("name", competanceValues.name);
-      formData.append("image", base64File);
-      formData.append("image-name", competanceValues.image.name);
-      formData.append("type", competanceValues.type);
-
       const response = await useFetch.NewCompetance(competanceValues);
       setResult({
         message: response.message,

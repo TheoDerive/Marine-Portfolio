@@ -1,5 +1,5 @@
 export type CompetanceType = {
-  id: string;
+  _id: string;
   name: string;
   image: string;
   type: string;

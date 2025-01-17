@@ -1,5 +1,5 @@
 export type ReviewType = {
-  id: string;
+  _id: string;
   image: string;
   entrepriseName: string;
   stars: number;

@@ -10,7 +10,7 @@ import PageLayout from "@/components/PageLayout";
 export const metadata: Metadata = {
   title: "Marine Sicaud | Portfolio",
   icons: {
-    icon: "/images/logo.ico"
+    icon: "/images/logo.svg"
   }
 };
 

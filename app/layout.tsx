@@ -9,8 +9,21 @@ import PageLayout from "@/components/PageLayout";
 
 export const metadata: Metadata = {
   title: "Marine Sicaud | Portfolio",
+  description: "Venez voir mon portfolio et les projets que j'ai réalisés.",
   icons: {
-    icon: "/images/logo.svg"
+    icon: "/images/logo.svg",
+  },
+  openGraph: {
+    title: "Marine Sicaud | Portfolio",
+    description: "Découvrez mon portfolio et mes projets.",
+    images: [
+      {
+        url: "/images/logo.svg",
+        width: 1200,
+        height: 630,
+        alt: "Marine Sicaud Logo",
+      },
+    ],
   }
 };
 

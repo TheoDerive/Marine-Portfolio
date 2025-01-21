@@ -39,7 +39,33 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0"
         />
+
+<meta property="og:site_name" content="Marine Sicaud | Portfolio" />
+    <meta property="og:url" content="https://www.marine-sicaud.fr/" />
+    <meta property="og:type" content="website" />
+    <meta name="title" property="og:title" content="Portfolio Marine Sicaud" />
+    <meta
+      name="image"
+      property="og:image"
+      content="https://www.marine-sicaud.fr/images/logo.svg"
+    />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1182" />
+    <meta property="og:image:height" content="583" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Portfolio Marine Sicaud" />
+    <meta
+      name="twitter:image:src"
+      content="https://www.marine-sicaud.fr/images/logo.svg"
+    />
+    <meta name="twitter:domain" content="https://www.marine-sicaud.fr" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="image_rel" href="https://www.marine-sicaud.fr/assets/logo.svg" />    
       </Head>
+
       <PageLayout>{children}</PageLayout>
     </html>
   );

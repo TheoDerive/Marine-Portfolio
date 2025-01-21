@@ -60,7 +60,6 @@ export default function VisionCommunication() {
                 <ul className="vision-competances">
                     <li>Création de contenu</li>
                     <li>Rédaction</li>
-                    <li>Création de contenu</li>
                     <li>Supports graphiques</li>
                 </ul>
                 <ul className="vision-competances">

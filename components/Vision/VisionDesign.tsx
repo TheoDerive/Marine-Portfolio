@@ -79,7 +79,6 @@ export default function VisionDesign() {
         <ul className="vision-competances">
           <li>Gestion créative</li>
           <li>Direction artistique</li>
-          <li>Stratégie d’acquisition</li>
         </ul>
       </section>
     </section>

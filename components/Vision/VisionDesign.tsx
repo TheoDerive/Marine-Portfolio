@@ -52,7 +52,7 @@ export default function VisionDesign() {
           </div>
           <h3 className="information-title">Identité</h3>
           <p className="information-text">
-            réer une image de marque cohérente et mémorable avec des éléments
+            Créer une image de marque cohérente et mémorable avec des éléments
             graphiques sur mesure, un branding affirmé et des supports visuels
             distinctifs.
           </p>

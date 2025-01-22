@@ -95,12 +95,12 @@ export default function ContainercCompetances() {
         },
       },
       {
-        text: "Organiser",
+        text: "Organisation",
         color: getRandomNumber(0, colors.length),
         position: {
-          x: 73,
-          y: 50,
-          deg: 0,
+          x: 78,
+          y: 45,
+          deg: -10,
         },
       },
       {

@@ -30,7 +30,7 @@ export default function VisionDesign() {
           <h3 className="information-title">Composition</h3>
           <p className="information-text">
             Créer des visuels accrocheurs avec une mise en page percutante, des
-            contrastes forts et des éléments graphiques adaptés attractifs.
+            contrastes forts et des éléments graphiques attractifs.
           </p>
         </article>
         <article className="vision-middle-container">

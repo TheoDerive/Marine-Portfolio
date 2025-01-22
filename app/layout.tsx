@@ -35,35 +35,26 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, maximum-scale=1.0, minimum-scale=1.0, initial-scale=1.0"
-        />
+        <title>Marine Sicaud | Portfolio</title>
+        <meta name="description" content="Description de votre site ou de votre page." />
+        <meta name="keywords" content="Marine Sicaud, bientôt disponible, site web" />
+        <meta name="author" content="Marine Sicaud" />
 
-<meta property="og:site_name" content="Marine Sicaud | Portfolio" />
-    <meta property="og:url" content="https://www.marine-sicaud.fr/" />
-    <meta property="og:type" content="website" />
-    <meta name="title" property="og:title" content="Portfolio Marine Sicaud" />
-    <meta
-      name="image"
-      property="og:image"
-      content="https://www.marine-sicaud.fr/images/logo.svg"
-    />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1182" />
-    <meta property="og:image:height" content="583" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Portfolio Marine Sicaud" />
-    <meta
-      name="twitter:image:src"
-      content="https://www.marine-sicaud.fr/images/logo.svg"
-    />
-    <meta name="twitter:domain" content="https://www.marine-sicaud.fr" />
+        {/* Open Graph / Facebook */}
+        <meta property="og:title" content="Marine Sicaud" />
+        <meta property="og:description" content="Bientôt Disponible - Découvrez bientôt le site officiel de Marine Sicaud." />
+        <meta property="og:url" content="https://www.marine-sicaud.fr" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="/path/to/your/image.jpg" />
 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="shortcut icon" href="./assets/logo.svg" type="image/x-icon" />
-    <link rel="stylesheet" href="./style.css" />
-    <link rel="image_rel" href="https://www.marine-sicaud.fr/assets/logo.svg" />    
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Marine Sicaud" />
+        <meta name="twitter:description" content="Bientôt Disponible - Découvrez bientôt le site officiel de Marine Sicaud." />
+        <meta name="twitter:image" content="/path/to/your/image.jpg" />
+
+        {/* Favicon */}
+        <link rel="icon" href="/images/logo.ico" />
       </Head>
 
       <PageLayout>{children}</PageLayout>

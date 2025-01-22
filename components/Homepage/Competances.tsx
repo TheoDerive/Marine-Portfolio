@@ -40,7 +40,7 @@ function DesktopCompetances({
   return (
     <section className="competences-homepage-container">
       <h3 className="section-title">
-        Mes <span>Competences</span>
+        Mes <span>Compétences</span>
       </h3>
 
       <ul className="competences-homepage design">

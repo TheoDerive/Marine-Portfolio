@@ -24,7 +24,7 @@ export default function HomeProjets({ projets }: Props) {
   return (
     <section className="projets-homepage-container">
       <h2 className="section-title">
-        Projets <span>Recents</span>
+        Projets <span>Récents</span>
       </h2>
 
       <section className="mobile-scroll-container">

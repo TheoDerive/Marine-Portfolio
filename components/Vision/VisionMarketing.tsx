@@ -40,9 +40,8 @@ export default function VisionMarketing() {
                         </h2>
                         <hr/>
                     </div>
-                    <h3 className="information-title">Acquisition</h3>
-                    <p className="information-text">Attirer une audience susceptible d’être intéressé par l’offre
-                        proposé.</p>
+                    <h3 className="information-title">Conversion</h3>
+                    <p className="information-text">Faire avancer les prospects dans le parcours d’achat.</p>
                 </article>
                 <article className="vision-middle-container">
                     <div className="informations">
@@ -51,9 +50,8 @@ export default function VisionMarketing() {
                         </h2>
                         <hr/>
                     </div>
-                    <h3 className="information-title">Acquisition</h3>
-                    <p className="information-text">Attirer une audience susceptible d’être intéressé par l’offre
-                        proposé.</p>
+                    <h3 className="information-title">Rétention</h3>
+                    <p className="information-text">Décupler les revenus en fidélisant la clientèle et en augmentant le panier moyen.   </p>
                 </article>
             </section>
 

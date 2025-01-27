@@ -902,7 +902,7 @@ footer {
       animation-iteration-count: infinite;
       animation-timing-function: linear;
 
-      li {
+      a {
         white-space: nowrap;
         font-size: 50px;
         display: flex;
@@ -1825,6 +1825,7 @@ footer {
   }
 
   img {
+    z-index: 999;
     width: 15%;
     animation: loadingImg infinite 3s;
   }

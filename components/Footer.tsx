@@ -20,84 +20,84 @@ export function Footer() {
           onMouseEnter={() => setIsPause(true)}
           onMouseLeave={() => setIsPause(false)}
         >
-          <li className="future-rose">
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-violet">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-violet">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-orange">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-orange">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-rose">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-violet">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-violet">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-orange">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-orange">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-rose">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-violet">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-violet">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-orange">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-orange">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-rose">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-violet">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-violet">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-orange">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-orange">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-rose">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
+          </Link>
         </section>
         <section
           className="footer-slider"
@@ -105,84 +105,84 @@ export function Footer() {
           onMouseEnter={() => setIsPause(true)}
           onMouseLeave={() => setIsPause(false)}
         >
-          <li className="future-violet">
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-orange">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-violet">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-rose">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-orange">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-violet">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-orange">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-violet">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-rose">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-orange">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-violet">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-orange">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-violet">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-rose">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-orange">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-violet">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-orange">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-violet">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-rose">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"}  className="future-orange">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
-          <li className="future-violet">
+          </Link>
+          <Link href={"mailto:sicaud.marine.pro@gmail.com"} className="future-rose">
             CONTACTEZ-MOI
             <span className="footer-element-arrow">
               <FontAwesomeIcon icon={faArrowRight} />
             </span>
-          </li>
+          </Link>
         </section>
       </section>
 
@@ -190,6 +190,7 @@ export function Footer() {
 
       <section className="footer-social-media">
         <Link
+          target="_blank"
           href={"https://www.linkedin.com/in/marine-sicaud/"}
           className="social-media"
         >

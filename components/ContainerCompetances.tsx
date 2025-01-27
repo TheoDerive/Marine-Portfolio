@@ -114,7 +114,7 @@ export default function ContainercCompetances() {
       },
 
       {
-        text: "Curieusiter",
+        text: "Curiosité",
         color: getRandomNumber(0, colors.length),
         position: {
           x: 37,

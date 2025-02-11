@@ -16,14 +16,6 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Marine Sicaud | Portfolio",
     description: "Découvrez mon portfolio et mes projets.",
-    images: [
-      {
-        url: "/images/logo.svg",
-        width: 1200,
-        height: 630,
-        alt: "Marine Sicaud Logo",
-      },
-    ],
   },
 };
 
